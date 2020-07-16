@@ -1,4 +1,4 @@
-#CLASS 0
+//RESET_AliasProfThief#CLASS 0#AL RESET_AliasProfThief {#CLASS 0
 $CLASS = "Tools|Alias|Prof_Thief"
 
 #AL amon {
@@ -26,15 +26,15 @@ appraise troll
 } $CLASS
 
 #AL bm {
-steal all gold from man
+steal all gold from man 
 } $CLASS
 
 #AL bo {
-steal all gold from orc
+steal all gold from orc 
 } $CLASS
 
 #AL am {
-appraise man
+appraise man 
 } $CLASS
 
 #AL sa {
@@ -52,12 +52,12 @@ trigger %proper($tar) todo steal all gold from %lower($tar)
 
 
 #AL trigmmailkey {
-trigger plain black key todo steal plain black key from
+trigger plain black key todo steal plain black key from 
 } $CLASS
 
 #AL trigmmaillocket {
 $tar=%proper(@Tar);#IF (%0) {$tar=%proper(%0)}
-trigger locket todo steal plain black key from $tar
+trigger locket todo steal plain black key from $tar 
 } $CLASS
 
 #AL trigsteal {
@@ -73,4 +73,4 @@ trigger %proper($tar) opens todo steal draught from $tar
 } $CLASS
 
 
-#CLASS 0
+#CLASS 0} _Alias#CLASS 0

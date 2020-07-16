@@ -1,4 +1,4 @@
-#CLASS 0
+//RESET_AliasProfNecromancer#CLASS 0#AL RESET_AliasProfNecromancer {#CLASS 0
 $CLASS = "Tools|Alias|Prof_Necromancer"
 
 #AL ShowJBS {SysMsg << JBS_Concentrate time left:    @JBS_Concentrate seconds. >>} $CLASS
@@ -87,4 +87,4 @@ $EXE = "trigger Y todo do leech,cast spike,cast arrow"
 #IF (%0) {$tar=%lower(%0);$EXE = %concat("trigger Y todo do leech ",$tar,",cast spike at ",$tar,",cast arrow at ",$tar)}
 #EXE {$tar}
 } $CLASS
-#CLASS 0
+#CLASS 0} _Alias#CLASS 0

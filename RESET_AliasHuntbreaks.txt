@@ -1,4 +1,4 @@
-#CLASS 0
+//RESET_AliasHuntBreaks#CLASS 0#AL RESET_AliasHuntBreaks {#CLASS 0
 $CLASS = "Tools|Alias|HuntBreaks"
 
 #AL Thranahb {
@@ -641,7 +641,7 @@ do 5s,2sw,gate,4ne,7n,4nw,gate,2se,4s,2sw,gate,ne,4n,2nw,3w,3sw,s,4climb wall,cl
 do 5n,3nw,2n,closet,move boxes,10evade
 
 //(Done from the outside of MT,takes you to CoU GH)
-do 2s,2sw,4s,sw,2s,sw,3s,sw,s,sw,s,12w,6n,part reeds,10evade
+do 2s,2sw,4s,sw,2s,sw,3s,sw,s,sw,s,12w,6n,part reeds,10evade 
 do 2n,ne,4n,2nw,3n,e,ne,3e,brush branches,10evade,nw,3w,sw,w,3s,2se,4s,sw,2s
 } $CLASS
 
@@ -671,4 +671,4 @@ do 5s,4sw,n,move rug,emote leaps into the cellar,s,5evade,n,leap into cellar,5ev
 } $CLASS
 
 
-#CLASS 0
+#CLASS 0} _Alias#CLASS 0

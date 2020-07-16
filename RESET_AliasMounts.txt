@@ -1,4 +1,4 @@
-#CLASS 0
+//RESET_AliasMounts#CLASS 0#AL RESET_AliasMounts {#CLASS 0
 $CLASS = "Tools|Alias|Mounts"
 
 #AL mm {
@@ -50,7 +50,7 @@ do dismount,unhitch mura,mount mura
 } $CLASS
 
 #AL hwarg {
-do dismount,hitch warg
+do dismount,hitch warg 
 } $CLASS
 
 #AL normm {
@@ -78,7 +78,7 @@ do dismount,unhitch ho,ride ho
 } $CLASS
 
 #AL hhor {
-do dismount,hitch horse
+do dismount,hitch horse 
 } $CLASS
 
 #AL homo {
@@ -219,12 +219,12 @@ mount call %lower(@MyMount)
 
 #AL MoveMo {
 $origin=%roomnum;$dest="";$numwargs=0;$cmd="";$go_dest=""
-$mon=@Gear_MonstrousWarg;
+$mon=@Gear_MonstrousWarg
 #IF (%0) {
   #SW (%1="r1") {$dest=@r1} (%1="r2") {$dest=@r2} {$dest=%1}
   #IF (%2) {$numwargs=%2} {$numwargs=3}
   #SW (%ismember($dest,@Directions)) {$go_dest=$dest} ($dest) {$go_dest=%concat("#WALK ",$dest)}
-  LeadMon;
+  LeadMon
   #EXE {$go_dest}
   lead
   #LOOP 1,$numwargs {
@@ -285,7 +285,7 @@ lead $mount
 } $CLASS
 
 #AL lmon {
-look monstrous warg
+look monstrous warg 
 } $CLASS
 
 #AL harwag {
@@ -315,4 +315,4 @@ unhitch %lower(@MyMount)
 
 
 
-#CLASS 0
+#CLASS 0} _Alias#CLASS 0

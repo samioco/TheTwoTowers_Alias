@@ -1,4 +1,4 @@
-#CLASS 0
+//RESET_AliasMovement#CLASS 0#AL RESET_AliasMovement {#CLASS 0
 $CLASS = "Tools|Alias|Movement"
 
 #AL KOG {
@@ -153,4 +153,4 @@ do 5w,sw,w,4sw,ne,nw,2n,nw,2n,nw,ne,n,nw;TE isen
 } $CLASS
 
 
-#CLASS 0
+#CLASS 0} _Alias#CLASS 0

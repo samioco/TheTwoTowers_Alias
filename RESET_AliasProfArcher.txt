@@ -1,4 +1,4 @@
-#CLASS 0
+//RESET_AliasProfArcher#CLASS 0#AL RESET_AliasProfArcher {#CLASS 0
 $CLASS = "Tools|Alias|Prof_Archer"
 
 #AL sv {
@@ -23,7 +23,7 @@ select mallorn arrow
 } $CLASS
 
 #AL kik {
-kickback
+kickback 
 } $CLASS
 
 #AL mu {
@@ -31,7 +31,7 @@ multinock
 } $CLASS
 
 #AL mk {
-do multinock,kickback
+do multinock,kickback 
 } $CLASS
 
 #AL selpit {
@@ -114,4 +114,4 @@ trigger has died. todo do 2salvage,salvage from corpse,salvage from corpse 2,fle
 
 
 
-#CLASS 0
+#CLASS 0} _Alias#CLASS 0

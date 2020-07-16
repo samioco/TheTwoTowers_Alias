@@ -1,4 +1,4 @@
-#CLASS 0
+//RESET_AliasBoosts#CLASS 0#AL RESET_AliasBoosts {#CLASS 0
 $CLASS = "Tools|Alias|Boosts"
 
 #AL AimOn {
@@ -34,7 +34,7 @@ AddToEXE "get all shimmering silver ring into cloak"
 #IF (@Gear_Saddlebags) {AddToEXE "get all shimmering silver ring into saddlebags"}
 #IF (@Gear_Panniers) {AddToEXE "get all shimmering silver ring into panniers"}
 ExecuteEXE
-} $CLASS
+} $CLASS 
 
 #AL GoldOn {
 #VAR EXE {} {} VAR
@@ -115,11 +115,11 @@ rw;do reveal mixed potion,drink mixed potion,conceal mixed potion,drop mixed pot
 } $CLASS
 
 #AL rp {
-reveal potion
+reveal potion 
 } $CLASS
 
 #AL cp {
-conceal potion
+conceal potion 
 } $CLASS
 
 #AL cmp {
@@ -294,4 +294,4 @@ ss;mix 3 1 2 2;get potion
 ss;mix 2 3 2 0;get potion
 } $CLASS
 
-#CLASS 0
+#CLASS 0} _Alias#CLASS 0

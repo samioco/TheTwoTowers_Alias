@@ -1,4 +1,4 @@
-#CLASS 0
+//RESET_AliasGear#CLASS 0#AL RESET_AliasGear {#CLASS 0
 $CLASS = "Tools|Alias|Gear"
 
 #AL BBal {$MyName="";#IF (%0) {$MyName=%proper(%0)} {$MyName=@MyName};$bank_balance=@{%concat($MyName,"_Bank")};SysMsg $MyName Bank Balance: $bank_balance, Withdrawals: @Withdrawals, Deposits: @Deposits} $CLASS
@@ -12,7 +12,7 @@ deposit all %0
 } $CLASS
 
 #AL ta {
-tag all
+tag all 
 } $CLASS
 
 #AL taip {
@@ -118,7 +118,7 @@ wear all %0
 } $CLASS
 
 #AL waw {
-wear all from wagon
+wear all from wagon 
 } $CLASS
 
 #AL wag {
@@ -188,7 +188,7 @@ $EXE=%concat($EXE,"estimate ",%i)
 }
 #IF (%pos(",",$EXE)) {$EXE=%concat("do ",$EXE)}
 #EXE {$EXE}
-} $CLASS
+} $CLASS 
 
 #AL GetRidOfItem {
 #VAR EXE {} {} VAR
@@ -200,4 +200,4 @@ $item = %lower(%0)
 ExecuteEXE
 } $CLASS
 
-#CLASS 0
+#CLASS 0} _Alias#CLASS 0

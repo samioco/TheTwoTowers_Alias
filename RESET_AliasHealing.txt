@@ -1,4 +1,4 @@
-#CLASS 0
+//RESET_AliasHealing#CLASS 0#AL RESET_AliasHealing {#CLASS 0
 $CLASS = "Tools|Alias|Healing"
 
 #AL dh {
@@ -63,4 +63,4 @@ do open bota 2,drink bota 2
 drink necklace
 } $CLASS
 
-#CLASS 0
+#CLASS 0} _Alias#CLASS 0

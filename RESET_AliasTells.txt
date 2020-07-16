@@ -1,4 +1,4 @@
-#CLASS 0
+//RESET_AliasTells#CLASS 0#AL RESET_AliasTells {#CLASS 0
 $CLASS = "Tools|Alias|Tells"
 
 #AL r {
@@ -218,4 +218,4 @@ tell vraerius %0
 tell volzchklov %0
 } $CLASS
 
-#CLASS 0
+#CLASS 0} _Alias#CLASS 0

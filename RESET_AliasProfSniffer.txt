@@ -1,4 +1,4 @@
-#CLASS 0
+//RESET_AliasProfSniffer#CLASS 0#AL RESET_AliasProfSniffer {#CLASS 0
 $CLASS = "Tools|Alias|Prof_Sniffer"
 
 #AL shivt {
@@ -20,4 +20,4 @@ $exe=%concat("trigger ",%proper($tar)," todo ",$action," ",%lower($tar))
 #EXE {$exe}
 } $CLASS
 
-#CLASS 0
+#CLASS 0} _Alias#CLASS 0

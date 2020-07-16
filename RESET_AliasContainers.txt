@@ -1,4 +1,4 @@
-#CLASS 0
+//RESET_AliasContainers#CLASS 0#AL RESET_AliasContainers {#CLASS 0
 $CLASS = "Tools|Alias|Containers"
 
 #AL ip {
@@ -77,7 +77,7 @@ $str="i box";#IF (%0) {$str=%concat($str," ",%0)};$str=%concat($str," on ground"
 #AL is {
 $EXE = "i sling"
 #IF (%0) {$EXE = %concat($EXE," ",%0)}
-#EXE {$EXE}
+#EXE {$EXE} 
 } $CLASS
 
 #AL itb {
@@ -339,3 +339,4 @@ do wear iridescent cloak from pack,get all ring from pack into iridescent cloak,
 } $CLASS
 
 #CLASS 0
+} _Alias#CLASS 0

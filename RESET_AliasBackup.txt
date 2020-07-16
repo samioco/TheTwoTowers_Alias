@@ -1,6 +1,6 @@
-#CLASS 0
+//RESET_AliasBackup#CLASS 0#AL RESET_AliasBackup {#CLASS 0
 $CLASS = "Tools|Alias|BackUp"
-_CLEANUP_LIST_
+RESET_SystemAliasCleanUpList
 
 #AL CleanUpAlias {
 #SW ((%1 && %2) && (%lower(%trim(%0))!="help")) {
@@ -8,17 +8,17 @@ $CLASSFolder=%1
 $Alias = %2
 $contents =  %alias($Alias)
 $temp=""
-_CLEANUP_LIST_
+RESET_SystemAliasCleanUpList
 #IF ($contents) {
   #FORALL  @CLEANUP_LIST {
     $contents=%subregex($contents,%item(%i,1),%item(%i,2))
   }
-  DeclareMySettings
+  RESET_ProfileDeclareMySettings
   #FORALL  @MySettings {
     $contents=%subregex($contents,%concat("_",%lower(%i)),%concat("_",%i))
   }
-  DeclareGearVariables
-  #FORALL  @Gear_Reset {
+  RESET_GearDeclareVariables
+  #FORALL  @RESET_Gear {
     $contents=%subregex($contents,%concat("@",%lower(%i)),%concat("@Gear_",%i))
   }
 }
@@ -36,25 +36,30 @@ _CLEANUP_LIST_
 
 
 #AL BackUp {
-#SW ((%1 && %2 && %3) && (%lower(%trim(%0))!="help")) {
+//%1: ClassFolder
+//%2: FileName / AliasName
+#SW ((%1 && %2) && (!%pos("help",%lower(%trim(%0))))) {
 $CLASSFolder=%1
 $FileName=%2
+$Alias = %2
+$NoClean=%3
+#IF (%pos(%lower("NoClean",%lower($NoClean)))) {
+  #ECHO NoClean detected.
+  $NoClean="NoClean"
+}
 $FileName=%concat($FileName,".txt")
 $FileContents=""
-$AliasList = %3
 #FILE 1 $FileName
 #ERASE 1
 #FILE 1 $FileName
-#FORALL $AliasList {
-  #IF (%alias(%i)) {
-    CleanUpAlias $CLASSFolder %i
-    $FileContents=%concat(%CR,"//",%i,%CR,"#AL ")
-    $FileContents=%concat($FileContents,%i)
-    $FileContents=%concat($FileContents," {",%CR)
-    $FileContents=%concat($FileContents,%alias(%i))
-    $FileContents=%concat($FileContents,%CR,"} ",$CLASSFolder,%CR,"#CLASS 0",%CR)
-    #WRITE 1 %concat(%CR,"//",%i,%CR,"#CLASS 0",%CR,"#AL ",%i," {",%CR,%alias(%i),%CR,"} ",$CLASSFolder,%CR,"#CLASS 0",%CR)
-  }
+#IF (%alias($Alias)) {
+  #IF (!$NoClean) {CleanUpAlias $CLASSFolder $Alias}
+  $FileContents=%concat(%CR,"//",$Alias,%CR,"#AL ")
+  $FileContents=%concat($FileContents,$Alias)
+  $FileContents=%concat($FileContents," {",%CR)
+  $FileContents=%concat($FileContents,%alias($Alias))
+  $FileContents=%concat($FileContents,%CR,"} ",$CLASSFolder,%CR,"#CLASS 0",%CR)
+  #WRITE 1 %concat(%CR,"//",$Alias,%CR,"#CLASS 0",%CR,"#AL ",$Alias," {",%CR,%alias($Alias),%CR,"} ",$CLASSFolder,%CR,"#CLASS 0",%CR)
 }
 #CLOSE 1
 #CLASS 0
@@ -65,6 +70,6 @@ $AliasList = %3
 #ECHO Param 2: ~<FileName~>: Name of textfile
 #ECHO Param 3: ~<AliasList~>: List of alias items
 #ECHO Usage: BackUp ~<ClassFolder~> ~<FileName~> ~<AliasList~>
-}
+} 
 } $CLASS
-#CLASS 0
+#CLASS 0} _Alias#CLASS 0

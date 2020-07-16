@@ -1,4 +1,4 @@
-#CLASS 0
+//RESET_AliasWeapons#CLASS 0#AL RESET_AliasWeapons {#CLASS 0
 $CLASS = "Tools|Alias|Weapons"
 #AL WEP {
 #VAR Wep {%lower(%0)} {} VAR
@@ -137,3 +137,4 @@ $EXE = %concat($exe,"request healing")
 } Tools|Alias|Weapons
 
 #CLASS 0
+} _Alias#CLASS 0

@@ -1,4 +1,4 @@
-#CLASS 0
+//RESET_AliasLoot#CLASS 0#AL RESET_AliasLoot {#CLASS 0
 $CLASS = "Tools|Alias|Loot"
 
 #AL GetAllFromGround {
@@ -266,8 +266,10 @@ PeltAll %0
 } $CLASS
 
 #AL pts {
-attach pelt to string
+attach pelt to string 
 } $CLASS
 
 
 #CLASS 0
+
+} _Alias#CLASS 0

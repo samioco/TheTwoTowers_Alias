@@ -1,4 +1,4 @@
-#CLASS 0
+//RESET_AliasBot#CLASS 0#AL RESET_AliasBot {#CLASS 0
 $CLASS = "Tools|Alias|Bots"
 
 #VAR BotsEnabled {} {} VAR
@@ -131,4 +131,4 @@ ActionAdd $EXE
 EatFood
 } $CLASS
 
-#CLASS 0
+#CLASS 0} _Alias#CLASS 0

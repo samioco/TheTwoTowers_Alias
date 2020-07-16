@@ -1,4 +1,4 @@
-#CLASS 0
+//RESET_AliasInfo#CLASS 0#AL RESET_AliasInfo {#CLASS 0
 $CLASS = "Tools|Alias|Info"
 
 #AL AddCommaToEXE {
@@ -45,7 +45,7 @@ AddDoToEXE
 #CLASS 0
 #T- %0
 #T- %0|Settings 0
-#T+ %0
+#T+ %0 
 #T+ %0|Settings
 #T- %0|Settings
 #CLASS 0
@@ -264,4 +264,4 @@ $MyBox=""
 } $CLASS
 
 
-#CLASS 0
+#CLASS 0} _Alias#CLASS 0

@@ -1,4 +1,4 @@
-#CLASS 0
+//RESET_AliasSkills#CLASS 0#AL RESET_AliasSkills {#CLASS 0
 $CLASS = "Tools|Alias|Skills"
 
 #AL k {
@@ -254,7 +254,7 @@ shape all here
 } $CLASS
 
 #AL sha {
-shape all
+shape all 
 } $CLASS
 
 #AL sh {
@@ -372,7 +372,7 @@ $EXE = "shape"
 #AL con {
 $EXE = "consider"
 #IF (%0) {$EXE = %concat($exe," ",%0)}
-#EXE {$exe}
+#EXE {$exe} 
 } $CLASS
 
 #AL disem {
@@ -432,4 +432,4 @@ legend top experience
 } $CLASS
 
 
-#CLASS 0
+#CLASS 0} _Alias#CLASS 0

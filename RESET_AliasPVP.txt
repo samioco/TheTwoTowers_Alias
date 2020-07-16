@@ -1,4 +1,4 @@
-#CLASS 0
+//RESET_AliasPVP#CLASS 0#AL RESET_AliasPVP {#CLASS 0
 $CLASS = "Tools|Alias|PVP"
 
 #AL tar {
@@ -69,4 +69,4 @@ $tar = %lower(@Tar)
 tell $tar You hear a clicking sound
 } $CLASS
 
-#CLASS 0
+#CLASS 0} _Alias#CLASS 0

@@ -1,12 +1,12 @@
-#CLASS 0
+//RESET_AliasProfCasters#CLASS 0#AL RESET_AliasProfCasters {#CLASS 0
 $CLASS = "Tools|Alias|Prof_Casters"
 
 #AL sf {
-store staff
+store staff 
 } $CLASS
 
 #AL fs {
-hold staff
+hold staff 
 } $CLASS
 
 
@@ -15,11 +15,11 @@ do draw staff,wield staff
 } $CLASS
 
 #AL wf {
-wield staff
+wield staff 
 } $CLASS
 
 #AL rf {
-remove staff
+remove staff 
 } $CLASS
 
 #AL needstaff {
@@ -29,7 +29,7 @@ trigger staff todo get staff
 #AL zap {
 $exe=""
 #IF (@MyFaction=ER) {$EXE = "conjure hurricane"} {$EXE = "cast lightning"}
-#IF (%0) {$EXE = %concat($exe," ",%0)}
+#IF (%0) {$EXE = %concat($exe," ",%0)} 
 #EXE {$exe}
 } $CLASS
 
@@ -82,4 +82,4 @@ find  %lower(@Tar2)
 find  @Tar3
 } $CLASS
 
-#CLASS 0
+#CLASS 0} _Alias#CLASS 0

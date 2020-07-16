@@ -1,4 +1,4 @@
-#CLASS 0
+//RESET_AliasQuestScripts#CLASS 0#AL RESET_AliasQuestScripts {#CLASS 0
 $CLASS = "Tools|Alias|QuestScripts"
 
 #AL RhosGear {
@@ -442,4 +442,4 @@ do look shadow,se,look shadow,e,look shadow,se,look shadow,e,look shadow,se,look
 do look shadow,se,look shadow,e,look shadow,se,look shadow,e,look shadow,se,look shadow,se,look shadow,se,look shadow,se,look shadow,n,look shadow,n,look shadow,n,look shadow,n,look shadow,n,look shadow,n,look shadow,n,look shadow,n,look shadow,e,look shadow,e,look shadow,e,look shadow,e,look shadow,s,look shadow,s,look shadow,s,look shadow,s,look shadow,s,look shadow,s,look shadow,s,look shadow,s,look shadow,se,look shadow,sw,look shadow,w,look shadow,w,look shadow,nw,look shadow,nw,look shadow,nw,look shadow,nw,look shadow,nw,look shadow,nw,look shadow,w,look shadow,nw,look shadow,w,look shadow,nw,look shadow
 } $CLASS
 
-#CLASS 0
+#CLASS 0} _Alias#CLASS 0

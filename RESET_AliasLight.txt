@@ -1,4 +1,4 @@
-#CLASS 0
+//RESET_AliasLight#CLASS 0#AL RESET_AliasLight {#CLASS 0
 $CLASS = "Tools|Alias|Light"
 
 #AL CrystalOn {
@@ -56,7 +56,7 @@ $exe=""
 #IF ((@Gear_DarkRing) && (@Gear_Pack)) {
   #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
   $exe=%concat($exe,"2wear ominous dark ring from pack")
-}
+} 
 #IF ((@Gear_DarkPendant) && (@Gear_Cloak)) {
   #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
   $exe=%concat($exe,"wear onyx pendant from cloak")
@@ -64,7 +64,7 @@ $exe=""
 #IF ((@Gear_DarkPendant) && (@Gear_Pack)) {
   #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
   $exe=%concat($exe,"wear onyx pendant from pack")
-}
+} 
 #IF (@Gear_DarkCloak) {
   #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
   $exe=%concat($exe,"raise hood")
@@ -91,7 +91,7 @@ $exe=""
 #IF ((@Gear_DarkRing) && (@Gear_Pack)) {
   #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
   $exe=%concat($exe,"put all ominous dark ring in pack")
-}
+} 
 #IF ((@Gear_DarkPendant) && (@Gear_Cloak)) {
   #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
   $exe=%concat($exe,"put onyx pendant in cloak")
@@ -99,7 +99,7 @@ $exe=""
 #IF ((@Gear_DarkPendant) && (@Gear_Pack)) {
   #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
   $exe=%concat($exe,"put onyx pendant in pack")
-}
+} 
 #IF (@Gear_DarkCloak) {
   #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
   $exe=%concat($exe,"lower hood")
@@ -217,4 +217,4 @@ $EXE = "extinguish"
 2put silver bracelet in cloak
 } $CLASS
 
-#CLASS 0
+#CLASS 0} _Alias#CLASS 0

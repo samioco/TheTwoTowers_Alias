@@ -1,4 +1,4 @@
-#CLASS 0
+//RESET_AliasProfWizard#CLASS 0#AL RESET_AliasProfWizard {#CLASS 0
 $CLASS = "Tools|Alias|Prof_Wizard"
 
 #AL Barkskin {
@@ -137,3 +137,4 @@ $EXE = %concat("trigger ",%proper($tar)," todo cast lightning")
 } $CLASS
 
 #CLASS 0
+} _Alias#CLASS 0

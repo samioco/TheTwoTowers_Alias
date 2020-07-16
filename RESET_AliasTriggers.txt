@@ -1,4 +1,4 @@
-#CLASS 0
+//RESET_AliasTriggers#CLASS 0#AL RESET_AliasTriggers {#CLASS 0
 $CLASS = "Tools|Alias|triggers"
 
 #AL tron {
@@ -93,4 +93,4 @@ $EXE = "trigger y todo kill"
 #EXE {$EXE}
 } $CLASS
 
-#CLASS 0
+#CLASS 0} _Alias#CLASS 0

@@ -1,4 +1,4 @@
-#CLASS 0
+//RESET_AliasKeys#CLASS 0#AL RESET_AliasKeys {#CLASS 0
 $CLASS = "Tools|Gear|Keys"
 
 #AL KEY_EXE {
@@ -36,7 +36,7 @@ $EXE=%concat($EXE,$exit)
   #IF (@Gear_Pack) {
     #IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
     $EXE=%concat($EXE,"get ",$key," from pack")
-  }
+  }  
 }
 #IF ($exit_back) {
   #IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
@@ -103,7 +103,7 @@ $EXE = ""
 #IF (@Gear_Keyring) {
   #IF ((%len($EXE)) && (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")}
   $EXE = %concat($EXE,"put key in keyring,get all key into keyring")
-}
+} 
 #IF (@Gear_Cloak) {
   #IF ((%len($EXE)) && (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")}
   $EXE = %concat($EXE,"put key in cloak,get all key into cloak")
@@ -111,7 +111,7 @@ $EXE = ""
 #IF (@Gear_Tornbag) {
   #IF ((%len($EXE)) && (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")}
   $EXE = %concat($EXE,"put key in tornbag,get all key into tornbag")
-}
+} 
 #IF (@Gear_Pack) {
   #IF ((%len($EXE)) && (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")}
   $EXE = %concat($EXE,"put key in pack,get all key into pack")
@@ -290,7 +290,7 @@ StoreKey
 
 
 
-//Pelargir
+//Pelargir 
 //Pelargir Crocodile House
 #AL crocin {KEY_EXE "complex key" "s" "n"} $CLASS
 #AL crocout {KEY_EXE "complex key" "n" "s"} $CLASS
@@ -455,4 +455,4 @@ $key="small silver ring"
 #IF (@wielding) {ww}
 } $CLASS
 
-#CLASS 0
+#CLASS 0} _Alias#CLASS 0
