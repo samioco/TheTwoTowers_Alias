@@ -1,0 +1,267 @@
+#CLASS 0
+$CLASS = "Tools|Alias|Info"
+
+#AL AddCommaToEXE {
+#IF ((@EXE) && ((%len(@EXE)) && (%rightback(@EXE,1)!=","))) {
+  #VAR EXE {%concat(@EXE,",")} {} VAR
+}
+} $CLASS
+
+#AL AddToEXE {
+AddCommaToEXE
+$string=%0
+#WHILE (%left($string,1)=",") {$string=%right($string,1)}
+#WHILE (%rightback($string,1)=",") {$string=%leftback($string,1)}
+#VAR EXE {%concat(@EXE,$string)} {} VAR
+} $CLASS
+
+#AL AddPreEXE {
+$string=%0
+#WHILE (%left($string,1)=",") {$string=%right($string,1)}
+#WHILE (%rightback($string,1)=",") {$string=%leftback($string,1)}
+#IF ($string && @EXE) {$string=%concat($string,",")}
+#IF ($string) {
+  #VAR EXE {%concat($string,@EXE)} {} VAR
+}
+} $CLASS
+
+#AL AddDoToEXE {
+#IF ((%pos(",",@EXE)) && (%left(@EXE,3)!="do ")) {
+  #VAR EXE {%concat("do ",@EXE)} {} VAR
+}
+} $CLASS
+
+#AL ExecuteEXE {
+AddDoToEXE
+#EXE {@EXE}
+} $CLASS
+
+#AL ShowEXE {
+#ECHO EXE: @EXE
+} $CLASS
+
+#AL ClassReset {
+#ECHO Resetting Class: %0
+#CLASS 0
+#T- %0
+#T- %0|Settings 0
+#T+ %0
+#T+ %0|Settings
+#T- %0|Settings
+#CLASS 0
+} $CLASS
+
+#AL ClassOff {
+#T- %0|Settings
+//INFO ClassOff: %0
+} $CLASS
+
+#AL ClassOn {
+#T+ %0
+#T+ %0|Settings
+//INFO ClassOn: %0
+} $CLASS
+
+#AL MS {#FIND} $CLASS
+
+#AL ShowColors {#ECHO %CR;#LOOP 1,15 {#ECHO ~%ansi~(%i~):  %ansi(%i)Color}} $CLASS
+#AL ShowSP {SysMsg LastSP: @LastSP} $CLASS
+#AL SHSP {SysMsg LastSP: @LastSP} $CLASS
+#AL ShowTar {#ECHO Target: %proper(@Tar)} $CLASS
+#AL ShowWep {#ECHO Weapon: @wep} $CLASS
+#AL SysMsg {#WIN INFO %0;#ECHO %0} $CLASS
+#AL Info {#WIN INFO %0} $CLASS
+
+#AL RESET_MordorPW {#VAR mordorpw {@mordorpw} {} VAR} $CLASS
+
+#AL roominfo {
+info {Zone:  %zonename()~(%zonenum()~),Roomname: %roomname(), Roomnum:  %roomnum(), Roomvnum:  %roomvnum(), RoomID:  %roomid()}
+} $CLASS
+
+#AL R1 {
+#VAR R1 {%roomnum()} {} VAR
+#IF (%roomid()) {#VAR R1 {%roomid()} {} VAR}
+#ECHO Clipboard: R1: %clip(%roomnum())
+#VAR R1Name {%roomname()} {} VAR
+SysMsg {Room R1:  @R1:  @R1Name}
+} $CLASS
+
+#AL R2 {
+#VAR R2 {%roomnum()} {} VAR
+#IF (%roomid()) {#VAR R2 {%roomid()} {} VAR}
+#ECHO Clipboard: R2: %clip(%roomnum())
+#VAR R2Name {%roomname()} {} VAR
+SysMsg {Room R2:  @R2:  @R2Name}
+} $CLASS
+
+
+#AL TE {
+#NOMAP;#NODIR
+#IF ((%roomid()) && (%roomid(%0)!=%roomid())) {#T- %roomid()}
+ZoneSettings
+#TE %0
+} $CLASS
+
+#AL TER1 {
+TE @R1
+} $CLASS
+
+#AL TER2 {
+TE @R2
+} $CLASS
+
+#AL Gor1 {#WALK @r1} $CLASS
+#AL Gor2 {#WALK @r2} $CLASS
+
+#AL ShowR1 {#ECHO  @r1} $CLASS
+#AL ShowR2 {#ECHO  @r2} $CLASS
+
+#AL R1Zone {
+info {Room R1:  %zonename(%roomzone(@r1))  @r1}
+} $CLASS
+
+#AL R2Zone {
+info {Room R2:  %zonename(%roomzone(@r2))  @r2}
+} $CLASS
+
+#AL RoomZone {
+#WIN Info Room:  %zonename()~(%zonenum()~), Room#:  %roomnum(),  %roomid()
+} $CLASS
+
+#AL WhoE {
+who demonic and shadowspawn
+} $CLASS
+
+#AL NumPies {
+#ECHO Pelpies: @Gear_PELPies
+#ECHO MMpies: @Gear_MMPIes
+} $CLASS
+
+#AL InfoAl {
+info {#AL %0 ~{%alias(%0)~}}
+} $CLASS
+
+#AL mln {
+#CALL %roomportal(,"swim n",%0)
+#CALL %roomportal(%0,"swim s",%roomnum)
+} $CLASS
+
+#AL mls {
+#CALL %roomportal(,"swim s",%0)
+#CALL %roomportal(%0,"swim n",%roomnum)
+} $CLASS
+
+#AL mle {
+#CALL %roomportal(,"swim e",%0)
+#CALL %roomportal(%0,"swim w",%roomnum)
+} $CLASS
+
+#AL mlw {
+#CALL %roomportal(,"swim w",%0)
+#CALL %roomportal(%0,"swim e",%roomnum)
+} $CLASS
+
+#AL ListRooms {
+// listrooms <roomname()>
+// lists room numbers of all rooms in map database that match %0
+$spnum=%mapquery(Name='%0')
+#ECHO $spnum
+} $CLASS
+
+
+
+#AL whod {
+who demonic
+} $CLASS
+
+#AL whos {
+who shadowspawn
+} $CLASS
+
+#AL MarkExp {
+ActionAdd "MyProfileVars;#VAR MarkedExp {@MyExp} {} VAR;SysMsg Marked experience at: @MarkedExp"
+score
+ActionNext
+} $CLASS
+
+#AL CheckExp {
+#VAR MyExpGain {} {} VAR
+ActionAdd "MyProfileVars;DisplayExpGain"
+score
+ActionNext
+} $CLASS
+
+#AL DisplayExpGain {
+#CR
+#MATH MyExpGain (%number(@MyExp) - %number(@MarkedExp))
+SysMsg Marked Exp: @MarkedExp
+SysMsg Current Exp: @MyExp
+SysMsg Experience Gain: @MyExpGain
+} $CLASS
+
+#AL MyGold {
+SysMsg MyGold:  @MyGold
+} $CLASS
+
+#AL whomoral {
+do who angelic and hand
+} $CLASS
+
+#AL whom {
+who angelic and hand
+} $CLASS
+
+#AL updateroom {
+$roomname=%1
+$roomcolor=%2
+%maplocked(0);#WAIT 500
+#CALL %roomname($roomname)
+%maplocked(1)
+#ECHO New roomname: %roomname
+} $CLASS
+
+#AL arm {
+armour
+} $CLASS
+
+#AL beep {
+#BEEP
+} $CLASS
+
+#AL beep2 {
+#BEEP;#WAIT 200;#BEEP
+} $CLASS
+
+#AL beep3 {
+#BEEP;#WAIT 200;#BEEP;#WAIT 200;#BEEP
+} $CLASS
+
+#AL alhere {
+align me here
+} $CLASS
+
+#AL delroom {
+#DELI %0 %roomname();#ECHO Variable updated: %0, Removal: %roomname()
+} $CLASS
+
+#AL addroom {
+#ADDI %0 %roomname();#ECHO Variable updated: %0, Addition:  %roomname()
+} $CLASS
+
+#AL wagspace {
+SysMsg %upper(WAGON IS @Gear_WagonSpace!!!)
+} $CLASS
+
+
+#AL NewChar_Set {
+do set autowield off,set autolead on,set automount on,set armour_verbose on,set Questmessages on,set briefcommands on,set hide_party_messages on,set briefcommands on,set no_room_tags on,set autoshoot on,set announce_friends on,set no_room_tags on,set wear_autoloads off,LastOn hide,AutoAccept paranoid,wimpy on,brief on
+$prompt = ""
+#SW (%ismember(@MyName,@Profiles_Sammy)) {$prompt= "$X $HIG$$HE> $HIY$$I"} (%ismember(@MyName,@Profiles_T)) {$prompt = "$X $MAG$$I $HIG$<$HP> <$EP>"} {$prompt = "$X $HIG$$HE>$HIY$$I"}
+set prompt $prompt
+$MyBox=""
+#SW (@MyFaction="ER") {$MyBox="turi"} {$MyBox="Breei"}
+#VAR %concat(@MyName,"_MyBox") {$MyBox} {} @MyName
+} $CLASS
+
+
+#CLASS 0

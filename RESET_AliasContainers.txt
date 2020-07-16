@@ -1,0 +1,341 @@
+#CLASS 0
+$CLASS = "Tools|Alias|Containers"
+
+#AL ip {
+$EXE = "i pack"
+#IF (%0) {$EXE = %concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+#AL ic {
+$EXE = "i cloak"
+#IF (%0) {$EXE = %concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+#AL ib {
+$EXE = "i saddlebags"
+#IF (%0) {$EXE = %concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+#AL ik {
+$EXE = "i keyring"
+#IF (%0) {$EXE = %concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+#AL iw {
+$EXE = "i @Gear_WagonType"
+#IF (%0) {$EXE = %concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+#AL ipan {
+$EXE = "i panniers"
+#IF (%0) {$EXE = %concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+#AL iah {
+$EXE = "i all here"
+#IF (%0) {$EXE = %concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+#AL iaw {
+#FORALL @Gear_PartyWagons {i %i};i @MyWagon
+} $CLASS
+
+#AL icar {
+$EXE = "i caravan"
+#IF (%0) {$EXE = %concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+#AL ibox {
+$EXE = "i strongbox"
+#IF (%0) {$EXE = %concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+#AL icg {
+$str="i cloak"
+#IF (%0) {$str=%concat($str," ",%0)}
+$str=%concat($str," on ground")
+#EXE {$str}
+} $CLASS
+
+#AL ipg {
+$str="i pack";#IF (%0) {$str=%concat($str," ",%0)};$str=%concat($str," on ground");#EXE {$str}
+} $CLASS
+
+#AL ibg {
+$str="i box";#IF (%0) {$str=%concat($str," ",%0)};$str=%concat($str," on ground");#EXE {$str}
+} $CLASS
+
+#AL is {
+$EXE = "i sling"
+#IF (%0) {$EXE = %concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+#AL itb {
+$EXE = "i torn bag"
+#IF (%0) {$EXE = %concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+#AL ips {
+$EXE = "i pelt string"
+#IF (%0) {$EXE = %concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+#AL iall {
+$EXE = "i all"
+#IF (@Gear_Wagon||@Gear_Saddlebags||@Gear_Panniers) {
+  #IF (@Gear_Wagon) {$EXE = %concat("i wagon,",$EXE)}
+  #IF (@Gear_Saddlebags) {$EXE = %concat("i saddlebags,",$EXE)}
+  #IF (@Gear_Panniers) {$EXE = %concat("i panniers,",$EXE)}
+  #IF (%pos(",",$EXE)) {$EXE = %concat("do ",$EXE)}
+}
+#EXE {$EXE}
+} $CLASS
+
+#AL ia {
+iall
+} $CLASS
+
+#AL PacktoContainers {
+#VAR EXE {} { } VAR
+#IF (@Gear_PartyWagons) {
+  #FORALL @Gear_PartyWagons {
+    AddToEXE %concat("get all from pack into ",%i)
+  }
+}
+#IF (@Gear_Wagon) {AddToEXE "get all from pack into @MyWagon"}
+#IF (@Gear_Panniers) {AddToEXE "get all from pack into panniers"}
+#IF (@Gear_Saddlebags) {AddToEXE "get all from pack into saddlebags"}
+ExecuteEXE
+} $CLASS
+
+#AL PtoCont {PacktoContainers} $CLASS
+#AL PtoC {PacktoContainers} $CLASS
+
+#AL PtoW {
+#VAR EXE {} { } VAR
+#IF (@Gear_PartyWagons) {
+  #FORALL @Gear_PartyWagons {
+    AddToEXE %concat("get all from pack into ",%i)
+  }
+}
+#IF (@Gear_Wagon) {AddToEXE "get all from pack into @MyWagon"}
+ExecuteEXE
+} $CLASS
+
+#AL AllToWagon {
+#VAR EXE {} { } VAR
+#IF (@Gear_PartyWagons) {
+  #FORALL @Gear_PartyWagons {
+    AddToEXE %concat("get all from pack into ",%i)
+    #IF (@Gear_Panniers) {AddToEXE "get all from panniers into ",%i}
+    #IF (@Gear_Saddlebags) {AddToEXE "get all from saddlebags into ",%i}
+  }
+}
+#IF (@Gear_Wagon) {AddToEXE "get all from pack into @MyWagon"}
+#IF (@Gear_Panniers) {AddToEXE "get all from panniers into @MyWagon"}
+#IF (@Gear_Saddlebags) {AddToEXE "get all from saddlebags into @MyWagon"}
+ExecuteEXE
+} $CLASS
+
+#AL ToWag {AlLToWagon} $CLASS
+
+#AL ptop {
+$cont="panniers"
+$EXE=%concat("get all from pack into ",$cont)
+#EXE {$EXE}
+} $CLASS
+
+#AL ptob {
+$cont="saddlebags"
+$EXE=%concat("get all from pack into ",$cont)
+#EXE {$EXE}
+} $CLASS
+
+
+
+#AL ctopack {
+$EXE=""
+$cont=""
+#IF (@Gear_Wagon) {#IF ((%len($EXE)) && (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,"get all from @MyWagon into pack")}
+#FORALL "panniers|saddlebags" {
+  #IF (@{%i}) {#IF ((%len($EXE)) && (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,"get all from ",%i," into pack")}
+}
+#IF (%pos(",",$EXE)) {$EXE = %concat("do ",$EXE)}
+#EXE {$EXE}
+} $CLASS
+
+#AL ctop {
+ctopack
+} $CLASS
+
+#AL cloakout {
+$EXE = "drop all from cloak"
+#IF (%0) {$EXE = %concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+#AL cloakin {
+$EXE = "get all into cloak"
+#IF (%0) {$EXE = %concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+#AL packin {
+$EXE = "get all into pack"
+#IF (%0) {$EXE = %concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+#AL packout {
+$EXE = "drop all from pack"
+#IF (%0) {$EXE = %concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+#AL bagtocloak {
+$EXE = "get all from torn bag into cloak"
+#IF (%0) {$EXE = %concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+#AL btoc {
+$EXE = "get all from torn bag into cloak"
+#IF (%0) {$EXE = %concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+#AL bagout {
+$EXE = "drop all from bag"
+#IF (%0) {$EXE = %concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+#AL bagSout {
+$EXE = "drop all from saddlebags"
+#IF (%0) {$EXE = %concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+#AL wagout {
+$EXE = "drop all from wagon"
+#IF (%0) {$EXE = %concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+#AL wagin {
+$EXE = "get all into wagon"
+#IF (%0) {$EXE = %concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+#AL pantowag {
+$EXE = "get all from panniers into wagon"
+#IF (%0) {$EXE = %concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+#AL paNout {
+$EXE = "drop all from panniers"
+#IF (%0) {$EXE = %concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+#AL panin {
+$EXE = "get all into panniers"
+#IF (%0) {$EXE = %concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+
+#AL w21 {
+get all from wagon 2 into wagon 1
+} $CLASS
+
+#AL w12 {
+get all from wagon 1 into wagon 2
+} $CLASS
+
+#AL w13 {
+get all from wagon 1 into wagon 3
+} $CLASS
+
+#AL w23 {
+get all from wagon 2 into wagon 3
+} $CLASS
+
+#AL w31 {
+get all from wagon 3 into wagon 1
+} $CLASS
+
+#AL w32 {
+get all from wagon 3 into wagon 2
+} $CLASS
+
+#AL pantopack {
+get all from panniers into pack
+} $CLASS
+
+#AL cartowag {
+get all from caravan into wagon
+} $CLASS
+
+#AL cartow {
+get all from caravan into wagon
+} $CLASS
+
+#AL cartop {
+do get all from caravan into panniers,get all from caravan into pack,get all from caravan
+} $CLASS
+
+#AL cartob {
+get all from caravan into bags
+} $CLASS
+
+#AL btop {
+get all from bags into pack
+} $CLASS
+
+#AL wtop {
+get all from wagon into pack
+} $CLASS
+
+
+#AL packtrash {
+get all from pack into trash
+} $CLASS
+
+#AL packtowag {
+get all from pack into wagon
+} $CLASS
+
+#AL packtopan {
+get all from pack into panniers
+} $CLASS
+
+#AL packtobox {
+get all from pack into box
+} $CLASS
+
+
+
+#AL irioff {
+do drop all from iridescent cloak,put iridescent cloak in pack,get all into pack,get all
+} $CLASS
+
+#AL irion {
+do wear iridescent cloak from pack,get all ring from pack into iridescent cloak,get all mushroom from pack into iridescent cloak,get all flask from pack into iridescent cloak,get keyring from pack into iridescent cloak
+} $CLASS
+
+#CLASS 0

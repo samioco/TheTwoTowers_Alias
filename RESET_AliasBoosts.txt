@@ -1,0 +1,297 @@
+#CLASS 0
+$CLASS = "Tools|Alias|Boosts"
+
+#AL AimOn {
+#VAR EXE {} {} VAR
+#IF (@Wielding) {RW}
+#IF (@Gear_Tornbag) {AddToEXE "wear all shimmering ring from bag"}
+#IF (@Gear_Cloak) {AddToEXE "wear all shimmering ring from cloak"}
+#IF (@Gear_Pack) {AddToEXE "wear all shimmering ring from pack"}
+AddDoToEXE
+ExecuteEXE
+#IF (@wielding) {WW}
+} $CLASS
+
+#AL AimOff {
+#VAR EXE {} {} VAR
+#IF (@Gear_Tornbag) {AddToEXE "put all shimmering ring in bag"}
+#IF (@Gear_Cloak) {AddToEXE "put all shimmering ring in cloak"}
+#IF (@Gear_Pack) {AddToEXE "put all shimmering ring in pack"}
+AddDoToEXE
+ExecuteEXE
+} $CLASS
+
+#AL AimRingCheck {
+#IF (%mud.ep<100) {AimOff}
+#IF (%mud.ep> 150) {AimOn}
+} $CLASS
+
+#AL AimRingSave {
+#VAR EXE {} {} VAR
+AddToEXE "get all shimmering silver ring into cloak"
+#IF (@Gear_Pack) {AddToEXE "get all shimmering silver ring into pack"}
+#IF (@Gear_Wagon) {AddToEXE "get all shimmering silver ring into @MyWagon"}
+#IF (@Gear_Saddlebags) {AddToEXE "get all shimmering silver ring into saddlebags"}
+#IF (@Gear_Panniers) {AddToEXE "get all shimmering silver ring into panniers"}
+ExecuteEXE
+} $CLASS
+
+#AL GoldOn {
+#VAR EXE {} {} VAR
+$source=""
+#IF (@Wielding) {RW}
+#IF (@Gear_Tornbag) {
+  $source="bag"
+  #2 {AddToEXE %concat("get scored ring from ",$source,",wear scored ring")}
+}
+#IF (@Gear_Cloak) {
+  $source="cloak"
+  #2 {AddToEXE %concat("get scored ring from ",$source,",wear scored ring")}
+}
+#IF (@Gear_Pack) {
+  $source="pack"
+  #2 {AddToEXE %concat("get scored ring from ",$source,",wear scored ring")}
+}
+AddDoToEXE
+ExecuteEXE
+#IF (@wielding) {WW}
+} $CLASS
+
+#AL GoldOff {
+#VAR EXE {} {} VAR
+#IF (@Gear_Tornbag) {AddToEXE "put all scored ring in bag"}
+#IF (@Gear_Cloak) {AddToEXE "put all scored ring in cloak"}
+#IF (@Gear_Pack) {AddToEXE "put all scored ring in pack"}
+AddDoToEXE
+ExecuteEXE
+} $CLASS
+
+#AL RingOn {
+#IF (@Gear_ScoredRing) {GoldOn}
+#IF (@Gear_ShimmeringRing) {AimOn}
+#VAR EXE {} {} VAR
+#IF (@Gear_Tornbag) {AddToEXE "wear all ring from bag"}
+#IF (@Gear_Cloak) {AddToEXE "wear all ring from cloak"}
+#IF (@Gear_Pack) {AddToEXE "wear all ring from pack"}
+AddDoToEXE
+ExecuteEXE
+} $CLASS
+
+#AL RingOff {
+#VAR EXE {} {} VAR
+#IF (@Gear_Tornbag) {AddToEXE "put all ring in bag"}
+#IF (@Gear_Cloak) {AddToEXE "put all ring in cloak"}
+#IF (@Gear_Pack) {AddToEXE "put all ring in pack"}
+AddDoToEXE
+ExecuteEXE
+} $CLASS
+
+#AL CobOn {
+#VAR EXE {} {} VAR
+#IF (@Wielding) {RW}
+#IF (@Gear_Tornbag) {AddToEXE "wear cobalt ring from bag"}
+#IF (@Gear_Cloak) {AddToEXE "wear cobalt ring from cloak"}
+#IF (@Gear_Pack) {AddToEXE "wear cobalt ring from pack"}
+#IF (@wielding) {WW}
+AddDoToEXE
+ExecuteEXE
+} $CLASS
+
+#AL CobOff {
+#VAR EXE {} {} VAR
+#IF (@Gear_Tornbag) {AddToEXE "put all cobalt ring in bag"}
+#IF (@Gear_Cloak) {AddToEXE "put all cobalt ring in cloak"}
+#IF (@Gear_Pack) {AddToEXE "put all cobalt ring in pack"}
+AddDoToEXE
+ExecuteEXE
+} $CLASS
+
+#AL dtac {
+rw;do reveal mixed potion,drink potion,conceal potion,drop mixed potion;ww
+} $CLASS
+
+#AL mixie {
+rw;do reveal mixed potion,drink mixed potion,conceal mixed potion,drop mixed potion;ww
+} $CLASS
+
+#AL rp {
+reveal potion
+} $CLASS
+
+#AL cp {
+conceal potion
+} $CLASS
+
+#AL cmp {
+conceal mixed potion
+} $CLASS
+
+#AL rmp {
+reveal mixed potion
+} $CLASS
+
+#AL cv {
+conceal vial
+} $CLASS
+
+#AL rv {
+reveal vial
+} $CLASS
+
+#AL dvial {
+rw;do get vial from cloak,get vial from bag,get vial from pack,open vial,drink vial,drop empty vial,close vial,put vial in cloak,put vial in bag,put vial in pack;ww
+} $CLASS
+
+#AL gpcp {
+do get potion from box,get potion,conceal potion
+} $CLASS
+
+#AL dmixie {
+drink mixed potion
+} $CLASS
+
+#AL mush {
+RW
+#VAR EXE {} {} VAR
+AddToEXE "swallow mushroom"
+#IF (@Gear_Pack) {
+  AddPreEXE "get mushroom from pack"
+  AddToEXE "put mushroom in pack"
+}
+#IF (@Gear_Cloak) {
+  AddPreEXE "get mushroom from cloak"
+  AddToEXE "put mushroom in cloak"
+}
+#IF (@Gear_Tornbag) {
+  AddPreEXE "open bag,get mushroom from bag"
+  AddToEXE "put mushroom in bag"
+}
+AddDoToEXE
+ExecuteEXE
+WW
+} $CLASS
+
+#AL DrinkES {
+RW
+#VAR EXE {} {} VAR
+AddToEXE "open small green vial,drink small green vial"
+#IF (@Gear_Pack) {
+  AddPreEXE "get small green vial from pack"
+  AddToEXE "put small green vial in pack"
+}
+#IF (@Gear_Cloak) {
+  AddPreEXE "get small green vial from cloak"
+  AddToEXE "put small green vial in cloak"
+}
+#IF (@Gear_Tornbag) {
+  AddPreEXE "open bag,get small green vial from bag"
+  AddToEXE "put small green vial in bag"
+}
+AddToEXE "drop empty vial"
+AddDoToEXE
+ExecuteEXE
+WW
+} $CLASS
+
+
+#AL drinkpot {
+do drink potion,drop potion
+} $CLASS
+
+#AL dpot {
+do drink potion,drink vial,drop empty bottle,drop empty vial
+} $CLASS
+
+#AL moss {
+do get moss from cloak,get moss from pack,get moss from box,get moss from chest,get %0 from cloak,get %0 from pack,mix %0,put moss in cloak,put moss in pack,put moss in chest,put moss in box,put %0 in cloak,put %0 in pack
+} $CLASS
+
+#AL patt {
+rw;do remove pasha's war horn,blow for attack,wear pasha's war horn;ww
+} $CLASS
+
+#AL paim {
+rw;do remove pasha's war horn,blow for strategy,wear pasha's war horn;ww
+} $CLASS
+
+#AL pathorn {
+rw;do remove pasha's war horn,blow for attack,wear pasha's war horn;ww
+} $CLASS
+
+#AL paimhorn {
+rw;do remove pasha's war horn,blow for strategy,wear pasha's war horn;ww
+} $CLASS
+
+#AL blowtac {
+rw;do remove mighty war horn,get mighty war horn from cloak,get mighty war horn from pack,get mighty war horn,blow horn,drop broken horn,put mighty war horn in pack,put mighty war horn in cloak,drop mighty war horn,wear mighty war horn;ww
+} $CLASS
+
+#AL btac {
+blowtac
+} $CLASS
+
+#AL paleon {
+do wear pale translucent ring from cloak,wear pale translucent ring from pack
+} $CLASS
+
+
+#AL pep {
+rw;do get pepper from bag,get pepper from cloak,get pepper from pack,fling pepper at @Tar,put pepper in bag,put pepper in cloak,put pepper in pack;ww
+} $CLASS
+
+#AL poson {
+do wear silver band from cloak,wear silver band from pack
+} $CLASS
+
+#AL posoff {
+do put silver band in cloak,put silver band in pack
+} $CLASS
+
+
+
+#AL WarHorn {
+#IF (!@Gear_WarHorn) {#VAR WarHorn {1} {} VAR;#ECHO War Horn: ON} {#VAR WarHorn {0} {} VAR;#ECHO War Horn: OFF}
+} $CLASS
+
+#AL pasha {
+#IF (!@Gear_PashaHorn) {#VAR PashaHorn {1} {} VAR;#ECHO Pasha Horn: ON} {#VAR PashaHorn {0} {} VAR;#ECHO Pasha: OFF}
+} $CLASS
+
+
+#AL theftpot {
+ss;mix 0 3 2 3;get potion
+} $CLASS
+
+#AL tacpot {
+ss;mix 0 3 3 3;get potion
+} $CLASS
+
+#AL mixtheft {
+ss;mix 0 3 2 3;get potion
+} $CLASS
+
+#AL mixtactics {
+ss;mix 0 3 3 3;get potion
+} $CLASS
+
+#AL mixpos {
+ss;mix 0 3 0 0;get potion
+} $CLASS
+
+#AL mixarch {
+ss;mix 3 3 1 2;get potion
+} $CLASS
+
+#AL mixtac {
+ss;mix 0 3 3 3;get potion
+} $CLASS
+
+#AL mixaimatt {
+ss;mix 3 1 2 2;get potion
+} $CLASS
+
+#AL aimpot {
+ss;mix 2 3 2 0;get potion
+} $CLASS
+
+#CLASS 0

@@ -1,0 +1,220 @@
+#CLASS 0
+$CLASS = "Tools|Alias|Light"
+
+#AL CrystalOn {
+#VAR EXE {} {} VAR
+#IF (@Wielding) {RW}
+#IF (@Gear_Cloak) {AddToEXE "wear crystal from cloak"}
+#IF (@Gear_Pack) {AddToEXE "wear crystal from pack"}
+ExecuteEXE
+#IF (@Wielding) {WW}
+} $CLASS
+
+#AL CrystalOff {
+#VAR EXE {} {} VAR
+#IF (@Gear_Cloak) {AddToEXE "put all crystal in cloak"}
+#IF (@Gear_Pack) {AddToEXE "put all crystal in pack"}
+ExecuteEXE
+} $CLASS
+
+#AL tc {
+turn crystal
+} $CLASS
+
+#AL dark1 {
+#VAR dark1 {%0} {} VAR
+} $CLASS
+
+#AL dark2 {
+#VAR dark2 {%0} {} VAR
+} $CLASS
+
+#AL darkon {
+$exe=""
+#IF (@Gear_Crystal) {croff;croff}
+#IF (@wielding) {rw}
+#IF ((@Gear_DarkNecklace) && (@Gear_Cloak)) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"2wear simple-looking necklace from cloak")
+}
+#IF ((@Gear_DarkNecklace) && (@Gear_Pack)) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"2wear simple-looking necklace from pack")
+}
+#IF (@Gear_DarkNecklace) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"2detach necklace")
+}
+#IF ((@Gear_DarkRing) && (@Gear_Tornbag)) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"2wear ominous dark ring from tornbag")
+}
+#IF ((@Gear_DarkRing) && (@Gear_Cloak)) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"2wear ominous dark ring from cloak")
+}
+#IF ((@Gear_DarkRing) && (@Gear_Pack)) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"2wear ominous dark ring from pack")
+}
+#IF ((@Gear_DarkPendant) && (@Gear_Cloak)) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"wear onyx pendant from cloak")
+}
+#IF ((@Gear_DarkPendant) && (@Gear_Pack)) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"wear onyx pendant from pack")
+}
+#IF (@Gear_DarkCloak) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"raise hood")
+}
+#IF (%pos(",",$exe)) {$exe=%concat("do ",$exe)}
+#EXE {$exe}
+#IF (@wielding) {ww}
+} $CLASS
+
+#AL darkoff {
+$exe=""
+#IF (@Gear_DarkNecklace) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"2replace necklace")
+}
+#IF ((@Gear_DarkRing) && (@Gear_Tornbag)) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"put all ominous dark ring in tornbag")
+}
+#IF ((@Gear_DarkRing) && (@Gear_Cloak)) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"put all ominous dark ring in cloak")
+}
+#IF ((@Gear_DarkRing) && (@Gear_Pack)) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"put all ominous dark ring in pack")
+}
+#IF ((@Gear_DarkPendant) && (@Gear_Cloak)) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"put onyx pendant in cloak")
+}
+#IF ((@Gear_DarkPendant) && (@Gear_Pack)) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"put onyx pendant in pack")
+}
+#IF (@Gear_DarkCloak) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"lower hood")
+}
+#IF (%pos(",",$exe)) {$exe=%concat("do ",$exe)}
+#EXE {$exe}
+} $CLASS
+
+#AL detneck {
+2detach necklace
+} $CLASS
+
+#AL repneck {
+2replace necklace
+} $CLASS
+
+#AL packcandle {
+do order candle,put candle in pack
+} $CLASS
+
+#AL candlein {
+$EXE = "do 10extinguish candle"
+#IF (@Gear_Cloak) {$EXE = %concat($exe,",10get candle into cloak")}
+#IF (@Gear_Pack) {$EXE = %concat($exe,",10get candle into pack")}
+#EXE {$exe}
+} $CLASS
+
+#AL candleout {
+$EXE = ""
+#IF (@Gear_Cloak) {$EXE = %concat($exe,"drop all candle from cloak,")}
+#IF (@Gear_Pack) {$EXE = %concat($exe,"drop all candle from pack,")}
+$EXE = %concat("do ",$exe,"10light candle")
+#EXE {$exe}
+} $CLASS
+
+#AL dneckon {
+do 2wear simple-looking necklace from cloak,2wear simple-looking necklace from pack,2detach necklace
+} $CLASS
+
+#AL dneckoff {
+do 2replace necklace,2put simple-looking necklace in cloak,2put simple-looking necklace in pack
+} $CLASS
+
+#AL dringon {
+do 2wear ominous dark ring from cloak,2wear ominous dark ring from pack
+} $CLASS
+
+#AL dringoff {
+do 2put ominous dark ring in cloak,2put ominous dark ring in pack
+} $CLASS
+
+#AL onyxon {
+do 2wear onyx pendant from cloak,wear 2onyx pendant from pack
+} $CLASS
+
+#AL onyxoff {
+do 2put onyx pendant in cloak,2put onyx pendant in pack
+} $CLASS
+
+#AL lt {
+light torch
+} $CLASS
+
+#AL lighton {
+2wear polished white ring from cloak
+} $CLASS
+
+#AL lightoff {
+2put polished white ring in cloak
+} $CLASS
+
+#AL cron {
+CrystalOn
+} $CLASS
+
+#AL croff {
+CrystalOff
+} $CLASS
+
+#AL lc {
+$EXE = "light crystal"
+#IF (%0) {$EXE = %concat($exe," ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL ec {
+$EXE = "extinguish crystal"
+#IF (%0) {$EXE = %concat($exe," ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL cmlite {
+turn crystal
+} $CLASS
+
+#AL et {
+$EXE = "extinguish torch"
+#IF (%0) {$EXE = %concat($exe," ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL ee {
+$EXE = "extinguish"
+#IF (%0) {$EXE = %concat($exe," ",%0)}
+#EXE {$exe}
+} $CLASS
+
+
+
+#AL glowon {
+2wear silver bracelet from cloak
+} $CLASS
+
+#AL glowoff {
+2put silver bracelet in cloak
+} $CLASS
+
+#CLASS 0

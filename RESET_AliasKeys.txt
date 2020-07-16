@@ -1,0 +1,458 @@
+#CLASS 0
+$CLASS = "Tools|Gear|Keys"
+
+#AL KEY_EXE {
+$key=%1;$exit="";$exit_back="";$single_use=""
+$EXE=""
+#IF (%2) {$exit=%lower(%2)}
+#IF (%3) {$exit_back=%lower(%3)}
+#IF (%4) {$single_use=%4}
+#IF (@wielding) {rw}
+#IF (@Gear_Cloak) {
+  #IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+  $EXE=%concat($EXE,"get ",$key," from cloak")
+}
+#IF (@Gear_Pack) {
+  #IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+  $EXE=%concat($EXE,"get ",$key," from pack")
+}
+#IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+$EXE=%concat($EXE,"unlock ",$exit," door with ",$key)
+
+#IF ($single_use) {
+  #IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+  $EXE=%concat($EXE,"drop ",$key)
+}
+
+#IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+$EXE=%concat($EXE,$exit)
+
+#IF ($single_use) {
+  #IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+  #IF (@Gear_Cloak) {
+    #IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+    $EXE=%concat($EXE,"get ",$key," from cloak")
+  }
+  #IF (@Gear_Pack) {
+    #IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+    $EXE=%concat($EXE,"get ",$key," from pack")
+  }
+}
+#IF ($exit_back) {
+  #IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+  $EXE=%concat($EXE,"close ",$exit_back," door,lock ",$exit_back," door with ",$key)
+}
+#IF (@Gear_Cloak) {
+  #IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+  $EXE=%concat($EXE,"put ",$key," in cloak")
+}
+#IF (@Gear_Pack) {
+  #IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+  $EXE=%concat($EXE,"put ",$key," in pack")
+}
+#IF (%pos(",",$EXE)) {$EXE=%concat("do ",$EXE)}
+#EXE {$EXE}
+#IF (@wielding) {ww}
+} $CLASS
+
+#AL KEY_UD {
+$key=%1;$exit="door";$EXE=""
+#IF (%2) {$exit=%concat(%2," door")}
+#IF (@wielding) {rw}
+#IF (@Gear_Cloak) {
+  #IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+  $EXE=%concat($EXE,"get ",$key," from cloak")
+}
+#IF (@Gear_Pack) {
+  #IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+  $EXE=%concat($EXE,"get ",$key," from pack")
+}
+#IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+$EXE=%concat($EXE,"unlock ",$exit," door with ",$key)
+#IF (%pos(",",$EXE)) {$EXE=%concat("do ",$EXE)}
+#EXE {$EXE}
+} $CLASS
+
+#AL KEY_LD {
+$key=%1;$exit="door";$EXE=""
+#IF (%2) {$exit=%concat(%2," door")}
+#IF (@Gear_Cloak) {
+  #IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+  $EXE=%concat($EXE,"get ",$key," from cloak")
+}
+#IF (@Gear_Pack) {
+  #IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+  $EXE=%concat($EXE,"get ",$key," from pack")
+}
+#IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+$EXE=%concat($EXE,"close ",$exit," with ",$key,",lock ",$exit," with ",$key)
+#IF (%pos(",",$EXE)) {$EXE=%concat("do ",$EXE)}
+#EXE {$EXE}
+#IF (@wielding) {ww}
+} $CLASS
+
+#AL UD {#IF (%0) {unlock %0 door} {unlock door}} $CLASS
+#AL LD {#IF (%0) {do close %0 door,lock %0 door} {do close door,lock door}} $CLASS
+
+#AL PickClosed {
+#IF (%0) {do close %0 door,pick %0 door closed} {do close door,pick door closed}
+} $CLASS
+
+#AL StoreKey {
+$EXE = ""
+#IF (@Gear_Keyring) {
+  #IF ((%len($EXE)) && (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")}
+  $EXE = %concat($EXE,"put key in keyring,get all key into keyring")
+}
+#IF (@Gear_Cloak) {
+  #IF ((%len($EXE)) && (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")}
+  $EXE = %concat($EXE,"put key in cloak,get all key into cloak")
+}
+#IF (@Gear_Tornbag) {
+  #IF ((%len($EXE)) && (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")}
+  $EXE = %concat($EXE,"put key in tornbag,get all key into tornbag")
+}
+#IF (@Gear_Pack) {
+  #IF ((%len($EXE)) && (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")}
+  $EXE = %concat($EXE,"put key in pack,get all key into pack")
+}
+#IF (%pos(",",$EXE)) {$EXE = %concat("do ",$EXE)}
+#EXE {$EXE}
+} $CLASS
+
+#AL KeyIn {
+StoreKey
+} $CLASS
+
+
+#AL LenKey {
+#WALK LendinBeggar
+do ask beggar about story,hear story
+StoreKey
+} $CLASS
+
+#AL SSSKey {
+#WALK SSSKey
+sss;offer help
+StoreKey
+} $CLASS
+
+#AL MM1Key {
+#WALK MM1Lout
+grab key
+StoreKey
+} $CLASS
+
+#AL LothKey {
+#WALK CaraInside
+sneak up
+steal key from guard
+StoreKey
+} $CLASS
+
+//Barad-Dur
+#AL bdbasein {KEY_EXE "plain iron key" "e" "w"} $CLASS
+#AL bdbaseout {KEY_EXE "plain iron key" "w" "e"} $CLASS
+#AL bdlw {KEY_EXE "engraved iron key" "w" "e"} $CLASS
+#AL bdle {KEY_EXE "engraved iron key" "e" "w"} $CLASS
+#AL bdln {KEY_EXE "engraved iron key" "n" "s"} $CLASS
+#AL bdls {KEY_EXE "engraved iron key" "s" "n"} $CLASS
+
+#AL ornatew {KEY_EXE "ornate iron key" "w" "e"} $CLASS
+#AL ornatee {KEY_EXE "ornate iron key" "e" "w"} $CLASS
+#AL ornaten {KEY_EXE "ornate iron key" "n" "s"} $CLASS
+#AL ornates {KEY_EXE "ornate iron key" "s" "n"} $CLASS
+#AL ornateud {KEY_UD "ornate iron key" %0} $CLASS
+#AL ornateld {KEY_LD "ornate iron key" %0} $CLASS
+
+#AL sparkin {KEY_EXE "heavy iron key" "n" "s"} $CLASS
+#AL sparkout {KEY_EXE "heavy iron key" "s" "n"} $CLASS
+#AL sparkud {KEY_UD "heavy iron key"} $CLASS
+#AL sparkld {KEY_LD "heavy iron key"} $CLASS
+
+
+//Bloodstained Camp
+#AL bloodin {KEY_EXE "large key" "bedroom" "out"} $CLASS
+#AL bloodout {KEY_EXE "large key" "out" "bedroom"} $CLASS
+
+//Caras Caladon
+#AL carain {KEY_EXE "small steel key" "armoury" "out"} $CLASS
+#AL caraout {KEY_EXE "small steel key" "out" "armoury"} $CLASS
+
+
+#AL carvedin {KEY_EXE "carved key" "n" "s"} $CLASS
+#AL carvedout {KEY_EXE "carved key" "s" "n"} $CLASS
+
+//Combe Lock
+#AL comin {KEY_EXE "copper key" "ne" "sw"} $CLASS
+#AL comin {KEY_EXE "copper key" "sw" "ne"} $CLASS
+
+//Corsair Keep Basement
+#AL corle {KEY_EXE "dungeon key" "e" "w"} $CLASS
+#AL corlw {KEY_EXE "dungeon key" "w" "e"} $CLASS
+#AL corln {KEY_EXE "dungeon key" "n" "s"} $CLASS
+#AL corls {KEY_EXE "dungeon key" "s" "n"} $CLASS
+#AL corlnw {KEY_EXE "dungeon key" "nw" "se"} $CLASS
+#AL corlse {KEY_EXE "dungeon key" "se" "nw"} $CLASS
+
+
+
+//Minas Tirith CitADel
+#AL citu {KEY_EXE "unmarked iron key" "u" "d"} $CLASS
+#AL citd {KEY_EXE "unmarked iron key" "d" "u"} $CLASS
+#AL citn {KEY_EXE "unmarked iron key" "n" "s"} $CLASS
+#AL cits {KEY_EXE "unmarked iron key" "s" "n"} $CLASS
+
+//CitADel Merethrond
+#AL merew {KEY_EXE "brass key" "w" "e"} $CLASS
+#AL meree {KEY_EXE "brass key" "e" "w"} $CLASS
+
+#AL cuud {KEY_UD "old steel key"} $CLASS
+#AL culd {KEY_LD "old steel key"} $CLASS
+
+
+//Edoras
+#AL edolin {KEY_EXE "tiny steel key" "e" "w"} $CLASS
+#AL edolout {KEY_EXE "tiny steel key" "w" "e"} $CLASS
+
+#AL edosmithin {KEY_EXE "engraved steel key" "e" "w"} $CLASS
+#AL edosmithout {KEY_EXE "engraved steel key" "w" "e"} $CLASS
+
+//Erebor
+#AL erein {KEY_EXE "jeweled key" "n" "s"} $CLASS
+#AL ereout {KEY_EXE "jeweled key" "s" "n"} $CLASS
+
+//Forsaken Inn
+#AL forin {KEY_EXE "old engraved key" "e" "w"} $CLASS
+#AL forout {KEY_EXE "old engraved key" "w" "e"} $CLASS
+
+//Kadar Jail
+#AL kadin {KEY_EXE "well-used bronze key" "s" "n"} $CLASS
+#AL kadout {KEY_EXE "well-used bronze key" "n" "s"} $CLASS
+
+
+//Lendin
+#AL lenin {slide rug;KEY_EXE "rusty key" "d" "u"} $CLASS
+#AL leNout {KEY_EXE "rusty key" "u" "d"} $CLASS
+
+
+#AL levlin {KEY_EXE "ordinary key" "e" "w"} $CLASS
+#AL levlout {KEY_EXE "ordinary key" "w" "e"} $CLASS
+
+//Cirith Ungol: 1 time use keys
+#AL culin {KEY_EXE "old steel key" "w" "out" "single-use"} $CLASS
+#AL culout {KEY_EXE "old steel key" "out" "w" "single-use"} $CLASS
+
+//Minas Morgul
+#AL mm1in {KEY_EXE "tiny copper key" "w" "e" "single-use"} $CLASS
+#AL mm1out {KEY_EXE "tiny copper key" "e" "w" "single-use"} $CLASS
+
+#AL mmbed {
+#WALK mmbed;do get key from cloak,turn lock,put key in cloak
+} $CLASS
+
+#AL mm2in {KEY_EXE "rusty cell key" "n" "s"} $CLASS
+#AL mm2out {KEY_EXE "rusty cell key" "s" "n"} $CLASS
+
+#AL mmud {KEY_UD "tiny copper key";drop lump of copper} $CLASS
+#AL mmld {KEY_LD "tiny copper key";drop lump of copper} $CLASS
+
+
+//Minas Tirith
+#AL mt4in {KEY_EXE "tiny brass key" "n" "s"} $CLASS
+#AL mt4out {KEY_EXE "tiny brass key" "s" "n"} $CLASS
+
+#AL mt7lin {KEY_EXE "silver key" "private" "out"} $CLASS
+#AL mt7lout {KEY_EXE "silver key" "out" "private"} $CLASS
+
+#AL mtaxein {KEY_EXE "small iron key" "s" "n"} $CLASS
+#AL mtaxeout {KEY_EXE "small iron key" "n" "s"} $CLASS
+
+
+
+//Narchost
+#AL narnin {KEY_EXE "pitted iron key" "n" "exit"} $CLASS
+#AL narsin {KEY_EXE "pitted iron key" "s" "exit"} $CLASS
+#AL narSout {KEY_EXE "pitted iron key" "exit" "n"} $CLASS
+#AL narNout {KEY_EXE "pitted iron key" "exit" "s"} $CLASS
+
+#AL scarin {KEY_EXE "small greasy key" "w" "e"} $CLASS
+#AL scarout {KEY_EXE "small greasy key" "e" "w"} $CLASS
+#AL scarud {KEY_UD "small greasy key"} $CLASS
+#AL scarld {KEY_LD "small greasy key"} $CLASS
+
+
+//Necro Lake Tower
+#AL necroin {KEY_EXE "odd black key" "u" "d"} $CLASS
+#AL necroout {KEY_EXE "odd black key" "d" "u"} $CLASS
+#AL necroud {KEY_UD "odd black key"} $CLASS
+#AL necrold {KEY_LD "odd black key"} $CLASS
+
+
+
+//Pelargir
+//Pelargir Crocodile House
+#AL crocin {KEY_EXE "complex key" "s" "n"} $CLASS
+#AL crocout {KEY_EXE "complex key" "n" "s"} $CLASS
+
+//Pelargir Healer House
+#AL pelhlin {KEY_EXE "small iron key" "d" "u"} $CLASS
+#AL pelhlout {KEY_EXE "small iron key" "u" "d"} $CLASS
+
+
+//Perath's Lab
+#AL perathlin {KEY_EXE "intricate key" "s" "n"} $CLASS
+#AL perathlout {KEY_EXE "intricate key" "n" "s"} $CLASS
+#AL perathkey {do search bed,search plate,search cLothes,assemble key,unlock South door with intricate key,drop intricate key} $CLASS
+
+
+
+//Saddle?
+#AL sadin {KEY_EXE "bronze key" "s" "n"} $CLASS
+#AL sadin {KEY_EXE "bronze key" "n" "s"} $CLASS
+
+
+//Silver Flask
+#AL sflin {KEY_EXE "simple iron key" "stall" "out"} $CLASS
+#AL sflout {KEY_EXE "simple iron key" "out" "stall"} $CLASS
+#AL sfud {KEY_UD "simple iron key"} $CLASS
+#AL sfld {KEY_LD "simple iron key"} $CLASS
+
+
+//SRS
+#AL srsin {KEY_EXE "small runed key" "s" "n"} $CLASS
+#AL srSout {KEY_EXE "small runed key" "n" "s"} $CLASS
+
+#AL srsud {KEY_UD "small runed key"} $CLASS
+#AL srsld {KEY_LD "small runed key"} $CLASS
+
+// SSS
+#AL sssin {KEY_EXE "small wooden key" "n" "s"} $CLASS
+#AL ssSout {KEY_EXE "small wooden key" "s" "n"} $CLASS
+
+
+//Umbar Shack
+#AL umld {KEY_EXE "tiny silver key" "d" "u"} $CLASS
+#AL umlu {KEY_EXE "tiny silver key" "u" "d"} $CLASS
+
+//BloodCamp
+#AL BloodHatchIn {KEY_EXE "red key" "hatch" "u"} $CLASS
+#AL BloodHatchOut {KEY_EXE "red key" "u" "hatch"} $CLASS
+
+//Saw Toothed Sword Camp
+#AL stskey_EXE {
+$key="wooden key"
+$exit="n"
+$exit_back="s"
+$EXE=""
+#IF (@wielding) {rw}
+#IF (@Gear_Cloak) {
+  #IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+  $EXE=%concat($EXE,"get ",$key," from cloak")
+}
+#IF (@Gear_Pack) {
+  #IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+  $EXE=%concat($EXE,"get ",$key," from pack")
+}
+#IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+$EXE=%concat($EXE,"unlatch gate,open gate,",$exit,"close gate,latch gate")
+#IF (@Gear_Cloak) {
+  #IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+  $EXE=%concat($EXE,"put ",$key," in cloak")
+}
+#IF (@Gear_Pack) {
+  #IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+  $EXE=%concat($EXE,"put ",$key," in pack")
+}
+#IF (%pos(",",$EXE)) {$EXE=%concat("do ",$EXE)}
+#EXE {$EXE}
+#IF (@wielding) {ww}
+} $CLASS
+
+#AL stsin {#IF (@Mounted) {dismount};stskey_EXE "n"} $CLASS
+#AL stSout {stskey_EXE "s"} $CLASS
+
+#AL stsud {
+$key="wooden key"
+$exit="n"
+$exit_back="s"
+$EXE=""
+#IF (@wielding) {rw}
+#IF (@Gear_Cloak) {
+  #IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+  $EXE=%concat($EXE,"get ",$key," from cloak")
+}
+#IF (@Gear_Pack) {
+  #IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+  $EXE=%concat($EXE,"get ",$key," from pack")
+}
+#IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+$EXE=%concat($EXE,"unlatch gate,open gate")
+#IF (%pos(",",$EXE)) {$EXE=%concat("do ",$EXE)}
+#EXE {$EXE}
+#IF (@wielding) {ww}
+} $CLASS
+
+#AL stsld {
+$key="wooden key"
+$exit="n"
+$exit_back="s"
+$EXE=""
+#IF (@Gear_Cloak) {
+  #IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+  $EXE=%concat($EXE,"get ",$key," from cloak")
+}
+#IF (@Gear_Pack) {
+  #IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+  $EXE=%concat($EXE,"get ",$key," from pack")
+}
+#IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+$EXE=%concat("close gate,latch gate")
+#IF (@Gear_Cloak) {
+  #IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+  $EXE=%concat($EXE,"put ",$key," in cloak")
+}
+#IF (@Gear_Pack) {
+  #IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+  $EXE=%concat($EXE,"put ",$key," in pack")
+}
+#IF (%pos(",",$EXE)) {$EXE=%concat("do ",$EXE)}
+#EXE {$EXE}
+#IF (@wielding) {ww}
+} $CLASS
+
+#AL stsringon {
+$EXE=""
+$key="small silver ring"
+#IF (@wielding) {rw}
+#IF (@Gear_Cloak) {
+  #IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+  $EXE=%concat($EXE,"wear ",$key," from cloak")
+}
+#IF (@Gear_Pack) {
+  #IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+  $EXE=%concat($EXE,"wear ",$key," from pack")
+}
+#IF (%pos(",",$EXE)) {$EXE=%concat("do ",$EXE)}
+#EXE {$EXE}
+#IF (@wielding) {ww}
+} $CLASS
+
+#AL stsringoff {
+$EXE=""
+$key="small silver ring"
+#IF (@wielding) {rw}
+#IF (@Gear_Cloak) {
+  #IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+  $EXE=%concat($EXE,"put ",$key," in cloak")
+}
+#IF (@Gear_Pack) {
+  #IF ((%len($EXE) && (%rightback($EXE,1)!=","))) {$EXE=%concat($EXE,",")}
+  $EXE=%concat($EXE,"put ",$key," in pack")
+}
+#IF (%pos(",",$EXE)) {$EXE=%concat("do ",$EXE)}
+#EXE {$EXE}
+#IF (@wielding) {ww}
+} $CLASS
+
+#CLASS 0

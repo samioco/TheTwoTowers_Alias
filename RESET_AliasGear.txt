@@ -1,0 +1,203 @@
+#CLASS 0
+$CLASS = "Tools|Alias|Gear"
+
+#AL BBal {$MyName="";#IF (%0) {$MyName=%proper(%0)} {$MyName=@MyName};$bank_balance=@{%concat($MyName,"_Bank")};SysMsg $MyName Bank Balance: $bank_balance, Withdrawals: @Withdrawals, Deposits: @Deposits} $CLASS
+
+#AL depo {
+deposit all %0
+} $CLASS
+
+#AL depall {
+deposit all %0
+} $CLASS
+
+#AL ta {
+tag all
+} $CLASS
+
+#AL taip {
+$EXE = "tag all in pack"
+#IF (%0) {%concat($exe," ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL taic {
+$EXE = "tag all in cloak"
+#IF (%0) {%concat($exe," ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL taib {
+$EXE = "tag all in bag"
+#IF (%0) {%concat($exe," ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL taiw {
+$EXE = "tag all in wagon"
+#IF (%0) {%concat($exe," ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL wab {
+$prof=@{%concat(@MyName,"_TrueProfession")}
+$box="strongbox"
+$wep=""
+$dag=""
+#IF ((%0) AND (%isnumber(%0))) {$box = %concat("box ",%0)}
+do wear all from $box,put climbing gear in $box,get black-bladed dagger from $box,get knife from $box,get dagger from $box,sheath knife,unhand dagger,sheath black-bladed dagger
+#IF ($prof=assassin) {$wep="sword";do get twilight dagger from $box,get dagger from $box;do get huge sword from $box,wield huge sword,sheath sword,get mixed potion from $box,conceal potion}
+#IF ($prof=archer) {do get bow from $box,sling $box,get dagger from $box,get knife from $box,wear quiver from $box,get all arrow from $box into quiver,get all arrow from $box into quiver 2}
+#IF ($prof=wizard) {do open pouch,get all flower from $box into pouch,tag all in sling}
+#IF (%ismember($prof,@casters)) {tag staff in sling}
+#IF (%lower($prof)=ranger) {do get all flower from $box into satchel}
+#IF (@MyProf=thief) {put all amulet in $box}
+do wear all crystal from $box,tag all,tag all in bag,tag all in cloak,tag all in pack,tag all in sheath,untag all pie in pack
+do i,i pack,i cloak,i bag
+setMyBox
+} $CLASS
+
+#AL boxall {
+$prof=@{%concat(@MyName,"_TrueProfession")}
+$box="strongbox"
+#IF ((%0) AND (%isnumber(%0))) {$box = %concat("box ",%0)}
+sss
+#IF (@Gear_Mixie) {reveal potion}
+put all in $box
+#IF ($prof=wizard) {drop all flower from pouch into $box}
+#IF ($prof=archer) {drop all arrow from quiver into $box}
+#IF ($prof=ranger) {drop all flower from satchel into $box}
+RESET_GEAR
+} $CLASS
+
+#AL wach {
+$prof=@{%concat(@MyName,"_TrueProfession")}
+$box="chest"
+$wep=""
+$dag=""
+#IF ((%0) AND (%isnumber(%0))) {$box = %concat("box ",%0)}
+do wear all from $box,put climbing gear in $box,get black-bladed dagger from $box,get knife from $box,get dagger from $box,sheath knife,unhand dagger,sheath black-bladed dagger
+#IF ($prof=assassin) {$wep="sword";do get twilight dagger from $box,get dagger from $box;do get huge sword from $box,wield huge sword,sheath sword,get mixed potion from $box,conceal potion}
+#IF ($prof=archer) {do get bow from $box,sling $box,get dagger from $box,get knife from $box,wear quiver from $box,get all arrow from $box into quiver,get all arrow from $box into quiver 2}
+#IF ($prof=wizard) {do open pouch,get all flower from $box into pouch,tag all in sling}
+#IF (%ismember($prof,@casters)) {tag staff in sling}
+#IF (%lower($prof)=ranger) {do get all flower from $box into satchel}
+#IF (@MyProf=thief) {put all amulet in $box}
+do wear all crystal from $box,tag all,tag all in bag,tag all in cloak,tag all in pack,tag all in sheath,untag all pie in pack
+do i,i pack,i cloak,i bag
+setMyBox
+
+} $CLASS
+
+#AL chall {
+$prof=@{%concat(@MyName,"_TrueProfession")}
+$box="chest"
+#IF ((%0) AND (%isnumber(%0))) {$box = %concat("chest ",%0)}
+sss
+#IF (@Gear_Mixie) {reveal potion}
+put all in $box
+#IF ($prof=wizard) {drop all flower from pouch into $box}
+#IF ($prof=archer) {drop all arrow from quiver into $box}
+#IF ($prof=ranger) {drop all flower from satchel into $box}
+RESET_GEAR
+} $CLASS
+
+#AL SetMyBox {
+#VAR MyBox {%roomid} {} VAR
+#VAR %concat(@MyName,"_MyBox") {%roomid()} {} VAR
+SysMsg MyBox set to RoomID: @MyBox
+SysMsg %concat(@MyName,"_MyBox") set to: @MyBox
+} $CLASS
+
+#AL ShowMyBox {
+SysMsg MyBox: @MyBox
+} $CLASS
+
+#AL wa {
+wear all %0
+} $CLASS
+
+#AL waw {
+wear all from wagon
+} $CLASS
+
+#AL wag {
+wear all from ground
+} $CLASS
+
+#AL wac {
+$EXE = "wear all from corpse"
+#IF (%0) {%concat($exe," ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL wap {
+$EXE = "wear all from pack"
+#IF (%0) {%concat($exe," ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL wcg {
+#IF (%0) {wear cloak %0 from ground} {wear cloak from ground}
+} $CLASS
+
+#AL wpg {
+#IF (%0) {wear pack %0 from ground} {wear pack from ground}
+} $CLASS
+
+
+#AL radianton {
+do wear radiant mithril shirt,wear radiant steel pants,wear radiant steel gauntlets,wear radiant steel helm
+} $CLASS
+
+#AL radon {
+do wear radiant shirt,wear radiant pants,wear radiant gauntlets,wear radiant helm
+} $CLASS
+
+#AL radoff {
+do drop radiant shirt,drop radiant pants,drop radiant gauntlets,drop radiant helm
+} $CLASS
+
+#AL ltw {
+look time on watch
+} $CLASS
+
+#AL pipe {
+do pack pipe,light pipe,puff pipe,blow smoke-ring
+} $CLASS
+
+#AL DropArmour {
+$item=""
+$itemList=""
+#FORALL "head|chest|arms|legs|feet|shield" {
+  $item=@{%concat("My",%proper(%i),"_ID")}
+  #IF ($item) {#ADDI $itemList $item}
+}
+#FORALL $itemList {drop %i}
+} $CLASS
+
+#AL EstimateArmour {
+$EXE=""
+$itemList=""
+#FORALL "head|chest|arms|legs|feet|shield" {
+#IF (@{%concat("My",%proper(%i))}) {#ADDI $itemList @{%concat("My",%proper(%i),"_ID")}}
+}
+#FORALL $itemList {
+#IF ((%len($EXE)) && (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")}
+$EXE=%concat($EXE,"estimate ",%i)
+}
+#IF (%pos(",",$EXE)) {$EXE=%concat("do ",$EXE)}
+#EXE {$EXE}
+} $CLASS
+
+#AL GetRidOfItem {
+#VAR EXE {} {} VAR
+$item = %lower(%0)
+#IF (@Gear_Wagon) {AddToEXE %concat("drop all ",$item," from %lower(@MyWagon)")}
+#IF (@Gear_Panniers) {AddToEXE %concat("drop all ",$item," from panniers")}
+#IF (@Gear_Saddlebags) {AddToEXE %concat("drop all ",$item," from saddlebags")}
+#IF (@Gear_Pack) {AddToEXE %concat("drop all ",$item," from pack")}
+ExecuteEXE
+} $CLASS
+
+#CLASS 0

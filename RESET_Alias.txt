@@ -1,0 +1,33 @@
+#CLASS 0
+RESET_Alias_Backup
+RESET_Alias_Bot
+RESET_Alias_Boosts
+RESET_Alias_Containers
+RESET_Alias_Food
+RESET_Alias_Gear
+RESET_Alias_Keys
+RESET_Alias_Healing
+RESET_Alias_HuntBreaks
+RESET_Alias_Info
+RESET_Alias_Light
+RESET_Alias_Loot
+RESET_Alias_Mounts
+RESET_Alias_Movement
+RESET_Alias_Prof_Archer
+RESET_Alias_Prof_Assassin
+RESET_Alias_Prof_Casters
+RESET_Alias_Prof_Necromancer
+RESET_Alias_Prof_Ranger
+RESET_Alias_Prof_Rider
+RESET_Alias_Prof_Sniffer
+RESET_Alias_Prof_Thief
+RESET_Alias_Prof_Warrior
+RESET_Alias_Prof_Wizard
+RESET_Alias_PVP
+RESET_Alias_QuestScripts
+RESET_Alias_Sell
+RESET_Alias_Skills
+RESET_Alias_Tells
+RESET_Alias_Triggers
+RESET_Alias_Weapons
+#CLASS 0

@@ -1,0 +1,674 @@
+#CLASS 0
+$CLASS = "Tools|Alias|HuntBreaks"
+
+#AL Thranahb {
+trigger  @Tar fades into the shadows. todo knock on gates
+} $CLASS
+
+#AL saphhb {
+#WALK saph_court;do move vines,5evade,s,5evade;#WALK Wosg
+} $CLASS
+
+#AL saphahb {
+trigger  @Tar fades into the shadows. todo move vines
+} $CLASS
+
+#AL RivSP2 {
+do s,sw,w,s,path,e,porch,enter,n,garden,s,push vines aside,5evade,trail,3evade,e,reach into hole,5evade,out,w,vines,out,n,kitchen,s,out,w,path,path,n,e,ne,n
+} $CLASS
+
+#AL RivSP1 {
+do 2ne,5e,2u,ring bell,5evade,u,ring bell,5evade,d,5w,2sw
+} $CLASS
+
+#AL osg5 {
+#WALK Wosg;do 2e,3n,push bush,5evade,out,5evade,push bush,5evade,out,3s,2w
+} $CLASS
+
+#AL morcliff {
+#WALK morcliff;climb embankment;5evade;e
+} $CLASS
+
+#AL mm1 {
+#WALK MMKit;do pull shades open,open window,climb window;#WALK mmi
+} $CLASS
+
+#AL Loth1 {
+#WALK Lothfalls;do 5l waterfall,climb waterfall,5evade,out;#WALK Loth
+} $CLASS
+
+#AL gal1 {
+#WALK galin;sss;do climb rope,5evade,climb up rope,5evade;#WALK galh;HealHere
+} $CLASS
+
+#AL edodrain {
+do 3s,u,2s,2e,u,touch maiden,u,2w,2n,d,3n
+} $CLASS
+
+#AL edoahb {
+edomaiden
+} $CLASS
+
+#AL car1 {
+#WALK ulkout;do push slab,5eaglesight,5attune,5evade,push slab;#WALK carsok
+} $CLASS
+
+#AL hollinhb {
+gg norn;do leap over trunk,5evade,leap over trunk;gg redhorn
+} $CLASS
+
+#AL osg1 {
+#WALK Wosg;do 2e,3n,push bush,5evade,out,5evade,push bush,5evade,out,3s,2w
+} $CLASS
+
+#AL osg2 {
+#WALK Wosg;do 3e,move branches,5evade,n,3w
+} $CLASS
+
+#AL osg3 {
+#WALK Wosg;do 5w,3n,move vines,5evade,4s,5e
+} $CLASS
+
+#AL osg4 {
+#WALK Wosg;do 3n,6w,path,n,part ferns,5evade,s,part ferns,5evade,2s,path,6e,3s
+} $CLASS
+
+#AL Lothahb2 {
+trigger  @Tar climbs up the low hill and seems to disappear into the waterfall! todo climb waterfall
+} $CLASS
+
+#AL Lothahb {
+Lothahb2
+} $CLASS
+
+#AL mmtrig {
+trigger @Tar begins to traverse the wreckage with caution. todo traverse wreckage
+#T+ Assassin|AHB
+#TR ahb {^    As you leave the lawless lands} {#5 {kill @Tar;#WAIT 200}} Assassin|AHB
+} $CLASS
+
+#AL car2 {
+#WALK carsok;do stairs,2u,e,10hole,5evade,2d,w
+} $CLASS
+
+#AL bel1 {
+#WALK belmaze;do push gray stone,5evade,u,push gray stone,5evade,u;#WALK BelSP
+} $CLASS
+
+#AL bdbreak {
+do 2enter,5evade,out,s,5evade,n,2enter,5evade,out
+} $CLASS
+
+#AL Wosg1 {
+#WALK Wosg;do 2e,3n,push bush,5evade,out,5evade,push bush,5evade,out,3s,2w
+} $CLASS
+
+#AL Wosg2 {
+#WALK Wosg;do 3e,move branches,5evade,n,3w
+} $CLASS
+
+#AL Wosg3 {
+#WALK Wosg;do 5w,3n,move vines,5evade,4s,5e
+} $CLASS
+
+#AL Wosg4 {
+#WALK Wosg;do 3n,6w,path,n,part ferns,5evade,s,part ferns,5evade,2s,path,6e,3s
+} $CLASS
+
+#AL Morg1 {
+#WALK Morg;do n,2w,knock on gates,5evade,gate,knock on gates,5evade,gate,2e,s
+} $CLASS
+
+#AL Morg2 {
+#WALK ithsp;do n,ne,w,2s,climb tree,5evade,d,climb tree,5evade,d,2n,e,sw,s
+} $CLASS
+
+#AL kad1 {
+gg kadthiefout;do l marks,push wall,5evade,e,push wall,5evade,5e,2n;#TE Nkad
+} $CLASS
+
+#AL pel2 {
+#WALK pelbell;4ring bell;#MO N;#WALK peli
+} $CLASS
+
+#AL nhar1 {
+#WALK harroot;do trail,w,tent,5evade,out,e,out;#WALK PelSP
+} $CLASS
+
+#AL nhar2 {
+#WALK harstoop;do dismount,lead horse,feel ground,stoop closer,d,5evade,2u;#WALK ithsp
+} $CLASS
+
+#AL shar1 {
+#WALK cottage;do cottage,jump down hole,5evade,climb through hole,5evade,out;#WALK Skad
+} $CLASS
+
+#AL len1 {
+#WALK lendin;do 6n,climb down,5evade,climb path,5evade,6s;#WALK PelSP
+} $CLASS
+
+#AL len2 {
+#WALK lendin;do n,e,squeeze through boards,5evade,squeeze through boards,5evade,w,s;#WALK PelSP
+} $CLASS
+
+#AL mmsacout {
+gg mmsac;stab troll;#TE mmsacout;e
+} $CLASS
+
+#AL riv2 {
+#WALK rivvines;do push vines aside,5evade,trail,e,reach into hole,5evade;#TE rivhb2;#WALK RivSP
+} $CLASS
+
+#AL edo1 {
+#WALK amruin;do place hand on emblem,5evade,out,place hand on emblem,5evade,out;#WALK EdoSP
+} $CLASS
+
+#AL dra1 {
+#WALK dragon;dis;do slide down precipice,5evade,climb up,5evade,slide down precipice,5evade,climb up,5evade;mm;#WALK Nout
+} $CLASS
+
+#AL moriahb {
+#WALK moriamoss;do dig in dust,deeper,deeper,5evade,out,out,shaft;#WALK moria
+} $CLASS
+
+#AL valahb {
+#WALK vala;do slip through undergrowth,5evade,s;#WALK Loth
+} $CLASS
+
+#AL hbvala {
+#WALK vala;do slip through undergrowth,5evade,s;#WALK Loth
+} $CLASS
+
+#AL hbmoria {
+#WALK moss;do dig in dust,deeper,deeper,5evade,out,out,shaft;#WALK moriashop
+} $CLASS
+
+#AL hbkad {
+gg kadthiefout;do l marks,push wall,5evade,e,push wall,5evade,5e,2n;#TE Nkad
+} $CLASS
+
+#AL hblen1 {
+#WALK lendin;do 6n,climb down,5evade,climb path,5evade,6s;#WALK PelSP
+} $CLASS
+
+#AL hblen2 {
+#WALK lendin;do n,e,squeeze through boards,5evade,squeeze through boards,5evade,w,s;#WALK PelSP
+} $CLASS
+
+#AL hbMorg1 {
+#WALK ithsp;do n,2w,knock on gates,5evade,gate,knock on gates,5evade,gate,2e,s
+} $CLASS
+
+#AL hbMorg2 {
+#WALK ithsp;do n,ne,w,2s,climb tree,5evade,d,climb tree,5evade,d,2n,e,sw,s
+} $CLASS
+
+#AL hbpel2 {
+#WALK haradroot;do tent,5evade,out,e,out,6e,4n,2nw;#TE PelSP
+} $CLASS
+
+#AL hbnhar {
+#WALK harroot;do tent,5evade,out,e,out,6e,4n,2nw;#TE PelSP
+} $CLASS
+
+#AL hbWosg1 {
+#WALK Wosg;do 2e,3n,push bush,5evade,out,5evade,push bush,5evade,out,3s,2w
+} $CLASS
+
+#AL hbWosg2 {
+#WALK Wosg;do 3e,move branches,5evade,n,3w
+} $CLASS
+
+#AL hbWosg4 {
+#WALK Wosg;do 3n,6w,path,n,part ferns,5evade,s,part ferns,5evade,2s,path,6e,3s
+} $CLASS
+
+#AL hbWosg3 {
+#WALK Wosg;do 5w,3n,move vines,5evade,4s,5e
+} $CLASS
+
+#AL hbshar {
+
+} $CLASS
+
+#AL hbedo1 {
+#WALK amruin;do place hand on emblem,5evade,out,place hand on emblem,5evade,out;#WALK EdoSP
+} $CLASS
+
+#AL hbdra {
+#WALK dragon;dis;do slide down precipice,5evade,climb up,5evade,slide down precipice,5evade,climb up,5evade;mm;#WALK Nout
+} $CLASS
+
+#AL bdhb {
+gg bdpaths;do n,enter,5evade,out,5evade,s
+} $CLASS
+
+#AL hbbd {
+gg bdpaths;do n,enter,5evade,out,5evade,s
+} $CLASS
+
+#AL nar1 {
+gg nartop;do climb on parapet,5evade,climb down,5evade,climb on parapet,5evade,climb down;gg narh
+} $CLASS
+
+#AL hbnar {
+gg nartop;do climb on parapet,5evade,climb down,5evade,climb on parapet,5evade,climb down;gg narh
+} $CLASS
+
+#AL cuhb {
+#WALK cubalc;do 5emote leaps off balcony!,5evade,leap off balcony,5evade;#TE cumess;#WALK cubar
+} $CLASS
+
+#AL hbcu {
+#WALK cubalc;do 5emote leaps off balcony!,5evade,leap off balcony,5evade;#TE cumess;#WALK cubar
+} $CLASS
+
+#AL hbcor {
+#WALK corfire;push stone;#TE corkit;#WALK umbar
+} $CLASS
+
+#AL hbedo {
+#WALK amruin;do place hand on emblem,5evade,out,place hand on emblem,5evade,out;#WALK EdoSP
+} $CLASS
+
+#AL hbLoth {
+#WALK Lothfalls;do 5l waterfall,climb waterfall,5evade,out;#WALK Loth
+} $CLASS
+
+#AL hbMorg {
+#WALK mmcat;do traverse catapult,5evade,traverse catapult;#WALK ithsp
+} $CLASS
+
+#AL hbith {
+#WALK mmcat;do traverse catapult,5evade,traverse catapult;#WALK ithsp
+} $CLASS
+
+#AL hbriv {
+#WALK rivbell;do ring bell,d,5w,2sw;#TE RivSP
+} $CLASS
+
+#AL hbbd1 {
+#WALK bdrocks;do squeeze through crevice,5evade,out;#WALK bdpaths
+} $CLASS
+
+#AL vala1 {
+#WALK vala;do dismount,slip through undergrowth,5evade,s,slip through undergrowth,5evade,s;mm;#WALK Loth
+} $CLASS
+
+#AL cou1 {
+#WALK couout;do part reeds,5evade,plains;#WALK PelSP
+} $CLASS
+
+#AL lo1 {
+#WALK Lothfalls;do 5l waterfall,climb waterfall,5evade,out;#WALK Loth
+} $CLASS
+
+#AL fram2 {
+#WALK frams;do 2n,e,push board,5evade,push board,w,2s
+} $CLASS
+
+#AL Rhos1 {
+#WALK saphstaff;do path,se,climb tree,5evade,climb down,5evade,climb down,nw,path;#WALK Rhos
+} $CLASS
+
+#AL bota1 {
+#WALK perath;do uproot log,5evade,out,5evade;#WALK Skad
+} $CLASS
+
+#AL isen2 {
+#WALK morcliff;climb embankment;5evade;e
+} $CLASS
+
+#AL cor2 {
+#WALK CorSP;do trail,examine bushes,look tunnel,crawl through tunnel,5evade,out,5evade,crawl through tunnel,5evade,out,gates
+} $CLASS
+
+#AL cor1 {
+#WALK corfire;push stone;#TE corkit;#WALK corh
+} $CLASS
+
+#AL lin1 {
+rw;#WALK lintree;ss;5evade;#WALK LinSP
+} $CLASS
+
+#AL cu1 {
+#WALK CUBalcony;do 5emote leaps off balcony!,5evade,leap off balcony,5evade;#TE cumess;#WALK cubar
+} $CLASS
+
+#AL bddrop {
+#WALK BDGate;do 2enter,5evade,out;s
+} $CLASS
+
+#AL kad2 {
+#WALK haradroot;do tent,5evade,out,e,out,6e,4n,2nw;#TE PelSP
+} $CLASS
+
+#AL cou {
+#WALK couout;do part reeds,5evade,plains;#WALK PelSP
+} $CLASS
+
+#AL mor2 {
+#WALK moriah;2request healing;10evade;#WALK moriashop
+} $CLASS
+
+#AL moria1 {
+#WALK moss;do dig in dust,deeper,deeper,5evade,out,out,shaft;#WALK moriashop
+} $CLASS
+
+#AL riv1 {
+#WALK rivbell;do ring bell,d,5w,2sw;#TE RivSP
+} $CLASS
+
+#AL moria2 {
+#WALK moriahout;do search behind counter,crawl into hole,deeper,5evade,out,out,search behind counter,crawl into hole,deeper,5evade;#WALK moria5
+} $CLASS
+
+#AL Thran1 {
+#WALK spiderring;do trail,e,n,climb tree,5evade,d,climb tree,5evade,d,w,s,trail;#WALK Thran
+} $CLASS
+
+#AL Thran3 {
+#WALK emshield;do e,e,crawl behind shrub,5evade,out,crawl behind shrub,5evade,w,w;#WALK Thran
+} $CLASS
+
+#AL Thran2 {
+#WALK eshield;do turn torch,n,pull bone,5evade,u,pull bone,5evade,u,s,out;#WALK Thran
+} $CLASS
+
+#AL Rhos3 {
+#WALK Rhos;do 4n,7w,2u,trigger cave todo e,kick pebble,5evade,20kick pebble,10evade,trigger off,6e,4s
+} $CLASS
+
+#AL Rhos2 {
+#WALK pebbles;10kick pebbles;5evade;#WALK Rhos
+} $CLASS
+
+#AL frams2 {
+#WALK frams;do 2n,2w,n,knock on door,5evade,ask lady about leave,s,2e,2s
+} $CLASS
+
+#AL frams1 {
+#WALK frams;do 2n,e,push board,5evade,push board,w,2s
+} $CLASS
+
+#AL Bree1 {
+#WALK Bree;do 2n,2e,ne,2n,e,climb tree,5evade,climb down,w,2s,sw,2w,2s
+} $CLASS
+
+#AL Bree2 {
+#WALK Bree;do 2n,2e,ne,3n,ne,e,push through shrubs,5evade,out,sw,3s,sw,2w,2s
+} $CLASS
+
+#AL Bree3 {
+#WALK Bree;do 2n,2e,town,ne,3n,ne,climb tree,5evade,climb down,sw,3s,sw,valley,2w,2s
+} $CLASS
+
+#AL hob1 {
+#WALK HobSP;do n,3e,s,move bush,5evade,out,move bush,5evade,out,n,3w,s
+} $CLASS
+
+#AL hob2 {
+#WALK HobSP;do 6n,w,check in,6s
+} $CLASS
+
+#AL bel2 {
+#WALK belegost_temple;do temple,move tapestry,5evade,out,move tapestry,5evade,out,out;#WALK BelSP
+} $CLASS
+
+#AL edo2 {
+#WALK EdoSP;do 3s,3w,2n,rap four times,5evade,out,2s,3e,3n
+} $CLASS
+
+#AL edo3 {
+#WALK EdoSP;do n,4e,5s,2sw,2w,2n,climb rocks,5evade,d,climb rocks,5evade,d,2s,2e,2ne,5n,4w,s
+} $CLASS
+
+#AL mt1 {
+#WALK orloft;do climb skylight,5evade,opening;#WALK mtin
+} $CLASS
+
+#AL mt2 {
+#WALK mtin;do 5s,4sw,n,move rug,leap into cellar,2n,e,nw,e,se,climb wall,5evade,out,3ne,5e,4se,5s
+} $CLASS
+
+#AL esg1 {
+#WALK esghb;5evade;#WALK esgin
+} $CLASS
+
+#AL Loth2 {
+vala1
+} $CLASS
+
+#AL edo4 {
+#WALK Maiden;touch maiden;#TE Maiden_Teleport;#WALK EdoSP
+} $CLASS
+
+#AL fram1 {
+#WALK frams;do 2n,e,push board,5evade,push board,w,2s
+} $CLASS
+
+#AL fram3 {
+#WALK frams;do 2n,2w,n,knock on door,5evade,ask lady about leave,s,2e,2s
+} $CLASS
+
+#AL als1 {
+#WALK als;do sw,w,sw,wriggle through opening,5evade,out,ne,e,ne
+} $CLASS
+
+#AL mt3hb {
+#WALK mt3;.2lsen;climb through window;n;touch painting;5evade;pull lever;s;climb through window;.swn2h
+} $CLASS
+
+#AL isen1 {
+#WALK durthang;do defy shadows,5evade,d,5evade,defy shadows,5evade,d,5evade;#WALK isen
+} $CLASS
+
+#AL mor1 {
+#WALK moss;do dig in dust,deeper,deeper,5evade,out,out,shaft;#WALK moriashop
+} $CLASS
+
+#AL dale1 {
+#WALK dalewell;climb down rope;5evade;climb up rope;5evade;#WALK DaleSP
+} $CLASS
+
+#AL els1 {
+#WALK elscap;5evade;#WALK DgSP
+} $CLASS
+
+#AL dg1 {
+#WALK sou;do 5evade,out,5evade,say lugburz,5evade;#WALK DgSP
+} $CLASS
+
+#AL harrow1 {
+#WALK harrow_board;do move board,5evade,out,5evade,move board,5evade,out;#WALK EdoSP;do move board,5evade,out,5evade,move board,5evade,out;#WALK EdoSP,do move board,5evade,out,5evade,move board,5evade,out;#WALK EdoSP
+} $CLASS
+
+#AL pel3 {
+#WALK harroot;do tent,5evade,out,e,out,6e,4n,2nw;#TE PelSP
+} $CLASS
+
+#AL pel1 {
+#WALK peltable;5evade;jump over table;5evade;#WALK peli
+} $CLASS
+
+#AL wt1 {
+#WALK wt_cellar;do slide shelf,5evade,se,5evade;#WALK wt
+} $CLASS
+
+#AL grey1 {
+wt1
+} $CLASS
+
+#AL pelbell {
+#WALK pelbell;4ring bell;#MO N
+} $CLASS
+
+#AL rhun1 {
+#WALK rhunwell;do n;descend down stairs,5evade,u,s;#WALK AlSP
+} $CLASS
+
+#AL Morgclimb {
+trigger @Tar disappears into the large oak tree. todo climb tree
+} $CLASS
+
+#AL mmintrig {
+trigger caut todo traverse wreckage
+#T+ Assassin|AHB
+#TR ahb {wreckage} {#5 {kill @Tar;#WAIT 200}} Assassin|AHB
+} $CLASS
+
+#AL maiden {
+trigger ^@ttt reaches out to touch todo touch maiden
+} $CLASS
+
+#AL Lothladder {
+trigger ^@ttt grabs hold of a rope ladder and disappears up into the mallorn. todo climb ladder
+} $CLASS
+
+#AL Lothchain {
+trigger ^@ttt climbs up the chain. todo do climb chain, trigger ^@ttt climbs down the chain. todo climb down chain
+} $CLASS
+
+#AL lintree {
+trigger @Tar climbs up a tree, grunting at the effort. todo do climb tree, trigger @Tar carefully climbs down the tree. todo climb down
+} $CLASS
+
+#AL linmud {
+trigger @Tar dives feet-first onto the mud flow! todo slide down mud
+} $CLASS
+
+#AL kadwater {
+trigger ^@ttt fades into the shadows. todo slide into water
+} $CLASS
+
+#AL framlady {
+trigger @Tar knocks on the front door, then goes in with an old lady. todo do knock on door,trigger @ttt leaves South. todo ask lady about leave
+} $CLASS
+
+#AL framclimb {
+trigger ^@ttt starts climbing up the mountain! todo do climb rocks, trigger ^@ttt climbs down the mountain. todo climb down
+} $CLASS
+
+#AL ferns {
+trigger ^@ttt walks off. todo part ferns
+} $CLASS
+
+#AL fades {
+trigger @Tar fades into the shadows. todo knock on gates
+} $CLASS
+
+#AL emblem {
+trigger @Tar seems to disappear! todo place hand on emblem
+} $CLASS
+
+#AL edowater {
+trigger @Tar dives deep into the pool of cold water! todo do swim pool, wade waterfall
+} $CLASS
+
+#AL edoshrub {
+trigger @Tar crawls under the shrubs! todo crawl under shrub
+} $CLASS
+
+#AL edomaiden {
+trigger @Tar reaches out to touch the wooden maiden, who suddenly comes todo touch maiden
+} $CLASS
+
+#AL edocliff {
+trigger @Tar slowly climbs the cliff and disappears from sight. todo do climb cliff, trigger @Tar slowly starts down the mountain. todo climb down
+} $CLASS
+
+#AL checkpoint {
+trigger checkpoint todo hunt off
+} $CLASS
+
+#AL carwell {
+trigger @Tar falls down into the well!! todo do look in hole,2e,search wall,trigger @Tar todo hunt %lower(@Tar),kill %lower(@Tar)
+} $CLASS
+
+#AL bytree {
+trigger ^@ttt climbs the tree with ease. todo do search tree,climb tree,squeeze through crack
+} $CLASS
+
+#AL bycheckin {
+trigger ^The guard throws @ttt out!! todo check in
+} $CLASS
+
+#AL Bybush {
+trigger ^@ttt disappears into the bushes with a yelp! todo move bush
+} $CLASS
+
+#AL bybrick {
+trigger ^The wall spins around, taking @ttt with it! todo push brick
+} $CLASS
+
+#AL Breewagon {
+trigger ^@Tar climbs into the painted wagon. todo climb into painted wagon
+} $CLASS
+
+#AL Breetree {
+trigger ^@ttt climbs up the tree in the middle of the clearing. todo do climb tree, trigger ^@ttt climbs down the tree. todo climb down
+} $CLASS
+
+#AL Breejump {
+trigger climbs todo jump on bed
+} $CLASS
+
+#AL Breebed {
+trigger ^@ttt is kicked out of the inn. todo rest in bed
+} $CLASS
+
+#AL adowindow {
+trigger @mytar climbs out of the window todo climb through window
+} $CLASS
+
+#AL adocloset {
+trigger ^There is already someone in the closet, and there is not enough room for two. todo empty closet
+} $CLASS
+
+#AL bd2 {
+#WALK BDtable;do climb table,5evade,d,5evade,climb table,5evade,d;#WALK bdkit
+} $CLASS
+
+#AL mtbreaks {
+//From inside MT gates
+do 5s,2sw,gate,4ne,7n,4nw,gate,2se,4s,2sw,gate,w,rent room,u
+do 5s,2sw,gate,4ne,7n,4nw,gate,2se,4s,3sw,enter,e,fill out form,36n,10evade
+do 5s,4sw,n,move rug,leap into cellar,2n,e,nw,e,se,climb into crack,10evade,out,3ne,5e,4se,5s
+
+//works if blinded
+do 5s,2sw,gate,4ne,7n,4nw,gate,nw,w,s,w,sw,climb wall,10evade,e,se
+do 5s,2sw,gate,4ne,7n,4nw,gate,2se,4s,2sw,gate,ne,4n,2nw,3w,3sw,s,4climb wall,climb tree,jump over fence,
+do 5n,3nw,2n,closet,move boxes,10evade
+
+//(Done from the outside of MT,takes you to CoU GH)
+do 2s,2sw,4s,sw,2s,sw,3s,sw,s,sw,s,12w,6n,part reeds,10evade
+do 2n,ne,4n,2nw,3n,e,ne,3e,brush branches,10evade,nw,3w,sw,w,3s,2se,4s,sw,2s
+} $CLASS
+
+#AL mtb {
+do 2n,2ne,2n,3nw,2n,2n,2e,2e,3n,move weeds,3evade,out,move weeds,3evade,out,3s,2w
+} $CLASS
+
+#AL mt7b {
+do 2w,nw,2w,n,inn,wipe feet,n,2extinguish crystal,5evade,s,out,s,2e,se,2e
+} $CLASS
+
+#AL mt7b2 {
+do gate,s,2sw,2w,2nw,w,ne,nw,climb trellis,2extinguish crystal,5evade,d,se,sw,e,2se,2e,2ne,n,gate
+} $CLASS
+
+#AL mt3b {
+//gate2-3, 3-side, no guards
+do gate,4se,5s,w,n,w,crawl under stage
+} $CLASS
+
+#AL mt1b {
+do 5n,3nw,2n,closet,move boxes,s,5evade
+} $CLASS
+
+#AL mt1b2 {
+do 5s,4sw,n,move rug,emote leaps into the cellar,s,5evade,n,leap into cellar,5evade,2n,e,nw,e,se,climb wall,5evade,out,3ne,5e,4se,5s
+} $CLASS
+
+
+#CLASS 0

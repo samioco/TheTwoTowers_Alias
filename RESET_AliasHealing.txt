@@ -1,0 +1,66 @@
+#CLASS 0
+$CLASS = "Tools|Alias|Healing"
+
+#AL dh {
+rw;do open bag,get @Gear_Heal from bag,get @Gear_Heal from cloak,get @Gear_Heal from pack,open @Gear_Heal,2drink @Gear_Heal,drop empty @Gear_Heal,close @Gear_Heal,put @Gear_Heal in bag,put @Gear_Heal in cloak,put @Gear_Heal in pack;ww
+} $CLASS
+
+#AL drinkd {
+rw;do open bag,get draught from bag,get draught from cloak,get draught from pack,open draught,2drink draught,drop empty draught,close draught,put draught in bag,put draught in cloak,put draught in pack;ww
+} $CLASS
+
+#AL bota {
+rw;do open bag,get bota from bag,get bota from cloak,get bota from pack,open bota,2drink bota,drop empty bota,close bota,put bota in bag,close bag,put bota in cloak,put bota in pack;ww
+} $CLASS
+
+#AL dbota {
+rw;do open bag,get bota from bag,get bota from cloak,get bota from pack,open bota,2drink bota,drop empty bota,close bota,put bota in bag,close bag,put bota in cloak,put bota in pack;ww
+} $CLASS
+
+#AL flask {
+rw;do open bag,get flask from bag,get flask from cloak,get flask from pack,open flask,2drink flask,drop empty flask,close flask,put flask in bag,close bag,put flask in cloak,put flask in pack;ww
+} $CLASS
+
+#AL canteen {
+rw
+do get canteen from cloak,get canteen from pack,open canteen,drink canteen,drop empty canteen,close canteen,put canteen in cloak,put canteen in pack
+ww
+} $CLASS
+
+#AL amber {
+rw;do get amber vial from cloak,get amber vial from pack,open vial,3drink amber vial,drop empty vial,close vial,put vial in cloak,put vial in pack;ww
+} $CLASS
+
+#AL vor {
+rw;do reveal vial of rejuvenation,drink vial of rejuvenation,drop empty vial,conceal vial of rejuvenation;ww
+} $CLASS
+
+#AL dvor {
+rw;do reveal vial of rejuvenation,drink vial of rejuvenation,drop empty vial,conceal vial of rejuvenation;ww
+} $CLASS
+
+#AL dn1 {
+drink necklace 1
+} $CLASS
+
+#AL dn2 {
+drink necklace 2
+} $CLASS
+
+#AL db {
+do open bota,drink bota
+} $CLASS
+
+#AL db1 {
+do open bota 1,drink bota 1
+} $CLASS
+
+#AL db2 {
+do open bota 2,drink bota 2
+} $CLASS
+
+#AL dn {
+drink necklace
+} $CLASS
+
+#CLASS 0

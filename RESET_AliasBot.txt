@@ -1,0 +1,134 @@
+#CLASS 0
+$CLASS = "Tools|Alias|Bots"
+
+#VAR BotsEnabled {} {} VAR
+
+#AL StartWalk {
+//requires WalkPath to be set
+//#CALL %walkmode(1)
+//#IF (%0) {#PATH WalkPath %0}
+#IF (%0) {#PATH WalkPath %concat(%0,";.(StopWalk)")}
+SetWalkAlarm
+//#TR EV
+#SLOW WalkPath
+#PAUSE
+} $CLASS
+
+#AL SetWalkAlarm {
+#CLASS 0
+#T- Walker
+#SUS "Walker"
+#UNT "Walker"
+#TR Walker {^%1~(} {
+  PlayerDetectOn
+  #ALA "Walker" {+1} {SetWalkAlarm;StepWalk}
+}
+} $CLASS
+
+
+#AL StepWalk {
+#STEP;#PAUSE
+} $CLASS
+
+#AL PauseWalk {
+#T- Walker
+#SUS "Walker"
+#UNT "Walker"
+#VAR CurRoom {%roomnum()} {} VAR
+SysMsg Walker paused at CurRoom room: @CurRoom
+#CALL %walkmode(0)
+PlayerDetectOff
+} $CLASS
+
+#AL ResumeWalk {
+//#T+ Walker
+//#RESUME Walker
+//#CALL %walkmode(1)
+SetWalkAlarm
+#STEP;#PAUSE
+} $CLASS
+
+#AL StopWalk {
+#UNPATH WalkPath
+#STOP
+#FORALL "Walker|Alarm|Alarm_Rest|Rest|Glance|Shape|Inventory|ProfAttack" {#UNT %i}
+PlayerDetectOff
+} $CLASS
+
+#AL BotPie {
+#ECHO HP detected as: %mud.hp
+#IF (@MyFaction=FR) {#LOOP 1,(@MyMaxHP-%mud.hp)/25 {eatpie}} {#LOOP 1,(@MyMaxHP-%mud.hp)/30 {eatpie}}
+#IF (@MyProf=rider) {#ECHO Rider: Mounting;do mount horse,mount horse 2} {#ECHO Non-rider: don't mount}
+//#echo Waiting 3000 ms;#WAIT 3000
+} $CLASS
+
+#AL BOTReset {
+ClassReset %0
+} $CLASS
+
+#AL BotOff {
+$list=""
+#IF (%0) {$list=%0} {$list = @BotsEnabled}
+#IF (%0) {
+  ClassOff %0
+  #DELI BotsEnabled %0
+} {
+  #FORALL @BotsEnabled {
+    #DELI BotsEnabled %i
+    ClassOff %i
+  }
+}
+INFO Disabled Bots: @BotsEnabled
+} $CLASS
+
+#AL BotOn {
+#IF (%0) {#VAR BotName {%0} {} VAR}
+#VAR BotStat {@BotName} {} VAR
+#CLASS @BotName 1
+#CLASS @BotName|Settings 1
+INFO Enabling Bot Class: @BotName
+#IF (!@BotsEnabled) {#VAR BotsEnabled {} {} VAR}
+#ADDI BotsEnabled @BotName
+INFO Enabled Bots: @BotsEnabled
+} $CLASS
+
+#AL BotStop {
+QuestStop
+GrinderStop
+ActionClear
+StealStop
+} $CLASS
+
+#AL BotStat {
+SysMsg Botstat:  @botstat, Botname:  @botname
+SysMsg Bots Enabled: @BotsEnabled
+} $CLASS
+
+
+#AL BOTAbort {
+$EXE = ""
+SysMsg BOT Aborted: @BotName, BotsEnabled: @BotsEnabled
+$EXE = "BotOff"
+#IF (%0) {$EXE = %concat($exe," ",%0)}
+$EXE = %concat($exe,";ActionNext")
+ActionAdd $EXE
+#IF (@ActionQueue) {ActionNext}
+} $CLASS
+
+#AL BOTComplete {
+$EXE = ""
+SysMsg BOT Completed: @BotName, BotsEnabled: @BotsEnabled
+$EXE = "BotOff"
+#IF (%0) {$EXE = %concat($exe," ",%0)}
+$EXE = %concat($exe,";ActionNext")
+ActionAdd $EXE
+#IF (@ActionQueue) {ActionNext}
+} $CLASS
+
+
+
+#AL BotEat {
+EatFood
+} $CLASS
+
+#CLASS 0

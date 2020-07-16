@@ -1,0 +1,362 @@
+#CLASS 0
+$CLASS = "Tools|Alias|Food"
+
+#AL DepositBuyFood {
+SSS
+GNB
+deposit all but 400
+#SW (@MyGuild="Udungul" && @Jerky<5) {
+  #WALK UdBar
+  #15 {do order rhun jerky,put rhun jerky in pack}
+  #WALK UdOut
+  PackToContainers
+} (((@MyFaction = "ER") || (@MyFaction="servant")) || (@MeatPies<5)) {
+  #WALK MMBar
+  #10 {PackPie}
+  #WALK UdOut
+  PackToContainers
+} (@MyFaction = "FR" && @PelPies<5) {
+  #WALK PelBar
+  #10 {PackPie}
+  #WALK UdOut
+  PackToContainers
+}
+WS
+} $CLASS
+
+#AL pietop {
+get pie from wagon into pack
+} $CLASS
+
+#AL depie {
+do drop pie from pack,drop pie from cloak,drop pie from wagon,eat pie,get all pie into pack
+} $CLASS
+
+#AL winein {
+get all wine into pack
+} $CLASS
+
+#AL wineout {
+do drop all wine from pack,drop all wine from cloak
+} $CLASS
+
+
+#AL cloakpie {
+do order meat pie,order shepherd's pie,put pie in cloak
+} $CLASS
+
+#AL jerky {
+rw;do get jerky from pack,get jerky from cloak,get jerky from wagon,eat jerky,put all jerky in pack;ww
+} $CLASS
+
+#AL dej {
+rw;do drop jerky from cloak,drop jerky from pack,eat jerky,2get jerky into pack;ww
+} $CLASS
+
+#AL jout {
+drop all jerky from pack
+} $CLASS
+
+#AL jin {
+get all jerky into pack
+} $CLASS
+
+#AL jtop {
+get jerky from wagon into pack
+} $CLASS
+
+#AL jtow {
+get jerky from pack into wagon
+} $CLASS
+
+#AL droppie {
+do drop pie from pack,drop pie from wagon,drop pie from panniers
+} $CLASS
+
+#AL ftow {
+$EXE=""
+$food=""
+$cont=@MyWagon
+#IF (@MyFaction="FR") {$food="jerky"} {$food="pie"}
+$EXE=%concat($EXE,"get all ",$food," from pack into ",$cont)
+#EXE {$EXE}
+} $CLASS
+
+#AL ftop {
+$EXE=""
+$food=""
+$cont="panniers"
+#IF (@MyFaction="FR") {$food="jerky"} {$food="pie"}
+$EXE=%concat($EXE,"get all ",$food," from pack into ",$cont)
+#EXE {$EXE}
+} $CLASS
+
+#AL ftob {
+$EXE=""
+$food=""
+$cont="saddlebags"
+#IF (@MyFaction="FR") {$food="jerky"} {$food="pie"}
+$EXE=%concat($EXE,"get all ",$food," from pack into ",$cont)
+#EXE {$EXE}
+} $CLASS
+
+#AL ftocont {
+$EXE=""
+$food=""
+#IF (@MyFaction="FR") {$food="jerky"} {$food="pie"}
+#IF (@Gear_Wagon) {#IF ((%len($EXE)) && (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,"get all ",$food," from pack into @MyWagon")}
+#FORALL "panniers|saddlebags" {
+  #IF (@{%i}) {#IF ((%len($EXE)) && (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,"get all ",$food," from pack into ",%i)}
+}
+#IF (%pos(",",$EXE)) {$EXE = %concat("do ",$EXE)}
+#EXE {$EXE}
+} $CLASS
+
+#AL ftocont {
+ftocont
+} $CLASS
+
+#AL ftopack {
+$EXE=""
+$food=""
+$cont=""
+#IF (@MyFaction="FR") {$food="jerky"} {$food="pie"}
+#IF (@Gear_Wagon) {#IF ((%len($EXE)) && (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,"get all ",$food," from @MyWagon into pack")}
+#FORALL "panniers|saddlebags" {
+  #IF (@{%i}) {#IF ((%len($EXE)) && (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,"get all ",$food," from ",%i," into pack")}
+}
+#IF (%pos(",",$EXE)) {$EXE = %concat("do ",$EXE)}
+#EXE {$EXE}
+} $CLASS
+
+#AL PackWine {
+#VAR EXE {} {} VAR
+$room=%lower(%roomid())
+#SW ($room="mmbar") {
+  AddToEXE "order blood wine"
+} ($room="bdbar") {
+  AddToEXE "order spider blood"
+} ($room="erebar") {
+  AddToEXE "order barley wine"
+} ($room="albar") {
+  AddToEXE "order morumor"
+} {
+  AddToEXE "order wine"
+}
+AddToEXE "put all wine in pack"
+ExecuteEXE
+} $CLASS
+
+#AL CloakWine {
+#VAR EXE {} {} VAR
+$room=%lower(%roomid())
+#SW ($room="mmbar") {
+  AddToEXE "order blood wine"
+} ($room="bdbar") {
+  AddToEXE "order spider blood"
+} ($room="erebar") {
+  AddToEXE "order barley wine"
+} ($room="albar") {
+  AddToEXE "order morumor"
+} {
+  AddToEXE "order wine"
+}
+AddToEXE "put all wine in cloak"
+ExecuteEXE
+} $CLASS
+
+#AL DrinkWine {
+#VAR EXE {} {} VAR
+$room=%lower(%roomid())
+#SW ($room="mmbar") {
+  AddToEXE "order blood wine,drink wine,put empty bottle in trash,drop empty bottle"
+} ($room="bdbar") {
+  AddToEXE "order spider blood,drink blood,put empty glass in trash,drop empty glass"
+} ($room="erebar") {
+  AddToEXE "order barley wine,drink wine,put empty glass in trash,drop empty glass"
+} (%ismember(%roomname(),@ROOMS_Bars)) {
+  AddToEXE "order wine,open bottle,drink wine,put empty bottle in trash,drop empty bottle"
+} {
+  #IF (@Gear_Wagon) {AddToEXE "drop wine from %lower(@MyWagon)"}
+  #IF (@Gear_Panniers) {AddToEXE "drop wine from panniers"}
+  #IF (@Gear_Saddlebags) {AddToEXE "drop wine from saddlebags"}
+  #IF (@Gear_Pack) {AddToEXE "drop wine from pack"}
+  #IF (@Gear_Cloak) {AddToEXE "drop wine from cloak"}
+  AddToEXE "open wine,drink wine"
+}
+#IF (@Gear_Wagon) {AddToEXE "put all wine in @MyWagon,get all wine into @MyWagon"}
+#IF (@Gear_Panniers) {AddToEXE "put all wine in panniers,get all wine into panniers"}
+#IF (@Gear_Saddlebags) {AddToEXE "put all wine in saddlebags,get all wine into saddlebags"}
+#IF (@Gear_Pack) {AddToEXE "put all wine in pack,get all wine into pack"}
+#IF (@Gear_Cloak) {AddToEXE "put all wine in pack,get all wine into cloak"}
+ExecuteEXE
+} $CLASS
+
+#AL getpie {
+do get pie into pack,get pie into wagon,get pie into cart,get pie into panniers
+} $CLASS
+
+#AL pietow {
+get all pie from pack into wagon
+} $CLASS
+
+#AL piewtop {
+get pie from wagon into pack
+} $CLASS
+
+#AL pieout {
+do drop all pie from cloak,drop all pie from pack,drop all pie from panniers,drop all pie from wagon
+} $CLASS
+
+#AL piein {
+get all pie into pack
+} $CLASS
+
+#AL panfeet {
+#5 {2order feet;nw;put all feet in panniers;se}
+} $CLASS
+
+
+#AL packpie {
+$pie=""
+#SW (@MyFaction="FR") {$pie="shepherd's pie"
+} {$pie="meat pie"}
+do order $pie,put pie in pack
+} $CLASS
+
+#AL packjerky {
+$EXE=""
+$room=%lower(%roomid())
+#SW ($room="udbar") {
+$EXE="order rhun jerky"
+} {$EXE="order jerky"}
+#IF ((%len($EXE)) && (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,"put all jerky in pack")
+#IF (%pos(",",$EXE)) {$EXE=%concat("do ",$EXE)}
+#10 {$EXE}
+} $CLASS
+
+#AL packtarky {
+#10 {do order tarky,put tarky in pack}
+} $CLASS
+
+#AL wagpie {
+do drop pie from wagon,eat pie,get pie into wagon
+} $CLASS
+
+#AL wp {
+do drop pie from wagon,eat pie,get pie into wagon
+} $CLASS
+
+#AL dishout {
+drop all dish from pack
+} $CLASS
+
+#AL dj {
+$EXE=""
+$food="jerky"
+$food_out="drop"
+$food_in="get"
+
+#IF ((@Party) && (@PartyLeader!=@MyName) && (%ismember(%concat(@PartyLeaderPossessive," wagon"),@Gear_PartyWagons))) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_out," ",$food," from @PartyLeaderPossessive wagon")}
+#IF (@Gear_Wagon) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_out," ",$food," from @Gear_Wagon")}
+#IF (@Gear_Saddlebags) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_out," ",$food," from saddlebags")}
+#IF (@Gear_Panniers) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_out," ",$food," from panniers")}
+#IF (@Gear_Pack) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_out," ",$food," from pack")}
+
+#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,"eat ",$food)
+
+#IF ((@Party) && (@PartyLeader!=@MyName) && (%ismember(%concat(@PartyLeaderPossessive," wagon"),@Gear_PartyWagons))) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_in," all ",$food," into @PartyLeaderPossessive wagon")}
+#IF (@Gear_Wagon) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_in," all ",$food," into @Gear_Wagon")}
+#IF (@Gear_Saddlebags) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_in," all ",$food," into saddlebags")}
+#IF (@Gear_Panniers) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_in," all ",$food," into panniers")}
+#IF (@Gear_Pack) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_in," all ",$food," into pack")}
+
+#IF (%pos(",",$EXE)) {$EXE=%concat("do ",$EXE)}
+#IF (%0="-test") {#ECHO 'dp': $EXE} {#EXE {$EXE}}
+} $CLASS
+
+
+#AL jj {
+$EXE=""
+$food="jerky"
+$food_out="get"
+$food_in="put"
+#IF (@wielding) {rw}
+#IF ((@Party) && (@PartyLeader!=@MyName) && (%ismember(%concat(@PartyLeaderPossessive," wagon"),@Gear_PartyWagons))) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_out," ",$food," from @PartyLeaderPossessive wagon")}
+#IF (@Gear_Wagon) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_out," ",$food," from @Gear_Wagon")}
+#IF (@Gear_Saddlebags) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_out," ",$food," from saddlebags")}
+#IF (@Gear_Panniers) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_out," ",$food," from panniers")}
+#IF (@Gear_Pack) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_out," ",$food," from pack")}
+
+#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,"eat ",$food)
+
+#IF ((@Party) && (@PartyLeader!=@MyName) && (%ismember(%concat(@PartyLeaderPossessive," wagon"),@Gear_PartyWagons))) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_in," all ",$food," into @PartyLeaderPossessive wagon")}
+#IF (@Gear_Wagon) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_in," all ",$food," into @Gear_Wagon")}
+#IF (@Gear_Saddlebags) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_in," all ",$food," into saddlebags")}
+#IF (@Gear_Panniers) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_in," all ",$food," into panniers")}
+#IF (@Gear_Pack) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_in," all ",$food," into pack")}
+
+#IF (%pos(",",$EXE)) {$EXE=%concat("do ",$EXE)}
+#IF (%0="-test") {#ECHO 'dp': $EXE} {#EXE {$EXE}}
+#IF (@wielding) {ww}
+} $CLASS
+
+#AL dropeatpie {
+$EXE=""
+$food="pie"
+$food_out="drop"
+$food_in="get"
+
+#IF ((@Party) && (@PartyLeader!=@MyName) && (%ismember(%concat(@PartyLeaderPossessive," wagon"),@Gear_PartyWagons))) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_out," ",$food," from @PartyLeaderPossessive wagon")}
+#IF (@Gear_Wagon) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_out," ",$food," from @Gear_Wagon")}
+#IF (@Gear_Saddlebags) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_out," ",$food," from saddlebags")}
+#IF (@Gear_Panniers) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_out," ",$food," from panniers")}
+#IF (@Gear_Pack) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_out," ",$food," from pack")}
+
+#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,"eat ",$food)
+
+#IF ((@Party) && (@PartyLeader!=@MyName) && (%ismember(%concat(@PartyLeaderPossessive," wagon"),@Gear_PartyWagons))) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_in," all ",$food," into @PartyLeaderPossessive wagon")}
+#IF (@Gear_Wagon) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_in," all ",$food," into @Gear_Wagon")}
+#IF (@Gear_Saddlebags) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_in," all ",$food," into saddlebags")}
+#IF (@Gear_Panniers) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_in," all ",$food," into panniers")}
+#IF (@Gear_Pack) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_in," all ",$food," into pack")}
+
+#IF (%pos(",",$EXE)) {$EXE=%concat("do ",$EXE)}
+#IF (%0="-test") {#ECHO 'dp': $EXE} {#EXE {$EXE}}
+} $CLASS
+
+#AL dp {
+dropeatpie
+} $CLASS
+
+
+#AL eatpie {
+$EXE=""
+$food="pie"
+$food_out="get"
+$food_in="put"
+#IF (@wielding) {rw}
+#IF ((@Party) && (@PartyLeader!=@MyName) && (%ismember(%concat(@PartyLeaderPossessive," wagon"),@Gear_PartyWagons))) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_out," ",$food," from @PartyLeaderPossessive wagon")}
+#IF (@Gear_Wagon) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_out," ",$food," from @Gear_Wagon")}
+#IF (@Gear_Saddlebags) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_out," ",$food," from saddlebags")}
+#IF (@Gear_Panniers) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_out," ",$food," from panniers")}
+#IF (@Gear_Pack) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_out," ",$food," from pack")}
+
+#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,"eat ",$food)
+
+#IF ((@Party) && (@PartyLeader!=@MyName) && (%ismember(%concat(@PartyLeaderPossessive," wagon"),@Gear_PartyWagons))) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_in," all ",$food," into @PartyLeaderPossessive wagon")}
+#IF (@Gear_Wagon) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_in," all ",$food," into @Gear_Wagon")}
+#IF (@Gear_Saddlebags) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_in," all ",$food," into saddlebags")}
+#IF (@Gear_Panniers) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_in," all ",$food," into panniers")}
+#IF (@Gear_Pack) {#IF ((%len($EXE)) AND (%rightback($EXE,1)!=",")) {$EXE=%concat($EXE,",")};$EXE=%concat($EXE,$food_in," all ",$food," into pack")}
+
+#IF (%pos(",",$EXE)) {$EXE=%concat("do ",$EXE)}
+#IF (%0="-test") {#ECHO 'dp': $EXE} {#EXE {$EXE}}
+#IF (@wielding) {ww}
+} $CLASS
+
+#AL ep {
+eatpie
+} $CLASS
+
+#CLASS 0
