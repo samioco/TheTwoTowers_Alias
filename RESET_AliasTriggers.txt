@@ -1,0 +1,96 @@
+#CLASS 0
+$CLASS = "Tools|Alias|triggers"
+
+#AL tron {
+trigger on
+} $CLASS
+
+#AL troff {
+trigger off
+} $CLASS
+
+#AL triginfo {
+$status=""
+SysMsg trigger Full: @TriggerFull
+SysMsg trigger Text: @TriggerText
+SysMsg trigger Action: @TriggerAction
+#IF (@trigger) {$status="Activated"} {$status="Deactivated"}
+SysMsg trigger Status: $status
+} $CLASS
+
+#AL tkt {
+$tar=""
+#IF (@Tar) {$tar=%proper(@Tar)}
+#IF (%0) {$tar=%proper(%0)}
+trigger %proper($tar) todo kill %lower($tar)
+} $CLASS
+
+#AL fishtrig {
+trigger tug todo do hook fish,haul in line,kill fish,drop fish,get worm from box,bait pole,fling line
+} $CLASS
+
+#AL gobusy {
+trigger You todo do gold,shape all
+} $CLASS
+
+#AL TBT {
+$prof=@MyProf
+$action=""
+$tar=""
+#IF (@Tar) {$tar=%lower(@Tar)}
+#IF (%0) {$tar=%lower(%0)}
+#SW ($prof="warrior") {$action="headbutt"
+} ($prof="sniffer") {$action="shiv"
+} ($prof="ranger") {$action="feint"
+} ($prof="rider") {$action="do warcry,trample"
+} ($prof="assassin") {$action="hunt"
+} ($prof="wizard") {$action="cast fireball at"
+} ($prof="necromancer") {$action="leech"
+} {$action="kill"}
+$EXE=%concat("trigger ",%proper($tar)," todo ",$action," ",%lower($tar))
+#EXE {$EXE}
+} $CLASS
+
+#AL trig {
+$EXE="trigger"
+#IF (%0) {$EXE=%concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+#AL trigbleed {
+trigger bleeding to death todo kill
+} $CLASS
+
+#AL trigclick {
+$EXE = %0
+trigger click todo $EXE
+} $CLASS
+
+#AL trigkill {
+trigger bleeding to death todo kill
+} $CLASS
+
+#AL triglook {
+$tar=%lower(@Tar)
+#IF (%0) {$tar=%lower(%0)}
+trigger %proper($tar) todo glance $tar
+} $CLASS
+
+#AL triglt {
+$tar=%lower(@Tar)
+#IF (%0) {$tar=%lower(%0)}
+trigger %proper($tar) todo do look $tar,shape $tar
+} $CLASS
+
+#AL trigrent {
+trigger The sun has risen, and it is time to check out of the inn. todo do rent room,up
+} $CLASS
+
+#AL trigy {
+$tar=""
+$EXE = "trigger y todo kill"
+#IF (%0) {$tar=%lower(%0);$EXE = %concat($EXE," ",$tar)}
+#EXE {$EXE}
+} $CLASS
+
+#CLASS 0
