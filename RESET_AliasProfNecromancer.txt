@@ -1,0 +1,90 @@
+#CLASS 0
+$CLASS = "Tools|Alias|Prof_Necromancer"
+
+#AL ShowJBS {SysMsg << JBS_Concentrate time left:    @JBS_Concentrate seconds. >>} $CLASS
+
+#AL JBS_Concentrate {
+#VAR JBS_Concentrate {%number(%0)} {} VAR
+#UNT Alarm_JBS
+#IF (@JBS_Concentrate>=10) {SysMsg JBS_Concentrate time left:  @JBS_Concentrate seconds.
+#ALA Alarm_JBS {*10} {#MATH JBS_Concentrate  @JBS_Concentrate-10
+SysMsg JBS_Concentrate time left:  @JBS_Concentrate seconds.
+#IF (@JBS_Concentrate<=0) {#UNT Alarm_JBS}}}
+} $CLASS
+
+#AL JBS_Cooldown {
+#VAR JBS_Cooldown {%number(%0)} {} VAR
+#UNT Alarm_JBS_CD
+#IF (@JBS_Cooldown>=20) {SysMsg JBS_Cooldown time left:  @JBS_Cooldown seconds.
+#ALA Alarm_JBS_CD {*20} {#MATH JBS_Cooldown  @JBS_Cooldown-20
+SysMsg JBS_Cooldown time left:  @JBS_Cooldown seconds.
+#IF (@JBS_Cooldown<=0) {#UNT Alarm_JBS_CD
+SysMsg JBS Concentrate Available!}}}
+} $CLASS
+
+#AL cs {
+$EXE = "conjure spike"
+#IF (%0) {$EXE = %concat($exe," at ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL ca {
+$EXE = "conjure arrow"
+#IF (%0) {$EXE = %concat($exe," at ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL ch {
+$EXE = "conjure hurricane"
+#IF (%0) {$EXE = %concat($exe," at ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL cw {
+$EXE = "conjure wither"
+#IF (%0) {$EXE = %concat($exe," at ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL wither {
+$EXE = "conjure wither"
+#IF (%0) {$EXE = %concat($exe," at ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL sac {
+$EXE = "sacrifice"
+#IF (%0) {$EXE = %concat($exe," ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL tch {
+$tar=""
+#IF (@Tar) {$tar=%proper(@Tar)}
+#IF (%0) {$tar=%proper(%0)}
+$EXE = "trigger Y todo conjure hurricane"
+#IF ($tar) {$EXE = %concat($exe," ",$tar)}
+#EXE {$exe}
+} $CLASS
+
+#AL tlt {
+$tar=""
+#IF (@Tar) {$tar=%proper(@Tar)}
+#IF (%0) {$tar=%proper(%0)}
+do trigger %proper($tar) todo leech %lower($tar)
+} $CLASS
+
+#AL trig_necro {
+$tar=""
+$EXE = "trigger Y todo do leech,cast spike,cast arrow"
+#IF (%0) {$tar=%lower(%0);$EXE = %concat("trigger Y todo do leech ",$tar,",cast spike at ",$tar,",cast arrow at ",$tar)}
+#EXE {$tar}
+} $CLASS
+
+#AL trignecro {
+$tar=""
+$EXE = "trigger Y todo do leech,cast spike,cast arrow"
+#IF (%0) {$tar=%lower(%0);$EXE = %concat("trigger Y todo do leech ",$tar,",cast spike at ",$tar,",cast arrow at ",$tar)}
+#EXE {$tar}
+} $CLASS
+#CLASS 0
