@@ -1,0 +1,15 @@
+$list = "roominfo|r1zone|r2zone|roomzone|ru|whoe|numpies|infoal|remakelist|mln|mls|mle|mlw|listrooms|newchar_set|whod|whos|markexp|checkexp|mygold|whomoral|whom|updateroom|mount_stat|mountstat|arm|beep|beep2|beep3|alhere|delroom|addroom|showbarkskin"
+$folder="Alias_Info"
+
+$file = %concat("//RESET_",%upper($folder),%cr,"#CLASS 0",%cr,%cr)
+$location_class = %concat("TOOLS|Alias|",$folder)
+$alias=""
+
+#FORALL $list {
+  $alias = %alias(%i)
+  $alias = %concat("#AL ",%i," {",%cr,$alias,%cr,"} ",$location_class)
+  $alias = %concat($alias,%cr,%cr)
+  $file = %concat($file,$alias)
+}
+$file = %concat($file,%cr,%cr,%cr,"#CLASS 0")
+#AL RESET_Alias_Info {$file} _SYSTEM_INIT|RESET_TOOLS|TOOLS_Alias
