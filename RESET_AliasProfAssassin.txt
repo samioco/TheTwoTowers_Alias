@@ -1,0 +1,513 @@
+#CLASS 0
+$CLASS = "Tools|Alias|Prof_Assassin"
+
+#AL bs {
+$param=%0
+$tar=%lower(@Tar)
+#IF (($param) && ($param!="-test")) {$tar=%lower(%0)}
+$wep=@MyWep_id
+$exe=""
+#IF (@Mounted) {$exe=%concat($exe,"dismount")}
+#IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+$exe=%concat($exe,"hunt ",$tar)
+
+#IF ($wep) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"remove ",$wep)
+}
+#IF (@Gear_GreyGloves) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"wear grey gloves from pack")
+}
+
+#IF (@Gear_CobaltRing) {
+  #IF (@Gear_Tornbag) {
+    #IF (%len($exe) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+    $exe=%concat($exe,"wear cobalt ring from tornbag")
+  }
+  #IF (@Gear_Cloak) {
+    #IF (%len($exe) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+    $exe=%concat($exe,"wear cobalt ring from cloak")
+  }
+  #IF (@Gear_Pack) {
+    #IF (%len($exe) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+    $exe=%concat($exe,"wear cobalt ring from pack")
+  }
+}
+
+#IF (@Gear_ShimmeringRing) {
+  #IF (@Gear_Tornbag) {
+    #IF (%len($exe) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+    $exe=%concat($exe,"wear all shimmering ring from tornbag")
+  }
+  #IF (@Gear_Cloak) {
+    #IF (%len($exe) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+    $exe=%concat($exe,"wear all shimmering ring from cloak")
+  }
+  #IF (@Gear_Pack) {
+    #IF (%len($exe) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+    $exe=%concat($exe,"wear all shimmering ring from pack")
+  }
+}
+
+#IF (%ismember(@MyWep_type,"whip|prod|globe")) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"wield @MyWep_type from cloak,wield @MyWep_type from pack,wield whip")
+}
+
+#IF ($wep) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"hold ",$wep,",remove ",$wep)
+}
+
+#IF (@dag) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"wield ",@dag," from cloak,wield ",@dag," from pack,wield dagger,wield ",@dag)
+} {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"wield dagger")
+}
+
+#IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+$exe=%concat($exe,"focus aim,backstab ",$tar)
+
+#IF (@dag) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"put ",@dag," in cloak")
+}
+
+#IF ($wep) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"wield ",$wep,",double wield")
+}
+
+#IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+$exe=%concat($exe,"backstab ",$tar,",kill ",$tar,",shape ",$tar)
+#IF (%pos(",",$exe)) {$exe=%concat("do ",$exe)}
+#IF ($param="-test") {#ECHO 'bs': $EXE
+} {#EXE {$exe}
+}
+} $CLASS
+
+#AL bst {
+$param=%0
+$tar=%lower(@Tar)
+#IF (($param) && ($param!="-test")) {$tar=%lower(%0)}
+$wep=@MyWep_id
+$exe=""
+#IF (@Mounted) {$exe=%concat($exe,"dismount")}
+#IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+$exe=%concat($exe,"hunt ",$tar)
+
+#IF ($wep) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"remove ",$wep)
+}
+#IF (@Gear_GreyGloves) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"wear grey gloves from pack")
+}
+
+#IF (@Gear_CobaltRing) {
+  #IF (@Gear_Tornbag) {
+    #IF (%len($exe) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+    $exe=%concat($exe,"wear cobalt ring from tornbag")
+  }
+  #IF (@Gear_Cloak) {
+    #IF (%len($exe) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+    $exe=%concat($exe,"wear cobalt ring from cloak")
+  }
+  #IF (@Gear_Pack) {
+    #IF (%len($exe) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+    $exe=%concat($exe,"wear cobalt ring from pack")
+  }
+}
+
+#IF (@Gear_ShimmeringRing) {
+  #IF (@Gear_Tornbag) {
+    #IF (%len($exe) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+    $exe=%concat($exe,"wear all shimmering ring from tornbag")
+  }
+  #IF (@Gear_Cloak) {
+    #IF (%len($exe) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+    $exe=%concat($exe,"wear all shimmering ring from cloak")
+  }
+  #IF (@Gear_Pack) {
+    #IF (%len($exe) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+    $exe=%concat($exe,"wear all shimmering ring from pack")
+  }
+}
+
+#IF (@Gear_BandsOfSlaying) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"wear bands from pack")
+}
+
+#IF (@Gear_WarHorn) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"remove mighty war horn,get mighty war horn from pack,blow horn,put mighty war horn in pack,wear mighty war horn")
+}
+
+#IF (@Gear_PashaHorn) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"remove pasha's war horn,blow for strategy,wear pasha's war horn")
+}
+
+#IF (@Gear_Mixie) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"reveal mixed potion,drink mixed potion,conceal mixed potion,drop mixed potion")
+}
+
+#IF (%ismember(@MyWep_type,"whip|prod|globe")) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"wield @MyWep_type from cloak,wield @MyWep_type from pack,wield whip")
+}
+
+#IF ($wep) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"hold ",$wep,",remove ",$wep)
+}
+
+#IF (@dag) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"wield ",@dag," from cloak,wield ",@dag," from pack,wield dagger,wield ",@dag)
+} {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"wield dagger")
+}
+
+#IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+$exe=%concat($exe,"focus aim,backstab ",$tar)
+
+#IF (@dag) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"put ",@dag," in cloak")
+}
+
+#IF ($wep) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"wield ",$wep,",double wield")
+}
+
+#IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+$exe=%concat($exe,"backstab ",$tar,",kill ",$tar,",shape ",$tar)
+
+#IF (%pos(",",$exe)) {$exe=%concat("do ",$exe)}
+#IF ($param="-test") {#ECHO 'bst': $EXE
+} {#EXE {$exe}
+}
+} $CLASS
+
+
+#AL AssOn {
+$param=%0
+$tar=%lower(@Tar)
+#IF (($param) && ($param!="-test")) {$tar=%lower(%0)}
+$wep=@MyWep_id
+$exe=""
+#IF (@Mounted) {$exe=%concat($exe,"dismount")}
+#IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+$exe=%concat($exe,"hunt ",$tar)
+
+#IF ($wep) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"remove ",$wep)
+}
+#IF (@Gear_GreyGloves) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"wear grey gloves from pack")
+}
+
+#IF (@Gear_CobaltRing) {
+  #IF (@Gear_Tornbag) {
+    #IF (%len($exe) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+    $exe=%concat($exe,"wear cobalt ring from tornbag")
+  }
+  #IF (@Gear_Cloak) {
+    #IF (%len($exe) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+    $exe=%concat($exe,"wear cobalt ring from cloak")
+  }
+  #IF (@Gear_Pack) {
+    #IF (%len($exe) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+    $exe=%concat($exe,"wear cobalt ring from pack")
+  }
+}
+
+#IF (@Gear_ShimmeringRing) {
+  #IF (@Gear_Tornbag) {
+    #IF (%len($exe) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+    $exe=%concat($exe,"wear all shimmering ring from tornbag")
+  }
+  #IF (@Gear_Cloak) {
+    #IF (%len($exe) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+    $exe=%concat($exe,"wear all shimmering ring from cloak")
+  }
+  #IF (@Gear_Pack) {
+    #IF (%len($exe) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+    $exe=%concat($exe,"wear all shimmering ring from pack")
+  }
+}
+#IF (@Gear_PantherBoots) {
+  #IF (%len($exe) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"wear wear panther boots from pack")
+}
+#IF ($wep) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"wield ",$wep,"double wield")
+}
+#IF (%len($exe) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+$param=%0
+#IF ($param="-test") {#ECHO 'AssOn': $EXE
+} {#EXE {$exe}
+}
+} $CLASS
+
+#AL assoff {
+ringoff;sss;pkoff
+$exe=""
+$exe="do trigger off,hunt off,focus defense,focus off,put @dag in cloak,put @dag in pack"
+#IF (@Gear_GreyGloves) {$exe=%concat($exe,",put grey gloves in pack")}
+#EXE {$exe}
+} $CLASS
+
+
+#AL trigbs {
+$param=%0
+$tar=%lower(@Tar)
+#IF (($param) && ($param!="-test")) {$tar=%lower(%0)}
+$wep=@MyWep_id
+$exe=""
+#IF (@Mounted) {$exe=%concat($exe,"dismount")}
+#IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+$exe=%concat($exe,"hunt ",$tar)
+
+#IF ($wep) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"remove ",$wep)
+}
+#IF (@Gear_GreyGloves) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"wear grey gloves from pack")
+}
+
+#IF (@Gear_CobaltRing) {
+  #IF (@Gear_Tornbag) {
+    #IF (%len($exe) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+    $exe=%concat($exe,"wear cobalt ring from tornbag")
+  }
+  #IF (@Gear_Cloak) {
+    #IF (%len($exe) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+    $exe=%concat($exe,"wear cobalt ring from cloak")
+  }
+  #IF (@Gear_Pack) {
+    #IF (%len($exe) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+    $exe=%concat($exe,"wear cobalt ring from pack")
+  }
+}
+
+#IF (@Gear_ShimmeringRing) {
+  #IF (@Gear_Tornbag) {
+    #IF (%len($exe) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+    $exe=%concat($exe,"wear all shimmering ring from tornbag")
+  }
+  #IF (@Gear_Cloak) {
+    #IF (%len($exe) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+    $exe=%concat($exe,"wear all shimmering ring from cloak")
+  }
+  #IF (@Gear_Pack) {
+    #IF (%len($exe) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+    $exe=%concat($exe,"wear all shimmering ring from pack")
+  }
+}
+
+#IF (@Gear_BandsOfSlaying) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"wear bands from pack")
+}
+
+#IF (@Gear_WarHorn) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"remove mighty war horn,get mighty war horn from pack,blow horn,put mighty war horn in pack,wear mighty war horn")
+}
+
+#IF (@Gear_PashaHorn) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"remove pasha's war horn,blow for strategy,wear pasha's war horn")
+}
+
+#IF (@Gear_Mixie) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"reveal mixed potion,drink mixed potion,conceal mixed potion,drop mixed potion")
+}
+
+#IF (%ismember(@MyWep_type,"whip|prod|globe")) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"wield @MyWep_type from cloak,wield @MyWep_type from pack,wield whip")
+}
+
+#IF ($wep) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"hold ",$wep,",remove ",$wep)
+}
+
+#IF (@dag) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"wield ",@dag," from cloak,wield ",@dag," from pack,wield dagger,wield ",@dag)
+} {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"wield dagger")
+}
+
+#IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+$exe=%concat($exe,"focus aim,backstab ",$tar)
+
+#IF (@dag) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"put ",@dag," in cloak")
+}
+
+#IF ($wep) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $exe=%concat($exe,"wield ",$wep,",double wield")
+}
+
+#IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+$exe=%concat($exe,"backstab ",$tar,",kill ",$tar,",shape ",$tar)
+
+#IF (%pos(",",$exe)) {$exe=%concat("do ",$exe)}
+$EXE = %concat("trigger ",%proper($tar)," enters todo ",$exe)
+#IF ($param="-test") {#ECHO 'trigbs': $EXE
+} {#EXE {$exe}
+}
+} $CLASS
+
+
+#AL ht {
+hunt %lower(@Tar)
+} $CLASS
+
+#AL hoff {
+hunt off
+} $CLASS
+
+#AL tdpack {
+do get twilight dagger from cloak into pack,put twilight dagger in pack,get twilight dagger into pack,get twilight dagger
+} $CLASS
+
+#AL pwep {
+ss;do drop sac from box,hold @MyWep_id,poison @MyWep_id,get sac into box,drop nightshade poison from box,poison @MyWep_id,get all nightshade poison into box,store @MyWep_id,put all nightshade poison in box,put all sac in box
+} $CLASS
+
+#AL poisonwep {
+ss;do drop sac from box,hold @MyWep_id,poison @MyWep_id,get sac into box,drop nightshade poison from box,poison @MyWep_id,get all nightshade poison into box,store @MyWep_id,put all nightshade poison in box,put all sac in box
+} $CLASS
+
+#AL ggon {
+wear grey gloves from pack
+} $CLASS
+
+#AL bootson {
+wear boots from pack
+} $CLASS
+
+#AL bootsoff {
+do remove boots,put boots in pack
+} $CLASS
+
+
+#AL tht {
+$tar=%lower(@Tar)
+#IF (%0) {$tar=%lower(%0)}
+$action="hunt"
+$exe=%concat("trigger ",%proper($tar)," todo ",$action," ",$tar)
+#EXE {$exe}
+} $CLASS
+
+#AL trighunt {
+$tar=%lower(@Tar)
+#IF (%0) {$tar=%lower(%0)}
+trigger %proper($tar) todo hunt $tar
+} $CLASS
+
+#AL tht2 {
+$tar=%lower(@Tar2)
+#IF (%0) {$tar=%lower(%0)}
+$action="hunt"
+$exe=%concat("trigger ",%proper($tar)," todo ",$action," ",$tar)
+#EXE {$exe}
+} $CLASS
+
+#AL PDag {ss;do drop sac from box,get @dag from pack,get @dag from cloak,poison @dag with sac,get sac into box,drop nightshade poison from box,poison @dag with nightshade,get all nightshade poison into box,put @dag in cloak,put @dag in pack,put all nightshade poison in box,put all sac in box
+} $CLASS
+
+
+#AL daoff {
+disguise align off
+} $CLASS
+
+#AL dang {
+disguise align angelic
+} $CLASS
+
+#AL darch {
+disguise prof archer
+} $CLASS
+
+#AL drang {
+disguise prof ranger
+} $CLASS
+
+#AL deorl {
+disguise race eorling
+} $CLASS
+
+#AL ddun {
+disguise race dunlending
+} $CLASS
+
+#AL dthief {
+disguise prof thief
+} $CLASS
+
+#AL dwar {
+disguise prof warrior
+} $CLASS
+
+#AL dmoral {
+disguise align moral
+} $CLASS
+
+#AL disdune {
+Disguisedunedain
+} $CLASS
+
+#AL disdun {
+Disguisedunlending
+} $CLASS
+
+#AL disang {
+Disguiseangelic
+} $CLASS
+
+#AL disdem {
+Disguisedemonic
+} $CLASS
+
+
+#AL dshad {
+disguise align shadowspawn
+} $CLASS
+
+#AL ddem {
+disguise align demonic
+} $CLASS
+
+#AL ddune {
+disguise race dunedain
+} $CLASS
+
+#AL dwiz {
+disguise prof wizard
+} $CLASS
+
+#CLASS 0
