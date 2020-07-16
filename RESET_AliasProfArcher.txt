@@ -1,0 +1,117 @@
+#CLASS 0
+$CLASS = "Tools|Alias|Prof_Archer"
+
+#AL sv {
+ss;do sling bow,salvage from corpse,salvage from corpse 2,salvage from corpse 3,2salvage,fletch all,i quiver,i quiver 2;ws
+} $CLASS
+
+#AL sal {
+ss;do sling bow,salvage from corpse,salvage from corpse 2,salvage from corpse 3,salvage from corpse 4,4salvage,fletch all,i,i quiver,i quiver 2
+} $CLASS
+
+#AL iq {
+do i quiver,i quiver 2
+} $CLASS
+
+
+#AL selhand {
+select handcrafted arrow
+} $CLASS
+
+#AL selmal {
+select mallorn arrow
+} $CLASS
+
+#AL kik {
+kickback
+} $CLASS
+
+#AL mu {
+multinock
+} $CLASS
+
+#AL mk {
+do multinock,kickback
+} $CLASS
+
+#AL selpit {
+select pitched arrow
+} $CLASS
+
+#AL selbr {
+select broadhead arrow
+} $CLASS
+
+#AL seliv {
+select ivory arrow
+} $CLASS
+
+#AL selmith {
+select mithril arrow
+} $CLASS
+
+#AL selelven {
+select elven arrow
+} $CLASS
+
+
+
+#AL mallin {
+do get all mallorn arrow into quiver,get all mallorn arrow into quiver 2
+} $CLASS
+
+#AL broadin {
+do get all broadhead arrow into quiver,get all broadhead arrow into quiver 2
+} $CLASS
+
+#AL q12 {
+do get all mithril arrow from quiver 1 into quiver 2,get all mallorn arrow from quiver 1 into quiver 2,get all broadhead arrow from quiver 1 into quiver 2,get all steel arrow from quiver 1 into quiver 2
+} $CLASS
+
+#AL q31 {
+do get all mithril arrow from quiver 3 into quiver 1,get all mallorn arrow from quiver  3 into quiver 1,get all broadhead arrow from quiver 3 into quiver 1,get all steel arrow from quiver 3 into quiver 1
+} $CLASS
+
+#AL q13 {
+do get all mithril arrow from quiver 1 into quiver 3,get all mallorn arrow from quiver 1 into quiver 3,get all broadhead arrow from quiver 1 into quiver 3,get all steel arrow from quiver 1 into quiver 3
+} $CLASS
+
+#AL q32 {
+do get all mithril arrow from quiver 3 into quiver 2,get all mallorn arrow from quiver  3 into quiver 2,get all broadhead arrow from quiver 3 into quiver 2,get all steel arrow from quiver 3 into quiver 2
+} $CLASS
+
+#AL h2q2 {
+get all handcrafted arrow from quiver into quiver 2
+} $CLASS
+
+#AL q21 {
+do get all mithril arrow from quiver 2 into quiver 1,get all mallorn arrow from quiver 2 into quiver 1,get all broadhead arrow from quiver 2 into quiver 1,get all steel arrow from quiver 2 into quiver 1
+} $CLASS
+
+#AL q2in {
+get all arrow into quiver 2
+} $CLASS
+
+#AL handout {
+do drop all handcrafted arrow from quiver,drop all handcrafted arrow from quiver 2,drop all handcrafted arrow
+} $CLASS
+
+#AL arrowin {
+do put all arrow in quiver,put all arrow in quiver 2,get all mithril arrow into quiver,get all elven arrow into quiver,get all mallorn arrow into quiver,get all broadhead arrow into quiver,get all arrow into quiver,get all arrow into quiver 2
+} $CLASS
+
+#AL arrowout {
+do drop all handcrafted arrow from quiver,drop all handcrafted arrow from quiver 2
+} $CLASS
+
+#AL trigarchga {
+trigger has died. todo do sling bow,5salvage,salvage from corpse,salvage from corpse 2,salvage from corpse 3,salvage from corpse 4,salvage from corpse 5,fletch all,wield bow,nock arrow,draw bow,i,party hp,get all from corpse into wagon 2,get all from corpse into wagon,get all from corpse into panniers,get all from corpse into bags,get all from corpse 2 into wagon 2,get all from corpse 2 into wagon,get all from corpse 2 into panniers,get all from corpse 2 into bags,get all from corpse into pack,get all from corpse 2 into pack,get all from corpse,get all from corpse 2,get all into wagon,get all into wagon 2,get all into panniers,get all into bags,get all into pack,get all,drop all corpse
+} $CLASS
+
+#AL trigarch {
+trigger has died. todo do 2salvage,salvage from corpse,salvage from corpse 2,fletch all,wield bow,nock arrow,draw bow,i quiver,party hp
+} $CLASS
+
+
+
+#CLASS 0
