@@ -1,0 +1,16 @@
+$list="dis|mura|hwarg|normm|mura1|mura2|callmura|callsaki|ho|hhor|hh4|hh3|hh2|hh|mm|homo|mo|mo1|homo1|mo2|homo2|homo3|mo3|ho1|ho2|ho1mo|ho1mo1|ho1mo2|homo4|homo5|homo6|homo7|homo8|homo9|ho1mo3|ho1mo4|ho1mo5|ho1mo6|ho1mo7|ho1mo9|mo4|mo5|mo6|mo7|mo8|mo9|callmount|movemo|gosp|ho3|mo0|movemor1|ho1mo0|homo0|mon|leadmon|lmon|harwag|unharwag|mountstat|unmm"
+
+$folder="Mounts"
+
+$file = %concat("//RESET_",%upper($folder),%cr,"#CLASS 0",%cr,%cr)
+$location_class = %concat("TOOLS|Alias|",$folder)
+$alias=""
+
+#FORALL $list {
+  $alias = %alias(%i)
+  $alias = %concat("#AL ",%i," {",%cr,$alias,%cr,"} ",$location_class)
+  $alias = %concat($alias,%cr,%cr)
+  $file = %concat($file,$alias)
+}
+$file = %concat($file,%cr,%cr,%cr,"#CLASS 0")
+#AL RESET_Alias_Mounts {$file} _SYSTEM_INIT|RESET_TOOLS|TOOLS_Alias
