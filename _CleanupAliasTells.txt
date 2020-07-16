@@ -1,0 +1,16 @@
+$list="van|vad|tei|rine|jos|hex|fbfindtar|tor|sek|tit|ara|dor|dohz|cen|cet|adr|bra|ceren|hus|jav|thr|boh|mar|dryd|lui|coc|luit|rui|spft|sca|thi|kum|enc|rag|ith|jon|erb|cer|dara|calis|helluva|isen|bau|don|jel|yuber|gwa|gt|ath|holt|meric|etr|luc|ill|car|phi|haek|jelo|ryk|jyn|rel|sea|man|nef|big|est|jy|dol|rok|ger|camuz|auc|arif|azz|mhak|tmam|ater|phd|spr|dryden|sekft|sekft2|sekft3|sft|sft2|vft|pihaek|rep|chr|tbrook|tung|khai|r|shaka|tmiz|vra|vol"
+
+$folder="Tells"
+
+$file = %concat("//RESET_",%upper($folder),%cr,"#CLASS 0",%cr,%cr)
+$location_class = %concat("TOOLS|Alias|",$folder)
+$alias=""
+
+#FORALL $list {
+  $alias = %alias(%i)
+  $alias = %concat("#AL ",%i," {",%cr,$alias,%cr,"} ",$location_class)
+  $alias = %concat($alias,%cr,%cr)
+  $file = %concat($file,$alias)
+}
+$file = %concat($file,%cr,%cr,%cr,"#CLASS 0")
+#AL RESET_Alias_Tells {$file} _SYSTEM_INIT|RESET_TOOLS|TOOLS_Alias
