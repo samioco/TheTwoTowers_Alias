@@ -1,0 +1,221 @@
+#CLASS 0
+$CLASS = "Tools|Alias|Tells"
+
+#AL r {
+tell %lower(@lastteller) %0
+} $CLASS
+
+#AL rep {
+tell %lower(@lastteller) %0
+} $CLASS
+
+#AL auc {
+$faction=@{%concat(@MyName,"_Faction")}
+#IF ($faction=FR) {tell alexa %0} {tell eamon %0}
+} $CLASS
+
+#AL van {
+tell vance %0
+} $CLASS
+
+#AL vad {
+tell vadry %0
+} $CLASS
+
+#AL tei {
+tell teion %0
+} $CLASS
+
+#AL rine {
+tell rinehart %0
+} $CLASS
+
+#AL jos {
+tell josef %0
+} $CLASS
+
+#AL hex {
+tell hexane %0
+} $CLASS
+
+#AL sek {
+tell seksitilip %0
+} $CLASS
+
+#AL tit {
+tell titetero %0
+} $CLASS
+
+#AL ara {
+tell arador %0
+} $CLASS
+
+#AL bra {
+tell bramoukh %0
+} $CLASS
+
+#AL thr {
+tell thrash %0
+} $CLASS
+
+#AL dryd {
+tell dryden %0
+} $CLASS
+
+#AL coc {
+tell coconut %0
+} $CLASS
+
+#AL sca {
+tell scarlett %0
+} $CLASS
+
+#AL kum {
+tell kumquat %0
+} $CLASS
+
+#AL erb {
+tell erbo %0
+} $CLASS
+
+#AL bau {
+tell bauruk %0
+} $CLASS
+
+#AL don {
+tell donald %0
+} $CLASS
+
+#AL jel {
+tell jeloponik %0
+} $CLASS
+
+#AL gwa {
+tell gwarth %0
+} $CLASS
+
+#AL ill {
+tell illumi %0
+} $CLASS
+
+#AL car {
+tell carinthia %0
+} $CLASS
+
+#AL phi {
+tell phinks %0
+} $CLASS
+
+#AL haek {
+tell haekon %0
+} $CLASS
+
+#AL jelo {
+tell jeloponik %0
+} $CLASS
+
+#AL ryk {
+tell rykker %0
+} $CLASS
+
+#AL jyn {
+tell jynx %0
+} $CLASS
+
+#AL sea {
+tell seairina %0
+} $CLASS
+
+#AL man {
+tell manko %0
+} $CLASS
+
+#AL jy {
+tell jynx %0
+} $CLASS
+
+#AL rok {
+tell rok %0
+} $CLASS
+
+#AL mhak {
+tell mhaksatrei %0
+} $CLASS
+
+#AL tmam {
+tell mammoth %0
+} $CLASS
+
+#AL ater {
+tell ateralus %0
+} $CLASS
+
+#AL phd {
+tell phngdar %0
+} $CLASS
+
+#AL spr {
+tell spryx %0
+} $CLASS
+
+#AL dryden {
+tell dryden %0
+} $CLASS
+
+#AL sekft {
+tell seksitilip find @Tar
+} $CLASS
+
+#AL sekft2 {
+tell seksitilip find @Tar2
+} $CLASS
+
+#AL sekft3 {
+tell seksitilip find @Tar3
+} $CLASS
+
+#AL sft {
+tell seksitilip find @Tar
+} $CLASS
+
+#AL sft2 {
+tell seksitilip find @Tar2
+} $CLASS
+
+#AL vft {
+tell vance find @Tar
+} $CLASS
+
+#AL chr {
+tell chrollo %0
+} $CLASS
+
+#AL tbrook {
+tell brooklyn %0
+} $CLASS
+
+#AL tung {
+tell tungku %0
+} $CLASS
+
+#AL khai {
+tell khairun %0
+} $CLASS
+
+#AL shaka {
+tell shakalaka %0
+} $CLASS
+
+#AL tmiz {
+tell mizan %0
+} $CLASS
+
+#AL vra {
+tell vraerius %0
+} $CLASS
+
+#AL vol {
+tell volzchklov %0
+} $CLASS
+
+#CLASS 0
