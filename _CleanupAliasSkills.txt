@@ -1,0 +1,17 @@
+$list="upr|upall|unsh|unall|tron|troff|tickfaim|sht|shall|shah|sha|sh|sa|rh|prot|pr|ll|leg|ht|hbt|foff|foc|findtar|fdod|fdef|fatt|faim|llt|findtar2|findtar3|hoff|legtar2|legtar3|daoff|dang|dshad|sbt|legtar|ev|tlt|tickfdod|ktar|selhand|selmal|kik|mu|mk|selpit|selbr|ddem|seliv|kt|es|legt|legt2|ddune|trigstr|trigstr2|findt|findt2|ft|ft2|darch|drang|deorl|ddun|cl|ch|dthief|trigmmailkey|trigmmaillocket|hb|tkt|unpr|dwar|unp|dmoral|trapdd|shb|con|dwiz|healmyhp|healmyep|tcl|dark|cdark|lite|clite|lev|clev|disem|legtq|legta|legq|lega|mast|fb|zap|legt3|findt3|fishtrig|daze|legtop|shivt|shm|gobusy|selmith|selelven|cs|hep|hhp|cure|kpit|kmu|tch|sac|legtopact|legtopexp|wc|busywc|PROFATK|bbt|bark|at|bm|bo|am|b|campbrand|ca|campall|c|bt|h|tfb|tft|thb|thbt|trigtr|trigtrample|tshiv|tshivt|ttr|twctr|tbt|k|g|sv|sal|fbt|tpkt|tst|trig|trigarch|trigarchga|trigbleed|trigbs|trigclick|trigfb|trigga|trighunt|tright|tright2|trigkill|triglook|triglt|trigrent|trigstab|trigsteal|trigstealheal|trigwc|trigy|trigyl|trigywc|tsteal|tstrike|tht|tht2|disdune|disdun|disang|disdem|cw|PROF_COUNTER|PROF_COUNTER_TRIGGER|PROFATK_TRIGGER"
+
+
+$folder="Skills"
+
+$file = %concat("//RESET_",%upper($folder),%cr,"#CLASS 0",%cr,%cr)
+$location_class = %concat("TOOLS|Alias|",$folder)
+$alias=""
+
+#FORALL $list {
+  $alias = %alias(%i)
+  $alias = %concat("#AL ",%i," {",%cr,$alias,%cr,"} ",$location_class)
+  $alias = %concat($alias,%cr,%cr)
+  $file = %concat($file,$alias)
+}
+$file = %concat($file,%cr,%cr,%cr,"#CLASS 0")
+#AL RESET_Alias_Skills {$file} _SYSTEM_INIT|RESET_TOOLS|TOOLS_Alias
