@@ -1,0 +1,76 @@
+#CLASS 0
+$CLASS = "Tools|Alias|Prof_Thief"
+
+#AL amon {
+do wear all golden amulet from cloak,wear all golden amulet from pack
+} $CLASS
+
+#AL amoff {
+do put all amulet in cloak,put all amulet in pack
+} $CLASS
+
+#AL thiefstart {
+do wear all amulet from box,get black dagger from box,tag all
+} $CLASS
+
+#AL thefton {
+do 2wear golden amulet from cloak,2wear golden amulet from pack;paleon;do wear thin band from cloak,wear thin band from pack
+} $CLASS
+
+#AL theftoff {
+paleoff;do put thin band in cloak,put thin band in pack,2put golden amulet in cloak,2put golden amulet in pack
+} $CLASS
+
+#AL at {
+appraise troll
+} $CLASS
+
+#AL bm {
+steal all gold from man
+} $CLASS
+
+#AL bo {
+steal all gold from orc
+} $CLASS
+
+#AL am {
+appraise man
+} $CLASS
+
+#AL sa {
+$EXE = "steal all gold from"
+#IF (%0) {$EXE = %concat($exe," ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL tsteal {
+$tar=""
+#IF (@Tar) {$tar=%lower(@Tar)}
+#IF (%0) {$tar=%lower(%0)}
+trigger %proper($tar) todo steal all gold from %lower($tar)
+} $CLASS
+
+
+#AL trigmmailkey {
+trigger plain black key todo steal plain black key from
+} $CLASS
+
+#AL trigmmaillocket {
+$tar=%proper(@Tar);#IF (%0) {$tar=%proper(%0)}
+trigger locket todo steal plain black key from $tar
+} $CLASS
+
+#AL trigsteal {
+$tar=%lower(@Tar)
+#IF (%0) {$tar=%lower(%0)}
+trigger %proper($tar) todo steal all gold from $tar
+} $CLASS
+
+#AL trigstealheal {
+$tar=%lower(@Tar)
+#IF (%0) {$tar=%lower(%0)}
+trigger %proper($tar) opens todo steal draught from $tar
+} $CLASS
+
+
+#CLASS 0
