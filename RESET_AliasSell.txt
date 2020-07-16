@@ -1,0 +1,213 @@
+#CLASS 0
+$CLASS = "Tools|Alias|Sell"
+
+#AL SellAll {
+$exe="sell all"
+$mywag=@MyWagon
+$numwags=0
+#IF (@Gear_PeltString) {$exe=%concat("sell all from pelt string,",$exe)}
+#IF (@Gear_Pack) {$exe=%concat("sell all from pack,",$exe)}
+#IF (@Gear_Panniers) {$exe=%concat("sell all from panniers,",$exe)}
+#IF (@Gear_Saddlebags) {$exe=%concat("sell all from saddlebags,",$exe)}
+#IF (@Gear_Wagon) {#ADD $numwags 1;$exe=%concat("sell all from ",$mywag,",",$exe)}
+#IF (%pos(",",$exe)) {$exe=%concat("do ",$exe)}
+#EXE {$exe}
+} $CLASS
+
+#AL SALL {SellAll} $CLASS
+
+#AL partysell {
+#IF (%ismember(@MyFaction,"servant|ER")) {
+  disguise align off
+  #WALK kadshop
+  sall
+  #IF (@Gear_PartyWagons) {
+    #FORALL @Gear_PartyWagons {w;get all from %i into @MyWagon;e;sall}
+  }
+} {
+  #WALK pelsmith;wepsell
+  #WALK pelarm;sall
+  #IF (@Gear_PartyWagons) {
+    #FORALL @Gear_PartyWagons {
+      #WALK pelclock;get all from %i into @MyWagon
+      #WALK pelsmith;wepsell
+      #WALK pelarm;sall
+    }
+  }
+}
+} $CLASS
+
+#AL wepsell {
+$exe=""
+#VAR MyContainers {} {} VAR
+#IF (@Gear_Pack) {#ADDI MyContainers "pack"}
+#IF (@Gear_Panniers) {#ADDI MyContainers "panniers"}
+#IF (@Gear_Saddlebags) {#ADDI MyContainers "saddlebags"}
+#IF (@Gear_Wagon) {#ADDI MyContainers @MyWagon}
+#IF (@Gear_PartyWagons) {#FORALL @Gear_PartyWagons {#ADDI MyContainers %i}}
+SysMsg Selling all from containers: @Gear_MyContainers
+#FORAll @Gear_MyContainers {
+  #FORALL @Gear_WeaponTypes {
+    #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+    $exe=%concat($exe,"sell all ",%j," from ",%i)
+  }
+  #IF (%pos(",",$exe)) {$exe=%concat("do ",$exe)}
+  #EXE {$exe}
+  $exe=""
+}
+sell all
+} $CLASS
+
+
+#AL pelsell {
+#IF (@MyFaction="FR") {
+  #WALK pelsmith;wepsell;#WALK pelarm;sall
+  #IF (@Gear_PartyWagons) {
+    #FORALL @Gear_PartyWagons {
+      #WALK pelclock
+      get all from %i into @MyWagon
+      #WALK pelsmith;wepsell;#WALK pelarm;sall
+    }
+  }
+}
+} $CLASS
+
+#AL kadsell {
+#IF (%ismember(@MyFaction,"servant|ER")) {
+  #IF (!%ismember(@MyPublicAlign,@Alignments_Immoral)) {disguise align off}
+  #WALK kadshop
+}
+sall
+#IF (@Gear_PartyWagons) {
+  #FORALL @Gear_PartyWagons {w;get all from %i into @MyWagon;e;sall}
+}
+} $CLASS
+
+#AL dgsell {
+$exe=""
+#IF (%ismember(@MyFaction,"servant|ER")) {
+  #IF (!%ismember(@MyPublicAlign,@Alignments_Evil)) {disguise align off}
+  #WALK dgshop
+  sall
+  #IF (@Gear_PartyWagons) {
+    #FORALL @Gear_PartyWagons {
+      #WALK dgfork;get all from %i into @MyWagon
+      #WALK dgshop;sall
+    }
+  }
+}
+} $CLASS
+
+
+#AL sgsell {
+#IF (@MyFaction="FR") {pelsell} {kadsell}
+} $CLASS
+
+#AL belsell {
+#WALK belshop;sall
+} $CLASS
+
+#AL Breesell {
+#WALK Breeshop;sall
+} $CLASS
+
+#AL cusell {
+#WALK cushop;sall
+} $CLASS
+
+#AL dalesell {
+#WALK daleshop;sall
+} $CLASS
+
+#AL dhsell {
+#WALK dhshop;sall
+} $CLASS
+
+#AL dunsell {
+#WALK dunshop;sall
+} $CLASS
+
+#AL edosell {
+#WALK edowep;sall
+#WALK edoshop;sall
+#IF (@Gear_PartyWagons) {
+  #FORALL @Gear_PartyWagons {
+    #WALK edoshop_out;get all from %i into @MyWagon
+    #WALK edowep;sall
+    #WALK edoshop;sall
+  }
+}
+} $CLASS
+
+#AL esgsell {
+#WALK esgshop;sall
+} $CLASS
+
+#AL gvsell {
+#WALK gvshop;sall
+} $CLASS
+
+#AL hobsell {
+#WALK hobshop;sall
+} $CLASS
+
+#AL khsell {
+#WALK khshop;sall
+} $CLASS
+
+#AL linsell {
+ss;gall;frsell;pelheal;qq
+} $CLASS
+
+#AL Lothsell {
+#WALK Lothshop;sall
+} $CLASS
+
+#AL mmsell {
+#WALK mmshop;sall
+} $CLASS
+
+#AL osgsell {
+#WALK osgshop;sall
+} $CLASS
+
+#AL outsell {
+#WALK outshop;sall
+} $CLASS
+
+#AL rivsell {
+#WALK rivshop;sall
+} $CLASS
+
+#AL tarsell {
+#WALK tarshop;sall
+} $CLASS
+
+#AL tavsell {
+#WALK tavshop;sall
+} $CLASS
+
+#AL Thransell {
+#WALK Thranshop;sall
+#IF (@Gear_PartyWagons) {
+  #FORALL @Gear_PartyWagons {
+    #WALK Thrangate;get all from %i into @MyWagon;#WALK Thranshop;sall
+  }
+}
+} $CLASS
+
+#AL tursell {
+#WALK turshop;sall
+} $CLASS
+
+#AL azraksell {
+#WALK azrakshop;sall
+} $CLASS
+
+#AL udsell {
+#WALK udshop;sall
+} $CLASS
+
+
+
+#CLASS 0
