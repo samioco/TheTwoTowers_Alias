@@ -1,0 +1,16 @@
+$list="orcpath4|orcpath3|orcpath2|orcpath1|orcp4|orcp3|orcp2|orcp1|custairsup|custairsdown|boatso|boatno|boate|boatw|boatn|boats|landn|landw|lands|lande|launchs|launchn|launchw|launche|gomybox|gocar|gomumak|gopit|gomu|gobeast|ocp1|ocp2|ocp3|ocp4|gomob"
+
+$folder="Movement"
+
+$file = %concat("//RESET_",%upper($folder),%cr,"#CLASS 0",%cr,%cr)
+$location_class = %concat("TOOLS|Alias|",$folder)
+$alias=""
+
+#FORALL $list {
+  $alias = %alias(%i)
+  $alias = %concat("#AL ",%i," {",%cr,$alias,%cr,"} ",$location_class)
+  $alias = %concat($alias,%cr,%cr)
+  $file = %concat($file,$alias)
+}
+$file = %concat($file,%cr,%cr,%cr,"#CLASS 0")
+#AL RESET_Alias_Movement {$file} _SYSTEM_INIT|RESET_TOOLS|TOOLS_Alias
