@@ -1,0 +1,139 @@
+#CLASS 0
+$CLASS = "Tools|Alias|Prof_Wizard"
+
+#AL Barkskin {
+#CLASS 0
+#VAR Barkskin {%number(%0)} {} VAR
+#UNT Barkskin_Timer
+#IF (@Barkskin>=20) {
+  SysMsg Barkskin time left:  @Barkskin seconds.
+  #ALA Barkskin_Timer {*20} {
+    #MATH Barkskin  @Barkskin-20
+    SysMsg Barkskin time left:  @Barkskin seconds.
+    #IF (@Barkskin<=0) {#UNT Barkskin_Timer}
+  }
+}
+#CLASS 0
+} $CLASS
+
+#AL showbark {
+SysMsg << Barkskin time left:  @Barkskin seconds. >>
+} $CLASS
+
+#AL showBarkskin {
+SysMsg << Barkskin time left:    @Barkskin seconds. >>
+} $CLASS
+
+#AL bark {
+cast Barkskin
+} $CLASS
+
+#AL lev {
+$EXE = "cast levitate"
+#IF (%0) {$EXE = %concat($exe," at ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL clev {
+$EXE = "cease levitate"
+#IF (%0) {$EXE = %concat($exe," at ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL cl {
+$EXE = "cast lightning"
+#IF (%0) {$EXE = %concat($exe," at ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL fb {
+$EXE = "cast fireball"
+#IF (%0) {$EXE = %concat($exe," at ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL fbt {
+$EXE = "cast fireball"
+#IF (@Tar) {$EXE = %concat($exe," at ",%lower(@Tar))}
+#EXE {$exe}
+} $CLASS
+
+
+#AL daze {
+$EXE = "cast daze"
+#IF (%0) {$EXE = %concat($exe," on ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL trigstr {
+$tar=""
+#IF (@Tar) {$tar=%proper(@Tar)}
+#IF (%0) {$tar=%proper(%0)}
+trigger %proper($tar) todo strike %lower($tar)
+} $CLASS
+
+#AL tstrike {
+$tar=%lower(@Tar)
+#IF (%0) {$tar=%lower(%0)}
+$exe=%concat("trigger ",%proper($tar)," todo do draw runed staff,wield runed staff,hold ",@MyWep_id,",strike ",$tar)
+#EXE {$exe}
+} $CLASS
+
+#AL trigstr2 {
+$tar=""
+#IF (@Tar2) {$tar=%proper(@Tar2)}
+#IF (%0) {$tar=%proper(%0)}
+trigger %proper($tar) todo strike %lower($tar)
+} $CLASS
+
+#AL tst {
+$exe=%concat("trigger ",%proper(@Tar)," todo do draw runed staff,wield runed staff,hold ",@wep,",strike ",%lower(@Tar))
+#EXE {$exe}
+} $CLASS
+
+
+
+#AL tfb {
+$tar=""
+//#IF (@Tar) {$tar=%proper(@Tar)}
+#IF (%0) {$tar=%lower(%0)}
+$EXE = "trigger Y todo cast fireball"
+#IF ($tar) {$EXE = %concat($exe," ",%lower($tar))}
+#EXE {$exe}
+} $CLASS
+
+#AL tfbt {
+$tar=""
+#IF (@Tar) {$tar=%lower(@Tar)}
+#IF (%0) {$tar=%lower(%0)}
+$EXE = %concat("trigger ",%proper($tar)," todo cast fireball")
+#IF ($tar) {$EXE = %concat($exe," ",%lower($tar))}
+#EXE {$exe}
+} $CLASS
+
+#AL trigfb {
+$tar=""
+#IF (@Tar) {$tar=%proper(@Tar)}
+#IF (%0) {$tar=%proper(%0)}
+$EXE = %concat("trigger ",%proper($tar)," todo cast fireball")
+#IF ($tar) {$EXE = %concat($exe," ",%lower($tar))}
+#EXE {$exe}
+} $CLASS
+
+#AL tcl {
+$tar=""
+#IF (%0) {$tar=%lower(%0)}
+$EXE = "trigger Y todo cast lightning"
+#IF ($tar) {$EXE = %concat($exe," ",%lower($tar))}
+#EXE {$exe}
+} $CLASS
+
+#AL tclt {
+$tar=""
+#IF (@Tar) {$tar=%proper(@Tar)}
+$EXE = %concat("trigger ",%proper($tar)," todo cast lightning")
+#IF ($tar) {$EXE = %concat($exe," ",$tar)}
+#EXE {$exe}
+} $CLASS
+
+#CLASS 0
