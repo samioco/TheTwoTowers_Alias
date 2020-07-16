@@ -1,0 +1,16 @@
+$list="tellclick|tar2|poisontd|poisonwep|tar3|bst|asson|assoff|chtar|bst2|bst1|bs|tar|strad|stab|st1|st2|t1|t2|t3|st3|mmbed"
+
+$folder="PVP"
+
+$file = %concat("//RESET_",%upper($folder),%cr,"#CLASS 0",%cr,%cr)
+$location_class = %concat("TOOLS|Alias|",$folder)
+$alias=""
+
+#FORALL $list {
+  $alias = %alias(%i)
+  $alias = %concat("#AL ",%i," {",%cr,$alias,%cr,"} ",$location_class)
+  $alias = %concat($alias,%cr,%cr)
+  $file = %concat($file,$alias)
+}
+$file = %concat($file,%cr,%cr,%cr,"#CLASS 0")
+#AL RESET_Alias_PVP {$file} _SYSTEM_INIT|RESET_TOOLS|TOOLS_Alias
