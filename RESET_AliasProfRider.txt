@@ -1,0 +1,45 @@
+#CLASS 0
+$CLASS = "Tools|Alias|Prof_Rider"
+
+#AL wc {
+warcry
+} $CLASS
+
+#AL busywc {
+wimpy;trigger Y todo do gold,warcry,party hp
+} $CLASS
+
+#AL trig_trample_warcry {
+$tar = ""
+#IF (@Tar) {$tar = %lower(@Tar)}
+#IF (%0) {$tar = %lower(%0)}
+$action="do warcry,trample"
+$exe=%concat("trigger ",%proper($tar)," todo ",$action," ",%lower($tar))
+#EXE {$exe}
+} $CLASS
+
+#AL trigtr {
+trig_trample_warcry
+} $CLASS
+
+#AL ttr {
+trig_trample_warcry
+} $CLASS
+
+#AL twctr {
+trig_trample_warcry
+} $CLASS
+
+#AL twtr {
+trig_trample_warcry
+} $CLASS
+
+#AL trigwc {
+trigger Y todo warcry
+} $CLASS
+
+#AL trigywc {
+trigger Y todo warcry
+} $CLASS
+
+#CLASS 0
