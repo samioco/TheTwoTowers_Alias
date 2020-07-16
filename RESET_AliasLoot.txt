@@ -1,0 +1,273 @@
+#CLASS 0
+$CLASS = "Tools|Alias|Loot"
+
+#AL GetAllFromGround {
+#VAR EXE {} {} VAR
+#FORALL @Gear_PartyWagons {
+  AddToEXE %concat("get all into ",%i,",get all into ",%i)
+}
+#IF (@Gear_Wagon) {
+  AddToEXE "get all into %lower(@MyWagon),get all into %lower(@MyWagon)"
+}
+#IF (@Gear_Saddlebags) {
+  AddToEXE "get all into saddlebags"
+}
+#IF (@Gear_Panniers) {
+  AddToEXE "get all into panniers"
+}
+#IF (@Gear_Pack) {
+  AddToEXE "get all into pack"
+  #IF (@Gear_Wagon) {
+    AddToEXE "get all from pack into %lower(@MyWagon)"
+  }
+  #IF (@Gear_Saddlebags) {
+    AddToEXE "get all from pack into saddlebags"
+  }
+  #IF (@Gear_Panniers) {
+    AddToEXE "get all from pack into panniers"
+  }
+}
+#SW (%pos("nohands",%lower(%0))) {
+  AddToEXE "get gold"
+} {
+  AddToEXE "get all,get gold"
+}
+AddToEXE "drop all corpse"
+#IF (%lower(@MyProf)!="archer") {AddToEXE "drop all arrow"}
+#IF (%pos(%lower("NoEXE"),%lower(%0))) {
+  ShowEXE
+} {
+  ExecuteEXE
+}
+} $CLASS
+
+#AL GetAllFromCorpse {
+$NoEXE=""
+$corpse="corpse"
+#IF (%isnumber(%1) && (%number(%1)!=1)) {$corpse=%concat("corpse ",%1)}
+#VAR EXE {} {} VAR
+#FORALL @Gear_PartyWagons {
+  AddToEXE %concat("get all from ",$corpse," into ",%i,",get all into ",%i)
+}
+#IF (@Gear_Wagon) {
+  AddToEXE %concat("get all from ",$corpse," into ",%lower(@MyWagon))
+}
+#IF (@Gear_Saddlebags) {
+  AddToEXE %concat("get all from ",$corpse," into saddlebags")
+}
+#IF (@Gear_Panniers) {
+  AddToEXE %concat("get all from ",$corpse," into panniers")
+}
+#IF (@Gear_Pack) {
+  AddToEXE %concat("get all from ",$corpse," into pack")
+  #IF (@Gear_Wagon) {
+    AddToEXE "get all from pack into %lower(@MyWagon)"
+  }
+  #IF (@Gear_Saddlebags) {
+    AddToEXE "get all from pack into saddlebags"
+  }
+  #IF (@Gear_Panniers) {
+    AddToEXE "get all from pack into panniers"
+  }
+}
+#SW ((%pos("nohands",%lower(%0))) || (%pos("no hands",%lower(%0)))) {
+  AddToEXE %concat("get gold from ",$corpse)
+} {AddToEXE %concat("get all from ",$corpse)}
+AddToEXE "get gold"
+#IF (%lower(@MyProf)!="archer") {AddToEXE %concat(",drop all arrow")}
+#IF (%pos(%lower("NoEXE"),%lower(%0))) {
+  ShowEXE
+} {
+  ExecuteEXE
+}
+} $CLASS
+
+#AL GAC {GetAllFromCorpse %0} $CLASS
+
+#AL GetAll {
+#VAR EXE {} {} VAR
+$corpses=1
+$nohands=""
+$noEXE=""
+#IF (%pos(%lower("NoHands"),%lower(%0))) {$nohands="NoHands"}
+#IF (%pos(%lower("NoEXE"),%lower(%0))) {$noEXE="NoEXE"}
+#IF (%isnumber(%word(%0,1))) {$corpses=%number(%word(%0,1))}
+//#ECHO GetAll Params: %0
+//#ECHO GetAll nohands: $nohands
+//#ECHO GetAll corpses: $corpses
+#LOOP 1,$corpses {
+  #VAR EXE {} {} VAR
+  AddToEXE %concat("GetAllFromCorpse ",%i," ",$nohands," ",$NoEXE)
+  #EXE {@EXE}
+}
+#IF (!$NoEXE) {#VAR EXE {} {} VAR}
+AddToEXE %concat("GetAllFromGround"," ",$nohands," ",$NoEXE)
+#EXE {@EXE}
+} $CLASS
+
+#AL GA {#IF (%0) {GetAll %0} {GetAll}} $CLASS
+#AL AL {#IF (%0) {GetAll %0} {GetAll}} $CLASS
+#AL GAL {#IF (%0) {GetAll %0} {GetAll}} $CLASS
+#AL GALL {#IF (%0) {GetAll %0} {GetAll}} $CLASS
+
+#AL GetAllNoHands {
+$corpses=1
+$noEXE=""
+#IF (%pos(%lower("NoEXE"),%lower(%0))) {$noEXE="NoEXE"}
+#IF (%isnumber(%word(%0,1))) {$corpses=%number(%word(%0,1))}
+#VAR EXE {} {} VAR
+AddToEXE %concat("GetAll ",$corpses," NoHands"," ",$NoEXE)
+#IF ($NoEXE) {ShowEXE} {ExecuteEXE}
+} $CLASS
+
+#AL GANH {GetAllNoHands %0} $CLASS
+#AL GANoHands {GetAllNoHands %0} $CLASS
+
+#AL Pelt {
+$noEXE=""
+#IF (%pos(%lower("NoEXE"),%lower(%0))) {$noEXE="NoEXE"}
+PeltAll 1 $NoEXE
+} $CLASS
+
+#AL PeltAll {
+$loop = 5
+$corpse = "corpse"
+$noEXE=""
+#IF (%pos(%lower("NoEXE"),%lower(%0))) {$noEXE="NoEXE"}
+#IF ((%isnumber(%word(%0,1))) && (%number(%word(%0,1))>=1)) {$loop = %number(%word(%0,1))}
+#VAR EXE {} {} VAR
+#LOOP $loop {
+  AddToEXE %concat("skin corpse ",%i,",attach pelt to pelt string")
+  #IF (@Mounted) {
+    AddPreEXE "dismount"
+    AddToEXE %concat("mount ",%lower(@MyMount))
+  }
+}
+AddToEXE "drop all pelt"
+//#VAR EXE {} {} VAR
+#FORALL @Gear_PartyWagons {
+  AddToEXE %concat("get all pelt into ",%i,",get all into ",%i)
+}
+#IF (@Gear_Wagon) {
+  AddToEXE "get all pelt into %lower(@MyWagon),get all into %lower(@MyWagon)"
+}
+#IF (@Gear_Saddlebags) {
+  AddToEXE "get all pelt into saddlebags"
+}
+#IF (@Gear_Panniers) {
+  AddToEXE "get all pelt into panniers"
+}
+#IF (@Gear_Pack) {
+  AddToEXE "get all pelt into pack"
+  #IF (@Gear_Wagon) {
+    AddToEXE "get all from pack into %lower(@MyWagon)"
+  }
+  #IF (@Gear_Saddlebags) {
+    AddToEXE "get all from pack into saddlebags"
+  }
+  #IF (@Gear_Panniers) {
+    AddToEXE "get all from pack into panniiers"
+  }
+}
+#IF ($NoEXE) {ShowEXE} {ExecuteEXE}
+} $CLASS
+
+#AL PeltGA {
+PeltAll %0
+GetAll %0
+} $CLASS
+
+
+#AL TrigGA {
+GetAllFromCorpse "NoEXE"
+$EXE = @EXE
+GetAllFromGround "NoEXE"
+AddPreEXE $EXE
+ShowEXE
+
+#VAR EXE {%concat("trigger has died. todo do ",@EXE)} {} VAR
+ShowEXE
+#EXE {@EXE}
+} $CLASS
+
+#AL TrigPelt {
+Pelt 1 "NoEXE"
+$EXE = @EXE
+GetAllFromCorpse "NoEXE"
+$EXE=%concat($EXE,",",@EXE)
+GetAllFromGround "NoEXE"
+$EXE=%concat($EXE,",",@EXE)
+#VAR EXE {$EXE} {} VAR
+#IF (@Mount) {AddPreEXE "dismount"}
+#IF (@MyProf="rider") {AddToEXE "mount %lower(@MyMount)"}
+#VAR EXE {%concat("trigger has died. todo do ",@EXE)} {} VAR
+#EXE {@EXE}
+} $CLASS
+
+
+#AL idleloot {
+trigger slowly fades into the mist, out of view. todo do get all into @MyWagon wagon,wear all from ground,get all into pack,get all
+} $CLASS
+
+#AL trigidle {
+$tar=""
+#IF (@Tar) {$tar=%proper(@Tar)}
+#IF (%0) {$tar=%proper(%0)}
+trigger $tar has idled too long. todo do wear all from ground,get all into @MyWagon,get all into pack,get all
+} $CLASS
+
+
+#AL va {
+$EXE = "value all"
+#IF (%0) {$EXE = %concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+#AL vap {
+$EXE = "value all from pack"
+#IF (%0) {$EXE = %concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+#AL vaw {
+$EXE = "value all from wagon"
+#IF (%0) {$EXE = %concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+#AL vab {
+$EXE = "value all from saddlebags"
+#IF (%0) {$EXE = %concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+#AL vas {
+$EXE = "value all from pelt string"
+#IF (%0) {$EXE = %concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+
+#AL dc {
+$EXE = "drop all from corpse"
+#IF (%0) {$EXE = %concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+#AL sap {
+$EXE = "sell all from pack"
+#IF (%0) {$EXE = %concat($EXE," ",%0)}
+#EXE {$EXE}
+} $CLASS
+
+
+#AL PeltIn {
+PeltAll %0
+} $CLASS
+
+#AL pts {
+attach pelt to string
+} $CLASS
+
+
+#CLASS 0

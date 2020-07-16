@@ -1,0 +1,318 @@
+#CLASS 0
+$CLASS = "Tools|Alias|Mounts"
+
+#AL mm {
+$mount=%lower(%trim(@MyMount))
+#IF (%0) {$mount=%concat($mount," ",%0)}
+$str=""
+#IF (%ismember(%roomid,@ROOMS_Hitchposts_ID)) {$str=%concat("do unhitch ",$mount,",")}
+$str=%concat($str,"mount ",$mount)
+#EXE {$str}
+} $CLASS
+
+#AL MountPrep {
+$prof=%lower(@MyProf)
+#IF ($prof="rider") {#IF (!@Mounted) {mm}} {#IF (@Mounted) {dismount}}
+} $CLASS
+
+#AL MountCheck {
+#IF (@MyProf="rider") {#IF (!@Mounted) {mm}} {#IF (@Mounted) {dismount}}
+} $CLASS
+
+#AL hh {
+$mount=%lower(@MyMount)
+$str=""
+#IF (%0) {$str=%concat("do dismount,lead,hitch ",$mount,",unharness wagon from ",$mount,",harness wagon to ",$mount," ",%0,",unhitch ",$mount," ",%0,",ride ",$mount," ",%0)
+} {$str=%concat("do dismount,hitch ",$mount)}
+#EXE {$str}
+} $CLASS
+
+#AL hh2 {
+do dismount,lead,hitch @MyMount,unharness wagon from @MyMount,harness wagon to @MyMount 2,unhitch @MyMount 2,ride @MyMount 2
+} $CLASS
+
+#AL hh3 {
+do dismount,lead,hitch @MyMount,unharness wagon from @MyMount,harness wagon to @MyMount 3,unhitch @MyMount 3,ride @MyMount 3
+} $CLASS
+
+#AL hh4 {
+do dismount,lead,hitch @MyMount,unharness wagon from @MyMount,harness wagon to @MyMount 4,unhitch @MyMount 4,ride @MyMount 4
+} $CLASS
+
+#AL dis {
+$EXE = "dismount"
+#IF (%0) {$EXE = %concat($exe," ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL mura {
+do dismount,unhitch mura,mount mura
+} $CLASS
+
+#AL hwarg {
+do dismount,hitch warg
+} $CLASS
+
+#AL normm {
+#VAR MyMount {%lower(%concat(@MyNamePossessive," horse"))} {} VAR;mm
+} $CLASS
+
+#AL mura1 {
+do dismount,unhitch mura1,mount mura1
+} $CLASS
+
+#AL mura2 {
+do unhitch mura2,ride mura2
+} $CLASS
+
+#AL callmura {
+mount call mura
+} $CLASS
+
+#AL callsaki {
+mount call saki
+} $CLASS
+
+#AL ho {
+do dismount,unhitch ho,ride ho
+} $CLASS
+
+#AL hhor {
+do dismount,hitch horse
+} $CLASS
+
+#AL homo {
+$str=%concat("do dismount,lead,unhitch ",@MyMount,",ride ",@MyMount,",lead mo")
+} $CLASS
+
+#AL mo {
+#VAR curmon {"mo"} {} VAR;do dismount,ride mo,lunge ;mm
+} $CLASS
+
+#AL mo0 {
+#VAR curmon {"mo0"} {} VAR;do dismount,ride mo0,lunge ;mm
+} $CLASS
+
+#AL mo1 {
+#VAR curmon {"mo1"} {} VAR;do dismount,ride mo1,lunge ;mm
+} $CLASS
+
+#AL mo2 {
+#VAR curmon {"mo2"} {} VAR;do dismount,ride mo2,lunge ;mm
+} $CLASS
+
+#AL mo3 {
+#VAR curmon {"mo3"} {} VAR;do dismount,ride mo3,lunge ;mm
+} $CLASS
+
+#AL mo4 {
+#VAR curmon {"mo4"} {} VAR;do dismount,ride mo4,lunge ;mm
+} $CLASS
+
+#AL mo5 {
+#VAR curmon {"mo5"} {} VAR;do dismount,ride mo5,lunge ;mm
+} $CLASS
+
+#AL mo6 {
+#VAR curmon {"mo6"} {} VAR;do dismount,ride mo6,lunge ;mm
+} $CLASS
+
+#AL mo7 {
+#VAR curmon {"mo7"} {} VAR;do dismount,ride mo7,lunge ;mm
+} $CLASS
+
+#AL mo8 {
+#VAR curmon {"mo8"} {} VAR;do dismount,ride mo8,lunge ;mm
+} $CLASS
+
+#AL mo9 {
+#VAR curmon {"mo9"} {} VAR;do dismount,ride mo9,lunge ;mm
+} $CLASS
+
+#AL ho1 {
+do dismount,unhitch ho1,ride ho1
+} $CLASS
+
+#AL ho2 {
+do dismount,unhitch ho2,ride ho2
+} $CLASS
+
+#AL homo1 {
+$str=%concat("do dismount,lead,unhitch ",@MyMount,",ride ",@MyMount,",lead mo1")
+} $CLASS
+
+#AL homo2 {
+$str=%concat("do dismount,lead,unhitch ",@MyMount,",ride ",@MyMount,",lead mo2")
+} $CLASS
+
+#AL homo3 {
+$str=%concat("do dismount,lead,unhitch ",@MyMount,",ride ",@MyMount,",lead mo3")
+} $CLASS
+
+#AL homo4 {
+$str=%concat("do dismount,lead,unhitch ",@MyMount,",ride ",@MyMount,",lead mo4")
+} $CLASS
+
+#AL homo5 {
+$str=%concat("do dismount,lead,unhitch ",@MyMount,",ride ",@MyMount,",lead mo5")
+} $CLASS
+
+#AL homo6 {
+$str=%concat("do dismount,lead,unhitch ",@MyMount,",ride ",@MyMount,",lead mo6")
+} $CLASS
+
+#AL homo7 {
+$str=%concat("do dismount,lead,unhitch ",@MyMount,",ride ",@MyMount,",lead mo7")
+} $CLASS
+
+#AL homo8 {
+do dismount,lead,unhitch @MyMount,ride @MyMount,lead mo8
+} $CLASS
+
+#AL homo9 {
+do dismount,lead,unhitch @MyMount,ride @MyMount,lead mo9
+} $CLASS
+
+#AL ho1mo {
+do dismount,lead,unhitch ho1,ride ho1,lead mo
+} $CLASS
+
+#AL ho1mo1 {
+do dismount,lead,unhitch ho1,ride ho1,lead mo1
+} $CLASS
+
+#AL ho1mo2 {
+do dismount,lead,unhitch ho1,ride ho1,lead mo2
+} $CLASS
+
+
+
+#AL ho1mo3 {
+do dismount,lead,unhitch ho1,ride ho1,lead mo3
+} $CLASS
+
+#AL ho1mo4 {
+do dismount,lead,unhitch ho1,ride ho1,lead mo4
+} $CLASS
+
+#AL ho1mo5 {
+do dismount,lead,unhitch ho1,ride ho1,lead mo5
+} $CLASS
+
+#AL ho1mo6 {
+do dismount,lead,unhitch ho1,ride ho1,lead mo6
+} $CLASS
+
+#AL ho1mo7 {
+do dismount,lead,unhitch ho1,ride ho1,lead mo7
+} $CLASS
+
+#AL ho1mo9 {
+do dismount,lead,unhitch ho1,ride ho1,lead mo9
+} $CLASS
+
+
+
+#AL CallMount {
+mount call %lower(@MyMount)
+} $CLASS
+
+#AL MoveMo {
+$origin=%roomnum;$dest="";$numwargs=0;$cmd="";$go_dest=""
+$mon=@Gear_MonstrousWarg;
+#IF (%0) {
+  #SW (%1="r1") {$dest=@r1} (%1="r2") {$dest=@r2} {$dest=%1}
+  #IF (%2) {$numwargs=%2} {$numwargs=3}
+  #SW (%ismember($dest,@Directions)) {$go_dest=$dest} ($dest) {$go_dest=%concat("#WALK ",$dest)}
+  LeadMon;
+  #EXE {$go_dest}
+  lead
+  #LOOP 1,$numwargs {
+    #WALK $origin
+    #EXE {%concat("lead ",$mon,%i)}
+    #EXE {$go_dest}
+    lead
+  }
+}
+} $CLASS
+
+#AL GoSP {
+#IF (@LastSP) {#WALK  @LastSP};#IF ((!@Mounted) AND (@Mount)) {mm}
+} $CLASS
+
+#AL ho3 {
+do dismount,unhitch ho3,ride ho3
+} $CLASS
+
+#AL movemor1 {
+r2;$dir = @r1
+//$oppdir = ""
+$cmd=""
+homo;gor1;lead;gor2
+#LOOP 0,9 {$cmd=%concat("homo",%i);#EXE {$cmd};gor1;lead;gor2}
+gor1
+} $CLASS
+
+#AL ho1mo0 {
+do dismount,lead,unhitch ho1,ride ho1,lead mo0
+} $CLASS
+
+#AL homo0 {
+$str=%concat("do dismount,lead,unhitch ",@MyMount,",ride ",@MyMount,",lead mo0")
+} $CLASS
+
+#AL Mon {
+#VAR EXE {} {} VAR
+$MyMount=%lower(%trim(@MyMount))
+$myMon=%lower(%trim(@MonstrousWarg))
+#IF (!$myMon) {$myMon="monstrous warg"}
+$target=""
+#IF (%lower("NoEXE")!=%lower(%0)) {$target=%lower(%0)}
+$lunge="lunge"
+#IF ($target) {$lunge=%concat("lunge ",$target)}
+AddToEXE %concat("dismount,mount ",$myMon,",",$lunge)
+AddToEXE %concat("dismount,mount ",$MyMount)
+#IF (%pos(%lower("NoEXE"),%lower(%0))) {
+  ShowEXE
+} {
+  ExecuteEXE
+}
+} $CLASS
+
+#AL LeadMon {
+$mount=%lower(%trim(%concat(@MonstrousWarg," ",%0)))
+lead $mount
+} $CLASS
+
+#AL lmon {
+look monstrous warg
+} $CLASS
+
+#AL harwag {
+$mount=%lower(%trim(%concat(@MyMount," ",%0)))
+$str=%concat("do dismount,unhitch ",$mount,",harness wagon to ",$mount,",mount ",$mount)
+#EXE {$str}
+} $CLASS
+
+#AL packpan {
+$mount=%lower(%trim(%concat(@MyMount," ",%0)))
+$str=%concat("do dismount,unhitch ",$mount,",pack ",$mount,",packtag panniers")
+#EXE {$str}
+} $CLASS
+
+#AL unharwag {
+do dismount,unharness wagon from  %trim(%lower(@MyMount))
+} $CLASS
+
+#AL mountstat {
+SysMsg Mount: @MyMount, Monstrous: @Gear_MonstrousWarg
+} $CLASS
+
+#AL unmm {
+unhitch %lower(@MyMount)
+} $CLASS
+
+
+
+
+#CLASS 0
