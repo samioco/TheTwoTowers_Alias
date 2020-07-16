@@ -1,0 +1,72 @@
+#CLASS 0
+$CLASS = "Tools|Alias|PVP"
+
+#AL tar {
+#VAR tar {%proper(%0)} {} VAR
+#ECHO Target set to: @Tar
+} $CLASS
+
+#AL tar2 {
+#VAR tar2 {%proper(%0)} {} VAR
+#ECHO Target2 set to: @Tar2
+} $CLASS
+
+#AL chtar {
+$tar1=@Tar
+$tar2=@Tar2
+$tar_temp = $tar1
+$tar1=$tar2;$tar2=$tar_temp
+#VAR tar {%proper($tar1)} {} VAR
+#VAR tar2 {%proper($tar2)} {} VAR
+} $CLASS
+
+#AL poisontd {
+ss;do get twilight dagger from cloak,get twilight dagger from pack,get vial of nightshade poison from box,poison twilight dagger,2put vial in box,put twilight dagger in cloak
+} $CLASS
+
+#AL poisonwep {
+ss;do drop sac from box,hold @MyWep_id,poison @MyWep_id,get sac into box,drop nightshade poison from box,poison @MyWep_id,get all nightshade poison into box,store @MyWep_id,put all nightshade poison in box,put all sac in box
+} $CLASS
+
+#AL tpkt {
+$prof=@MyProf;$action=""
+#SW ($prof=warrior) {$action=headbutt} ($prof=sniffer) {$action=shiv} ($prof=ranger) {$action=feint} ($prof=rider) {$action="do warcry,trample"} {$action=kill}
+$exe=%concat("trigger ",@Tar," todo ",$action," ",%lower(@Tar))
+#EXE {$exe}
+} $CLASS
+
+#AL strad {
+do steal shirt from @Tar,steal gauntlets from @Tar,steal pants from @Tar,steal shirt from @Tar
+} $CLASS
+
+#AL st1 {
+#VAR st1 {%proper(%0)} {} VAR;#ECHO Steal from Target Variable ST1: @st1
+} $CLASS
+
+#AL st2 {
+#VAR st2 {%proper(%0)} {} VAR;#ECHO Steal from Target Variable ST2: @st2
+} $CLASS
+
+#AL st3 {
+#VAR st3 {%proper(%0)} {} VAR;#ECHO Steal from Target Variable ST3: @st3
+} $CLASS
+
+#AL t1 {
+steal @st1 from %lower(@Tar)
+} $CLASS
+
+#AL t2 {
+steal @st2 from %lower(@Tar)
+} $CLASS
+
+#AL t3 {
+steal @st3 from %lower(@Tar)
+} $CLASS
+
+#AL tellclick {
+$tar = %lower(@Tar)
+#IF (%0) {$tar = %lower(%0)}
+tell $tar You hear a clicking sound
+} $CLASS
+
+#CLASS 0
