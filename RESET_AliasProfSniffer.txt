@@ -1,0 +1,23 @@
+#CLASS 0
+$CLASS = "Tools|Alias|Prof_Sniffer"
+
+#AL shivt {
+shiv %lower(@Tar)
+} $CLASS
+
+#AL tshiv {
+$tar = ""
+#IF (%0) {$tar = %lower(%0)}
+trigger Y todo shiv %lower($tar)
+} $CLASS
+
+#AL tshivt {
+$tar = ""
+#IF (@Tar) {$tar = %lower(@Tar)}
+#IF (%0) {$tar = %lower(%0)}
+$action="shiv"
+$exe=%concat("trigger ",%proper($tar)," todo ",$action," ",%lower($tar))
+#EXE {$exe}
+} $CLASS
+
+#CLASS 0
