@@ -1,0 +1,156 @@
+#CLASS 0
+$CLASS = "Tools|Alias|Movement"
+
+#AL KOG {
+#SW (%ismember(@MyFaction,"ER|servant")) {2knock on gate
+} (%roomid="Morgate") {say @MordorPW} {#STOP;#ABORT}
+} $CLASS
+
+#AL GG {
+#WALK %0
+} $CLASS
+
+#AL orcpath4 {
+do 5w,sw,w,4sw,ne,nw,2n,nw,2n,nw,ne,n,nw;TE Isen
+} $CLASS
+
+#AL orcpath3 {
+do se,4e,se,5e,se,s,se,s;TE fourway
+} $CLASS
+
+#AL orcpath2 {
+do sw,s,2se,2s,se,2s,2n,nw,2n,nw,ne,n,nw
+} $CLASS
+
+#AL orcpath1 {
+do sw,3w,2s,se,s,n,nw,n,ne,2e,ne
+} $CLASS
+
+#AL orcp4 {
+orcpath4
+} $CLASS
+
+#AL orcp3 {
+orcpath3
+} $CLASS
+
+#AL orcp2 {
+orcpath2
+} $CLASS
+
+#AL orcp1 {
+orcpath1
+} $CLASS
+
+#AL custairsup {
+#25 {se;ne;u}
+} $CLASS
+
+#AL custairsdown {
+#25 {sw;nw;d}
+} $CLASS
+
+#AL boatso {
+do dismount,board boat,launch s;#MO s
+} $CLASS
+
+#AL boatno {
+do dismount,board boat,launch n;#MO n
+} $CLASS
+
+#AL boate {
+do dismount,board boat,launch e;#MO e
+} $CLASS
+
+#AL boatw {
+do dismount,board boat,launch w;#MO w
+} $CLASS
+
+#AL boatn {
+do dismount,board boat,launch n;#MO n
+} $CLASS
+
+#AL boats {
+do dismount,board boat,launch s;#MO s
+} $CLASS
+
+#AL landn {
+do land n,disembark;#MO n
+} $CLASS
+
+#AL landw {
+do land w,disembark;#MO W
+} $CLASS
+
+#AL lands {
+do land s,disembark;#MO S
+} $CLASS
+
+#AL lande {
+do land e,disembark;#MO E
+} $CLASS
+
+#AL launchs {
+do dismount,drop boat,board boat,launch s;#MO s
+} $CLASS
+
+#AL launchn {
+do dismount,drop boat,board boat,launch n;#MO N
+} $CLASS
+
+#AL launchw {
+do dismount,drop boat,board boat,launch w;#MO w
+} $CLASS
+
+#AL launche {
+do dismount,drop boat,board boat,launch e;#MO e
+} $CLASS
+
+#AL GoMyBox {
+SysMsg Walking to MyBox at RoomID: @MyBox
+#WALK @MyBox
+} $CLASS
+
+#AL gocar {
+SysMsg Walking to caravan, RoomNum: @caravan
+#WALK @caravan
+} $CLASS
+
+#AL gomumak {
+SysMsg Walking to mumak, RoomNum: @mumak;#WALK @mumak
+} $CLASS
+
+#AL gopit {
+#WALK @pitcreature
+} $CLASS
+
+#AL gomu {
+SysMsg Walking to mumak, RoomNum: @mumak;#WALK @mumak
+} $CLASS
+
+#AL gobeast {
+SysMsg Walking to beast, RoomNum:  @Harondor_Beast;#WALK  @Harondor_Beast
+} $CLASS
+
+#AL ocp1 {
+do sw,3w,2s,se,s,n,nw,n,ne,2e,ne
+} $CLASS
+
+#AL ocp2 {
+do sw,s,2se,2s,se,2s,2n,nw,2n,nw,ne,n,nw
+} $CLASS
+
+#AL ocp3 {
+do se,4e,se,5e,se,s,se,s;TE fourway
+} $CLASS
+
+#AL ocp4 {
+do 5w,sw,w,4sw,ne,nw,2n,nw,2n,nw,ne,n,nw;TE isen
+} $CLASS
+
+#AL gomob {
+#WALK  @CurRoom
+} $CLASS
+
+
+#CLASS 0
