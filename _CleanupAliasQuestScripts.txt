@@ -1,0 +1,16 @@
+$list="stschest|sspass1|sspass|shadowsword1a|skintroll|shadowsword1|sara1|sac1|rhuneastercamp|pelemplatepel|pelboatemplate|pbs2|pbs1|panniers4|panniers3|panniers2|panniers1|onyx3|onyx2|moribucket|mmcloak|mmailin|mazetools|mazepick|mazegems|makecm|lhbsout|lantern3|lantern2|lantern1|getsparkey|getsara|getgreycloak|geteshield|getddm|ethflower|esvial3|esvial2|esvial1|dws3|dws2|dws1|dsh1|drl6|drl5|drl4|dolman1|deswag|ddmfangs|dazetoad|dazesnake|dazelizard|dazebat|cmchisel|checkflet|checkbota|mmgetsac|geticestaff|radiant1|radiant2|radiant3|radiant4|cls1|cls2|dharloot|getglowbrace|kadcloakin|kadcloakout|lintow|lothbow|lothbow1|mtgetcs|mtrobvault|pelerboatemerald|pelerboatemeraldsp|rhunamb1|rhunamb2|rhunamb3|thranbow|thiefamulet1|ghaloot|cmboulder|cmcutgem|cmgems|pelclock|linperm|lintop|skinhogs|makemoon|mil2out|lothforage|pelship|healcorclothes|pelshipsearch|shipup|shipd|shipu|ships|ship1|ship2|amcar|drl|drl1|drlpath2|drlpath1|drlpath3"
+
+$folder="QuestScripts"
+
+$file = %concat("//RESET_",%upper($folder),%cr,"#CLASS 0",%cr,%cr)
+$location_class = %concat("TOOLS|Alias|",$folder)
+$alias=""
+
+#FORALL $list {
+  $alias = %alias(%i)
+  $alias = %concat("#AL ",%i," {",%cr,$alias,%cr,"} ",$location_class)
+  $alias = %concat($alias,%cr,%cr)
+  $file = %concat($file,$alias)
+}
+$file = %concat($file,%cr,%cr,%cr,"#CLASS 0")
+#AL RESET_Alias_QuestScripts {$file} _SYSTEM_INIT|RESET_TOOLS|TOOLS_Alias
