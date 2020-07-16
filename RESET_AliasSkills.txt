@@ -1,0 +1,435 @@
+#CLASS 0
+$CLASS = "Tools|Alias|Skills"
+
+#AL k {
+kill %0
+} $CLASS
+
+#AL g {
+glance %0
+} $CLASS
+
+#AL ProfAttack {
+$prof=%lower(@MyProf)
+$level=%number(@MyTrueLevel)
+$action="";$skill="";$exe="";$target=""
+#VAR EXE {} {} VAR
+#IF (%0) {$target=%0}
+#SW ($prof="necromancer") {
+  $skill=@{%concat(@MyName,"_Necromancy")}
+  $action="leech"
+  #IF ($target) {$action=%concat($action," ",$target)}
+} ($prof="wizard") {
+  $skill=@{%concat(@MyName,"_Control_Magic")}
+  $action="cast fireball"
+  #IF ($target) {$action=%concat($action," at ",$target)}
+} ($prof="warrior") {
+  $skill=@{%concat(@MyName,"_Tactics")}
+  $action="headbutt"
+  #IF ($target) {$action=%concat($action," ",$target)}
+} ($prof="archer") {
+  $skill=@{%concat(@MyName,"_Archery")}
+  $action="do multinock,kickback"
+  #IF ($target) {$action=%concat($action," ",$target)}
+} (($prof="rider") && (@Party)) {
+  $action="warcry"
+  $skill=@{%concat(@MyName,"_Motivation")}
+} (($prof="rider") && (@Mount)) {
+  //MountPrep
+  $action="trample"
+  #IF ($target) {$action=%concat($action," ",$target)}
+  $skill=@{%concat(@MyName,"_Mounted_Combat")}
+} ($prof="ranger") {$action="feint"
+  #IF ($target) {$action=%concat($action," ",$target)}
+  $skill=@{%concat(@MyName,"_Natures_Grace")}
+} ($prof="sniffer") {
+  $action="shiv"
+  #IF ($target) {$action=%concat($action," ",$target)}
+  $skill=@{%concat(@MyName,"_Butchery")}}
+//#ECHO prof: $prof, skill: $skill, exe: $action
+#IF (($skill>=50) && ($level>=10) && ((%mud.ep>%mud.hp) || (@Party && (%mud.ep>@MyMaxHP*1/2)))) {
+  #IF ((@Party) && (@PartyLeader!=@MyName)) {
+    $wait=%random(1,3)*1000
+    #WAIT $wait
+  }
+  #IF ((%ismember(@MyProf,@casters)) && (@trigger) && (%ismember(%lower(@TriggerText),"y|guard|archer"))) {trigger off}
+  #IF (@Grinder && ($prof="rider") && (%ismember(%lower(%roomid()),%lower(@GrinderNoMountRooms)))) {
+    OtherAttack
+  } {
+    #EXE {$action}
+  }
+}
+} $CLASS
+
+#AL ProfAtk {ProfAttack} $CLASS
+
+#AL OtherAttack {
+$otherSkills=%lower(@{%concat(@MyName,"_OtherSkills")})
+$myTactics=%lower(@{%concat(@MyName,"_Tactics")})
+$myButchery=%lower(@{%concat(@MyName,"_Butchery")})
+$myNaturesGrace=%lower(@{%concat(@MyName,"_Natures_Grace")})
+#SW ((%ismember(%lower("Tactics"),$otherSkills)) && ($myTactics>50)) {3headbutt
+} ((%ismember(%lower("Butchery"),$otherSkills)) && ($myButchery>50)) {3shiv
+} ((%ismember(%lower("Nature's grace"),$otherSkills)) && ($myNaturesGrace>50)) {3feint}
+
+} $CLASS
+
+#AL bbt {
+$tar = %lower(@Tar)
+do headbutt $tar,ram $tar,punch $tar,headbutt $tar,ram $tar,punch $tar
+} $CLASS
+
+#AL b {
+$exe=""
+$prof=%lower(@{%concat(@MyName,"_TrueProfession")})
+$tar = ""
+#IF (%0) {$tar = %lower(%0)}
+#SW ($prof="thief") {$EXE = "steal all gold from"
+} ($prof="warrior") {$EXE = "headbutt"
+} ($prof="wizard") {$EXE = "cast fireball";#IF (%0) {$EXE = %concat($exe," at")}
+} ($prof="necromancer") {$EXE = "leech"
+} ($prof="ranger") {$EXE = "feint"
+} ($prof="sniffer") {$EXE = "shiv"
+} ($prof="rider") {$EXE = "trample"
+} ($prof="archer") {$EXE = "do multinock,kickback"
+} ($prof="assassin") {$EXE = "headbutt"
+}
+#IF ($tar) {$EXE = %concat($exe," ",$tar)}
+#EXE {$exe}
+} $CLASS
+
+
+
+#AL bt {
+$exe=""
+$prof=%lower(@{%concat(@MyName,"_TrueProfession")})
+$tar = ""
+#IF (@Tar) {$tar = %lower(@Tar)}
+#SW ($prof="thief") {$EXE = "steal all gold from"
+} ($prof="warrior") {$EXE = "headbutt"
+} ($prof="wizard") {$EXE = "cast fireball";#IF (%0) {$EXE = %concat($exe," at")}
+} ($prof="necromancer") {$EXE = "leech"
+} ($prof="ranger") {$EXE = "feint"
+} ($prof="sniffer") {$EXE = "shiv"
+} ($prof="rider") {$EXE = "trample"
+} ($prof="archer") {$EXE = "do multinock,kickback"
+} ($prof="assassin") {$EXE = "headbutt"
+}
+#IF ($tar) {$EXE = %concat($exe," ",$tar)}
+#EXE {$exe}
+} $CLASS
+
+
+#AL ProfCounter {
+$prof=%lower(@{%concat(@MyName,"_TrueProfession")})
+$level=%number(@{%concat(@MyName,"_TrueLevel")})
+$action="";$skill="";$exe="";$target="";#IF (%0) {$target=%0}
+#SW ($prof="necromancer") {$skill=@{%concat(@MyName,"_Warp_Magic")};$action="conjure arrow";#IF ($target) {$action=%concat($action," at ",$target)}
+} ($prof="wizard") {$skill=@{%concat(@MyName,"_Control_Magic")};$action="counter";#IF ($target) {$action=%concat($action," ",$target)}
+} ($prof="warrior") {$skill=@{%concat(@MyName,"_Tactics")};$action="headbutt";#IF ($target) {$action=%concat($action," ",$target)}
+} ($prof="archer") {$skill=@{%concat(@MyName,"_Archery")};$action="do multinock,kickback";#IF ($target) {$action=%concat($action," ",$target)}
+} ($prof="rider") {#IF (@Party) {$action="warcry";$skill=@{%concat(@MyName,"_Motivation")}} {#IF ((@Mount) AND (!@Mounted)) {mm};$action="trample";#IF ($target) {$action=%concat($action," ",$target)};$skill=@{%concat(@MyName,"_Mounted_Combat")}}
+} ($prof="ranger") {$action="feint";#IF ($target) {$action=%concat($action," ",$target)};$skill=@{%concat(@MyName,"_Natures_Grace")}
+} ($prof="sniffer") {$action="shiv";#IF ($target) {$action=%concat($action," ",$target)};$skill=@{%concat(@MyName,"_Butchery")}}
+//#ECHO prof: $prof, skill: $skill, exe: $action
+
+#IF (($skill>=50) AND (%mud.ep>(@{%concat(@MyName,"_MaxEP")}*2/3)) AND ($level>=10)) {
+  #IF ((@Party) AND (@PartyLeader!=@MyName)) {$wait=%random(1,3)*1000;#WAIT $wait}
+  #IF ((%ismember(@MyProf,@casters)) AND (@trigger) AND (%ismember(%lower(@TriggerText),"y|guard|archer"))) {trigger off};#EXE {$action}
+  }
+} $CLASS
+
+#AL ProfCountertrigger {
+$prof=%lower(@{%concat(@MyName,"_TrueProfession")})
+$level=%number(@{%concat(@MyName,"_TrueLevel")})
+$action="";$skill="";$exe=""
+$TriggerText="Y";#IF (%1) {$TriggerText=%1}
+$target="";#IF (%2) {$target=%lower(%2)}
+#SW ($prof="necromancer") {$skill=@{%concat(@MyName,"_Warp_Magic")};$action="conjure arrow";#IF ($target) {$action=%concat($action," at ",$target)}
+} ($prof="wizard") {$skill=@{%concat(@MyName,"_Control_Magic")};$action="counter";#IF ($target) {$action=%concat($action," ",$target)}
+} ($prof="warrior") {$skill=@{%concat(@MyName,"_Tactics")};$action="headbutt";#IF ($target) {$action=%concat($action," ",$target)}
+} ($prof="archer") {$skill=@{%concat(@MyName,"_Archery")};$action="do multinock,kickback";#IF ($target) {$action=%concat($action," ",$target)}
+} ($prof="rider") {#IF (@Party) {$action="warcry";$skill=@{%concat(@MyName,"_Motivation")}} {#IF ((@Mount) AND (!@Mounted)) {mm};$action="trample";#IF ($target) {$action=%concat($action," ",$target)};$skill=@{%concat(@MyName,"_Mounted_Combat")}}
+} ($prof="ranger") {$action="feint";#IF ($target) {$action=%concat($action," ",$target)};$skill=@{%concat(@MyName,"_Natures_Grace")}
+} ($prof="sniffer") {$action="shiv";#IF ($target) {$action=%concat($action," ",$target)};$skill=@{%concat(@MyName,"_Butchery")}}
+//#ECHO prof: $prof, skill: $skill, exe: $action
+$trigger = %concat("trigger ",$TriggerText," todo ",$action)
+#IF (($skill>=50) AND (%mud.ep>(@{%concat(@MyName,"_MaxEP")}*2/3)) AND ($level>=10)) {
+  #IF ((@Party) AND (@PartyLeader!=@MyName)) {$wait=%random(1,3)*1000;#WAIT $wait}
+  #EXE {$trigger}
+}
+} $CLASS
+
+#AL PROFATK_trigger {
+$prof=%lower(@{%concat(@MyName,"_TrueProfession")})
+$level=%number(@{%concat(@MyName,"_TrueLevel")})
+$action="";$skill="";$exe=""
+$TriggerText="Y";#IF (%1) {$TriggerText=%1}
+$target="";#IF (%2) {$target=%lower(%2)}
+#SW ($prof="necromancer") {$skill=@{%concat(@MyName,"_Necromancy")};$action="leech";#IF ($target) {$action=%concat($action," ",$target)}
+} ($prof="wizard") {$skill=@{%concat(@MyName,"_Control_Magic")};$action="cast fireball";#IF ($target) {$action=%concat($action," at ",$target)}
+} ($prof="warrior") {$skill=@{%concat(@MyName,"_Tactics")};$action="headbutt";#IF ($target) {$action=%concat($action," ",$target)}
+} ($prof="archer") {$skill=@{%concat(@MyName,"_Archery")};$action="do multinock,kickback";#IF ($target) {$action=%concat($action," ",$target)}
+} ($prof="rider") {#IF (@Party) {$action="warcry";$skill=@{%concat(@MyName,"_Motivation")}} {#IF ((@Mount) AND (!@Mounted)) {mm};$action="trample";#IF ($target) {$action=%concat($action," ",$target)};$skill=@{%concat(@MyName,"_Mounted_Combat")}}
+} ($prof="ranger") {$action="feint";#IF ($target) {$action=%concat($action," ",$target)};$skill=@{%concat(@MyName,"_Natures_Grace")}
+} ($prof="sniffer") {$action="shiv";#IF ($target) {$action=%concat($action," ",$target)};$skill=@{%concat(@MyName,"_Butchery")}}
+//#ECHO prof: $prof, skill: $skill, exe: $action
+$trigger = %concat("trigger ",$TriggerText," todo ",$action)
+#IF (($skill>=50) AND (%mud.ep>(@{%concat(@MyName,"_MaxEP")}*2/3)) AND ($level>=10)) {
+  #IF ((@Party) AND (@PartyLeader!=@MyName)) {$wait=%random(1,3)*1000;#WAIT $wait}
+  #EXE {$trigger}
+}
+} $CLASS
+
+
+
+#AL h {
+$prof=%lower(@{%concat(@MyName,"_TrueProfession")})
+#SW ($prof=thief) {hide %0} ($prof=assassin) {hunt %0} {headbutt %0}
+} $CLASS
+
+#AL c {
+#SW (@{%concat(@MyName,"_TrueProfession")}=assassin) {camouflage %0} (@{%concat(@MyName,"_TrueProfession")}=wizard) {counter %0}
+} $CLASS
+
+#AL campbrand {
+do camp,pull brand from fire
+} $CLASS
+
+#AL campall {
+do 5camp,get all into campfire
+} $CLASS
+
+
+#AL upr {
+$EXE = "unprotect"
+#IF (%0) {$EXE = %concat($exe," ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL unpr {
+$EXE = "unprotect"
+#IF (%0) {$EXE = %concat($exe," ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL unp {
+$EXE = "unprotect"
+#IF (%0) {$EXE = %concat($exe," ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL upall {
+$EXE = "unprotect all"
+#IF (%0) {$EXE = %concat($exe," ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL unsh {
+$EXE = "unshield"
+#IF (%0) {$EXE = %concat($exe," ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL unall {
+$EXE = "do unprotect all,unshield all"
+#IF (%0) {$EXE = %concat($exe," ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL tickfaim {
+#TI off {focus aim;#ALA "focus_Aim" {+180} {do focus defense,focus off;focus aim}};#TS 200;focus aim
+} $CLASS
+
+#AL sht {
+shape @Tar
+} $CLASS
+
+#AL shall {
+shape all here
+} $CLASS
+
+#AL shah {
+shape all here
+} $CLASS
+
+#AL sha {
+shape all
+} $CLASS
+
+#AL sh {
+$EXE = "shape"
+#IF (%0) {$EXE = %concat($exe," ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL rh {
+request healing
+} $CLASS
+
+#AL prot {
+$EXE = "protect"
+#IF (%0) {$EXE = %concat($exe," ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL pr {
+$EXE = "protect"
+#IF (%0) {$EXE = %concat($exe," ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL ll {
+$tar=%lower(%0)
+look $tar;l metal necklace in $tar;l keyring in $tar
+} $CLASS
+
+#AL leg {
+$EXE = "legend"
+#IF (%0) {$EXE = %concat($exe," ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL foff {
+do focus defense,focus off
+} $CLASS
+
+#AL foc {
+$param="";#IF (%0) {$param=%0}
+focus $param
+} $CLASS
+
+
+
+#AL fdod {
+focus dodge
+} $CLASS
+
+#AL fdef {
+focus defense
+} $CLASS
+
+#AL fatt {
+focus attack
+} $CLASS
+
+#AL faim {
+focus aim
+} $CLASS
+
+#AL llt {
+$tar="";#IF (@Tar) {$tar=%lower(@Tar)};#IF (%0) {$tar = %lower(%0)}
+do glance metal necklace in $tar,glance keyring in $tar,glance $tar
+} $CLASS
+
+
+
+#AL sbt {
+spellbind %lower(@Tar)
+} $CLASS
+
+#AL legtar {
+legend %lower(@Tar)
+} $CLASS
+
+#AL ev {
+5evade
+} $CLASS
+
+#AL tickfdod {
+fdod;#ALA +185 {fdef;foff;fdod}
+} $CLASS
+
+#AL ktar {
+kill %lower(@Tar)
+} $CLASS
+
+#AL kt {
+kill %lower(@Tar)
+} $CLASS
+
+#AL es {
+#IF (@MyFaction="ER") {attune %0} {eaglesight %0}
+} $CLASS
+
+#AL legt {
+legend %lower(@Tar)
+} $CLASS
+
+#AL legt2 {
+legend %lower(@Tar2)
+} $CLASS
+
+#AL shb {
+$tar=""
+#IF (@Tar) {$tar=@Tar}
+#IF (%0) {$tar=%0}
+$EXE = "shape"
+#IF ($tar) {$EXE = %concat($exe," ",$tar)}
+#EXE {$exe}
+} $CLASS
+
+#AL con {
+$EXE = "consider"
+#IF (%0) {$EXE = %concat($exe," ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL disem {
+disembark
+} $CLASS
+
+#AL legtq {
+legend top Questers
+} $CLASS
+
+#AL legta {
+legend top activity
+} $CLASS
+
+#AL legq {
+legend top Questers
+} $CLASS
+
+#AL lega {
+legend top activity
+} $CLASS
+
+#AL mast {
+$EXE = "launch mastiff"
+#IF (%0) {$EXE = %concat($exe," at ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL legt3 {
+legend %lower(@Tar3)
+} $CLASS
+
+
+
+#AL legtop {
+legend top activity
+} $CLASS
+
+#AL shm {
+shape @curmon
+} $CLASS
+
+#AL kpit {
+kill pit creature
+} $CLASS
+
+#AL kmu {
+kill mumak
+} $CLASS
+
+#AL legtopact {
+legend top activity
+} $CLASS
+
+#AL legtopexp {
+legend top experience
+} $CLASS
+
+
+#CLASS 0
