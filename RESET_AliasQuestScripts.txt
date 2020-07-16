@@ -1,0 +1,445 @@
+#CLASS 0
+$CLASS = "Tools|Alias|QuestScripts"
+
+#AL RhosGear {
+$EXE="search,get gear,wear gear,tag gear"
+#IF (@Mounted) {$EXE=%concat("dismount,",$EXE,",mount ",%lower(@MyMount))}
+$EXE=%concat("do ",$EXE,")
+#EXE {$EXE}
+} $CLASS
+
+#AL RivHammer {
+sss
+#WALK riv_smith;do search dust,get coin
+#WALK riv_hermit;do give coin to hermit,get hammer,wield hammer
+} $CLASS
+
+#AL stschest {
+do open chest,5search junk in chest,get box from chest,get key from chest,unlock box with key,drop key,open box,get ring from box,tag ring,put ring in cloak,get ring from box into cloak,put ring in pack,wear ring
+} $CLASS
+
+#AL sspass1 {
+do back,say The Dark Lord's Eye,say The Dark Lord's Might,say The Dark Lord's Knees,say The Dark Lord's Knee,say The Dark Lord's Breathe,say The Dark Lord's Breath,say The Dark Lord's Mercy,say The Dark Lord's Eye,say The Dark Lord's Teeth,say The Dark Lord's Glory
+out;search explosive crate;get jug
+} $CLASS
+
+#AL sspass {
+do back,say The Dark Lord's Teeth,say The Dark Lord's Eye,say The Dark Lord's Knees,say The Dark Lord's Might,say The Dark Lord's Breath,say The Dark Lord's Mercy,say The Dark Lord's Glory
+} $CLASS
+
+#AL shadowsword1a {
+ss;get jug;search explosives crate;.s2w6nen;order torched arrow;.s4en;do drench drapes with oil,drop jug,light arrow,torch drapes;.sw6s3wn
+} $CLASS
+
+#AL skintroll {
+ss;do get knife from pack,get knife from wagon,wield knife,skin corpse,put knife in wagon,put knife in pack,put pelt in wagon,put pelt in pack,get pelt into wagon,get pelt into pack
+} $CLASS
+
+#AL shadowsword1 {
+do back,say The Dark Lord's Eye,say The Dark Lord's Might,say The Dark Lord's Knees,say The Dark Lord's Knee,say The Dark Lord's Breathe,say The Dark Lord's Breath,say The Dark Lord's Mercy,say The Dark Lord's Eye,say The Dark Lord's Teeth,say The Dark Lord's Glory;out;do search explosive crate,get jug
+} $CLASS
+
+#AL sara1 {
+ss;do get amulet from corpse,get amulet from pack;chamber;do move carpet,pull banner;d;insert amulet;do get staff,get bands,tag all
+} $CLASS
+
+#AL sac1 {
+ss;do get rocks,get rocks from pack,drag corpse east;#move e;throw rocks east;drag corpse east;#move e;do get sac,tag sac
+} $CLASS
+
+#AL rhuneastercamp {
+#WALK 57156
+} $CLASS
+
+#AL pelemplatepel {
+do drop boat,board boat,launch s,e,se,e,se,e,se,4e,land s,disembark;get boat;do 3e,2nw
+} $CLASS
+
+#AL pelboatemplate {
+do 2se,3w;do drop boat,board boat,launch n,n,2w,s,w,s,w,s,w,s,3w,nw,w,nw,w,nw,w,land n,disembark
+} $CLASS
+
+#AL pbs2 {
+nw;n;nw;sw;w;n;w;tent;give tea to prince
+} $CLASS
+
+#AL pbs1 {
+pbsheal;do ask herbalist about help,nw,e,ne,move crates,get key,unlock chest with key,open chest,drop key,get bilberries from chest,sw,w,se,give bilberries to herbalist
+} $CLASS
+
+#AL panniers4 {
+tie horse;out;back;e
+} $CLASS
+
+#AL panniers3 {
+lead horse;do unlatch gate,gate,latch gate;barn;e;tie horse
+} $CLASS
+
+#AL panniers2 {
+get bucket;barn;further;e;fill bucket with oats;out;out;do unlatch gate,gate,latch gate;tame horse;#TE panniers2
+} $CLASS
+
+#AL panniers1 {
+gg panniers1;search well;pull rope
+} $CLASS
+
+#AL onyx3 {
+ss;gg turenf;#TEMP {^Enforcer gives you a bloody head.} {gg turlockout;give head to chief}
+} $CLASS
+
+#AL onyx2 {
+do hold  @wep,search ledge,bind deserter,wield  @wep,double wield
+} $CLASS
+
+#AL moribucket {
+get bucket;#5 {do fill bucket,toss water from bucket}
+} $CLASS
+
+#AL mmcloak {
+#WALK mmcloak;do push cLothing aside,search box,4fill lamp;#WALK mmscav;do give vial to orc,get bottle;#WALK mmcloak1;do burn guard,drop torch,drop brand,get cloak,wear cloak,tag cloak
+} $CLASS
+
+#AL mmailin {
+do get plain black key from cloak,get plain black key from pack,insert key into hole,turn key,passage
+} $CLASS
+
+#AL mazeTools {
+do 2inspect cirths on column,get chisel,get cLoth,look wall
+} $CLASS
+
+#AL mazepick {
+do rummage under bench,get pick
+} $CLASS
+
+#AL mazegems {
+do wield pick,mine sapphire from wall,put sapphire in pack,drop sapphire,mine adamant from wall,put adamant in pack,drop adamant,mine beryl from wall,put beryl in pack,drop beryl,mine jasper from wall,put jasper in pack,drop jasper,mine ruby from wall,put ruby in pack,drop ruby,mine emerald from wall,put emerald in pack,drop emerald,mine topaz from wall,put topaz in pack,drop topaz
+} $CLASS
+
+#AL makecm {
+do look candle,pull crystal,insert crystal into staff
+} $CLASS
+
+#AL lhbSout {
+do get all from box,get all from corpse 1 into pack,drop uniform from pack,get all from corpse 2 into pack,drop uniform from pack,get all from corpse 3 into pack,get bow from corpse 3,drop uniform from pack,sling bow,get quiver from corpse 3,wear quiver,get gold from corpse 1,get gold from corpse 2,get all from corpse 3,get sword from corpse 2,get all from box,2se,s,deeper,nw,w,sw,request healing,ne,5jump up,leap off
+} $CLASS
+
+#AL lantern3 {
+buy lantern;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;lantern2;i;put lantern in pack;stat
+} $CLASS
+
+#AL lantern2 {
+do light lantern,extinguish lantern
+} $CLASS
+
+#AL lantern1 {
+do buy lantern,open lantern,drop candle from lantern,buy candle,put candle into lantern,light lantern,extinguish lantern
+} $CLASS
+
+#AL getsparkey {
+ss;do pry lid,get heavy iron key into cloak,get heavy iron key into pack,get heavy iron key,put heavy iron key in cloak,put heavy iron key in pack,put heavy iron key in cloak,put heavy iron key in pack
+} $CLASS
+
+#AL getsara {
+do get amulet from corpse,chamber,move carpet,pull chain,d,insert amulet,get all,2u,chamber,sw,push slab,e,3d,w
+} $CLASS
+
+#AL getgreycloak {
+do move mat,move boxes,push piles,dig through pile,get cloak,wear cloak
+} $CLASS
+
+#AL geteshield {
+do get key from corpse,w,pull bone,unlock chest with key,drop key,open chest,get shield from chest,wear shield
+} $CLASS
+
+#AL getddm {
+enter;w;push through wall;do unlock chest with solid iron key,drop key,open chest,get deathmask from chest,wear deathmask,tag deathmask,get deathmask from chest into pack
+} $CLASS
+
+#AL ethflower {
+do get salierim flower from pack,give flower to healer
+} $CLASS
+
+#AL esvial3 {
+do tag vial,put vial in cloak,put vial in pack,5n,w,s
+} $CLASS
+
+#AL esvial2 {
+ss;do get pack from corpse,get pack from pack,get letter from pack,put pack in pack 2,put pack in cloak,get all from corpse into pack,get all from corpse;trail;enter;e;give letter to woman
+} $CLASS
+
+#AL esvial1 {
+ss;do path,enter,search table,e,give bandage to woman
+} $CLASS
+
+#AL dws3 {
+n;unlock west door with golden key;w;do drop key,2search garbage,get shield,dust shield
+} $CLASS
+
+#AL dws2 {
+e;push straw;unlock South door with iron flat key;s
+} $CLASS
+
+#AL dws1 {
+w;do search food,get key
+} $CLASS
+
+#AL dsh1 {
+do search behind stone 1,search behind stone 2,search behind stone 3,search behind stone 4,search behind stone 5,search behind stone 6,search behind stone 7,search behind stone 8
+} $CLASS
+
+#AL drl6 {
+do search ground,move pile,dig in soil
+} $CLASS
+
+#AL drl5 {
+do search barrel,wield crowbar,pry barrel,search barrel
+} $CLASS
+
+#AL drl4 {
+do look shelf,search shelf,move barrel,reach for object
+} $CLASS
+
+#AL dolman1 {
+do get family crest key from pack,get family crest key from corpse,unlock se door with family crest key,drop key;se;do get knife from pack,get knife from wagon,wield knife,cut throat,get amulet
+} $CLASS
+
+#AL deswag {
+#WALK wagons;accountant wagon;pull cLoth;out;second wagon;pull dagger with cLoth;out
+} $CLASS
+
+#AL ddmfangs {
+2get fangs from corpse;s;s;out;2give fangs to spirit
+} $CLASS
+
+#AL dazetoad {
+scrape warts off back
+} $CLASS
+
+#AL dazesnake {
+pull tongue from corpse
+} $CLASS
+
+#AL dazelizard {
+yank claw from corpse
+} $CLASS
+
+#AL dazebat {
+ripe wings from corpse
+} $CLASS
+
+#AL cmchisel {
+do 2inspect cirths on column,get chisel,get cLoth,look wall
+} $CLASS
+
+#AL checkflet {
+#WALK fletin;do e,ne,nw,u,w,sw,s,se,e,ne,n,nw,d,w,sw,se
+} $CLASS
+
+#AL checkbota {
+#WALK bota_boss;g commander;#WALK bota
+} $CLASS
+
+#AL mmgetsac {
+ss;do get rocks,get rocks from pack,drag corpse east;#move e;throw rocks east;drag corpse east;#move e;do get sac,tag sac
+} $CLASS
+
+#AL geticestaff {
+ss;get amulet from corpse;chamber;move carpet
+} $CLASS
+
+#AL radiant1 {
+place gauntlets on statue arms;#WAIT 1000;place pants on statue legs;#WAIT 1000;place helm on statue head
+} $CLASS
+
+#AL radiant2 {
+do take gauntlets from statue,wear all,take pants from statue,wear all,take helm from statue,wear all
+} $CLASS
+
+#AL radiant3 {
+do l azaghal,l finrod,l galadriel,l celebrimbor,l telchar,l narvi,l durin,l gil-galad
+} $CLASS
+
+#AL radiant4 {
+do take shirt from aule,wear shirt,take gauntlets,wear gauntlets,take pants,wear pants,take helm,wear helm
+} $CLASS
+
+#AL cls1 {
+ss;do search bowl,get key;s;do drop ladder,unlock up door,drop broken key;u;do pull stick,get key
+} $CLASS
+
+#AL cls2 {
+ss;do unlock armoury door with officer's key,drop key,armoury,2unlock locker with crude metal key,open locker,get sword from locker,tag sword
+} $CLASS
+
+#AL dharloot {
+#WALK dhguards;ss;dis;gall;ptow;gall;ptow;do get gold key from wagon,get silver key from wagon,get gold key from pack,get silver key from pack,unlock sw door with gold key,put gold key in wagon,sw,unlock chest with silver key,open chest,get all from chest,out,put silver key in wagon;mm
+} $CLASS
+
+#AL getglowbrace {
+gg glowbrace;ss;do search filth,get bracelet,tag all;gg privycabin
+} $CLASS
+
+#AL kadcloakin {
+do hold  @wep,climb rungs,2swim deeper,sift through mud
+} $CLASS
+
+#AL kadcloakout {
+2swim surface;ss;climb rungs
+} $CLASS
+
+#AL lintow {
+ptow;put sword in wagon
+} $CLASS
+
+#AL Lothbow {
+do 3e,2s,2w,3n,2ne,3n,5e,3s,2e,s,clearing,2up,turn candle,ladder,search corner,open chest 2 ,get saw from chest 2,saw branch,down,ladder
+} $CLASS
+
+#AL Lothbow1 {
+gg Lothbow;turn candle;ladder;search corner;open chest 2;get saw from chest 2;saw branch;d;ladder
+} $CLASS
+
+#AL mtgetcs {
+do look marks,move painting,turn wheels,get sword from rack
+} $CLASS
+
+#AL mtrobvault {
+do sunbuckle straps,open chest,get all from chest,n
+} $CLASS
+
+#AL pelerboatemerald {
+do 2se,3w
+do drop boat,board boat,launch n,n,2w,s,w,s,w,s,w,s,3w,nw,w,nw,w,nw,w,land n,disembark
+} $CLASS
+
+#AL pelerboatemeraldsp {
+do drop boat,board boat,launch s,e,se,e,se,e,se,4e,land s,disembark
+do 3e,2nw
+} $CLASS
+
+#AL rhunamb1 {
+do subdue lookout,threaten lookout,take uniform,wear uniform
+} $CLASS
+
+#AL rhunamb2 {
+ss;do take torch,take jug
+} $CLASS
+
+#AL rhunamb3 {
+do pour oil on building,light torch,kindle oil with torch
+} $CLASS
+
+#AL Thranbow {
+#WALK Thranbow;do shake shelf,get bow,get bow into pack
+} $CLASS
+
+#AL thiefamulet1 {
+gg magpie;do position boxes,climb boxes,grab hammer,climb down from boxes,grab hammer,get hammer;enter;enter;do l lid,l boards,pull out boards with hammer;out;climb ladder
+} $CLASS
+
+#AL ghaloot {
+ss;#5 {drop all from corpse};do get small polished key,unlock chest,drop small polished key,open chest;#5 {packin;w;ptow;e};get gold;get gold from chest;w
+} $CLASS
+
+#AL cmboulder {
+push boulder se;#WAIT 8000;#TE 62407;push boulder e;#WAIT 8000;#TE 62408;push boulder e;#WAIT 8000;#TE 62409;push boulder s;#WAIT 8000;#TE 62410;push boulder w;#WAIT 8000;#TE 62411;push boulder n;#WAIT 8000;#TE 62412;push boulder n;#WAIT 8000;#TE 62413;push boulder ne;#WAIT 8000;#TE 62414;push boulder s;#WAIT 8000;#TE 62415;push boulder e;#TELE 62436
+} $CLASS
+
+#AL cmcutgem {
+do get cLoth from pack,get cLoth from box,get chisel from box,get chisel from pack,get rock from box,get rock from pack,cut rock as princess,polish gem
+} $CLASS
+
+#AL cmgems {
+do mine sapphire from wall,put rock into pack,mine adamant from wall,put rock into pack,mine beryl from wall,put rock into pack,mine jasper from wall,put rock into pack,mine topaz from wall,put rock into pack,put pick into pack
+} $CLASS
+
+#AL pelclock {
+gg pelclock;look clock
+} $CLASS
+
+#AL linperm {
+gg linclerk;ss;do request permit,get permit;u;do give permit to secretary,get permit
+} $CLASS
+
+#AL lintop {
+ptop;put sword in panniers
+} $CLASS
+
+#AL skinhogs {
+ss;wield knife;do skin corpse,drop pelt,skin corpse 2,drop pelt,skin corpse 3,drop pelt,skin corpse 4,drop pelt,skin corpse 5,drop pelt;al;ws
+} $CLASS
+
+#AL makemoon {
+ss;do drop shield,get rag from pack,get bottle from pack,open bottle,pour oil onto rag,drop bottle,get shield,polish shield
+} $CLASS
+
+#AL mil2out {
+do 2n,3w;ornates;2d;ornatee;do s,2sw,w,s,out;te BDGate
+} $CLASS
+
+#AL Lothforage {
+s;forage;flin;s;forage;flin;s;forage;flin;e;forage;flin;e;forage;flin;n;forage;flin;e;forage;flin;n;forage;flin;w;forage;flin;w;forage;flin;w;forage;flin;w;forage;flin;s;forage;flin;w;forage;flin;n;forage;flin;w;forage;flin;w;forage;flin;w;forage;flin;n;forage;flin;e;forage;flin;e;forage;flin;e;forage;flin;e;forage;flin;e;forage;flin;n;forage;flin;w;forage;flin;w;forage;flin;w;forage;flin;w;forage;flin;w;forage;flin;n;forage;flin;w;forage;flin;n;forage;flin;e;forage;flin;e;forage;flin;s;forage;flin;e;forage;flin;n;forage;flin;e;forage;flin;s;forage;flin;e;forage;flin;e;e;forage;flin;e;forage;flin;e;forage;flin;s;forage;flin;e;forage;flin;e;forage;flin;s;forage;flin;w;forage;flin;w;w;forage;flin;w
+do put all flower in satchel,put all flower in wagon,put all flower in satchel 2,put all flower in pack
+} $CLASS
+
+#AL pelship {
+do search crate,move corpse,examine glimmer,rummage through dresser
+} $CLASS
+
+#AL healcorcLothes {
+#WALK gathon;do buy lady's boots 1,put boots in pack;.es2ws;do buy velvet cloak 1,put cloak in pack,buy elegant hat 1,put hat in pack,buy silk stockings 1,put stockings in pack,buy satin dress 1,put dress in pack
+} $CLASS
+
+#AL pelshipsearch {
+do search crate,move corpse,examine glimmer,rummage through dresser
+} $CLASS
+
+#AL shipup {
+do swim deck,swim surface,board boat
+} $CLASS
+
+#AL shipd {
+do ditch,dive to ship;ships;i
+} $CLASS
+
+#AL shipu {
+do swim out,swim deck,swim surface,board boat
+} $CLASS
+
+#AL ships {
+do search crate,move corpse,examine glimmer,rummage through dresser
+} $CLASS
+
+#AL ship1 {
+do light crystal,ditch,dive to ship;ships;swim hatch;ships;do swim deck,swim cabin;ships;do swim out,swim surface,board boat,hands
+} $CLASS
+
+#AL ship2 {
+do swim deck,swim out,swim cabin;ships
+} $CLASS
+
+#AL amcar {
+ambush caravan
+} $CLASS
+
+#AL drl {
+@drl
+} $CLASS
+
+#AL drl1 {
+do look shadow,se,look shadow,e,look shadow,se,look shadow,e,look shadow,se,look shadow,se,look shadow,se,look shadow,se,look shadow,n,look shadow,n,look shadow,n,look shadow,n,look shadow,n,look shadow,n,look shadow,n,look shadow,n,look shadow,e,look shadow,e,look shadow,e,look shadow,e,look shadow,s,look shadow,s,look shadow,s,look shadow,s,look shadow,s,look shadow,s,look shadow,s,look shadow,s,look shadow,se,look shadow,sw,look shadow,w,look shadow,w,look shadow,nw,look shadow,nw,look shadow,nw,look shadow,nw,look shadow,nw,look shadow,nw,look shadow,w,look shadow,nw,look shadow,w,look shadow,nw,look shadow
+} $CLASS
+
+#AL drlpath2 {
+do look shadow,se,look shadow,e,look shadow,se,look shadow,e,look shadow,se,look shadow,se,look shadow,se,look shadow,se,look shadow,se,look shadow,se,look shadow,e,look shadow,e,look shadow,ne,look shadow,e,look shadow,e,look shadow,ne,look shadow,sw,look shadow,w,look shadow,w,look shadow,nw,look shadow,n,look shadow,n,look shadow,n,look shadow,e,look shadow,e,look shadow,e,look shadow,w,look shadow,w,look shadow,w,look shadow,n,look shadow,n,look shadow,n,look shadow,n,look shadow,n,look shadow,e,look shadow,w,look shadow,w,look shadow,w,look shadow,w,look shadow,w,look shadow,s,look shadow,s,look shadow,s,look shadow,s,look shadow,s,look shadow,s,look shadow,s,look shadow,s,look shadow,nw,look shadow,nw,look shadow,nw,look shadow,nw,look shadow,w,look shadow,nw,look shadow,w,look shadow,nw,look shadow
+} $CLASS
+
+#AL drlpath1 {
+do look shadow,se,look shadow,e,look shadow,se,look shadow,e,look shadow,se,look shadow,se,look shadow,se,look shadow,se,look shadow,n,look shadow,n,look shadow,n,look shadow,n,look shadow,n,look shadow,n,look shadow,n,look shadow,n,look shadow,e,look shadow,e,look shadow,e,look shadow,e,look shadow,s,look shadow,s,look shadow,s,look shadow,s,look shadow,s,look shadow,s,look shadow,s,look shadow,s,look shadow,se,look shadow,sw,look shadow,w,look shadow,w,look shadow,nw,look shadow,nw,look shadow,nw,look shadow,nw,look shadow,nw,look shadow,nw,look shadow,w,look shadow,nw,look shadow,w,look shadow,nw,look shadow
+} $CLASS
+
+#AL drlpath3 {
+do look shadow,se,look shadow,e,look shadow,se,look shadow,e,look shadow,se,look shadow,se,look shadow,se,look shadow,se,look shadow,n,look shadow,n,look shadow,n,look shadow,n,look shadow,n,look shadow,n,look shadow,n,look shadow,n,look shadow,e,look shadow,e,look shadow,e,look shadow,e,look shadow,s,look shadow,s,look shadow,s,look shadow,s,look shadow,s,look shadow,s,look shadow,s,look shadow,s,look shadow,se,look shadow,sw,look shadow,w,look shadow,w,look shadow,nw,look shadow,nw,look shadow,nw,look shadow,nw,look shadow,nw,look shadow,nw,look shadow,w,look shadow,nw,look shadow,w,look shadow,nw,look shadow
+} $CLASS
+
+#CLASS 0
