@@ -1,0 +1,34 @@
+#CLASS 0
+$CLASS = "Tools|Alias|Prof_Warrior"
+
+#AL hb {
+$EXE = "headbutt"
+#IF (%0) {$EXE = %concat($exe," ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL thb {
+$tar=""
+#IF (%0) {$tar=%lower(%0)}
+trigger Y todo headbutt $tar
+} $CLASS
+
+#AL thbt {
+$tar = ""
+#IF (@Tar) {$tar = %lower(@Tar)}
+#IF (%0) {$tar = %lower(%0)}
+$action="headbutt"
+$exe=%concat("trigger ",%proper($tar)," todo ",$action," ",%lower($tar))
+#EXE {$exe}
+} $CLASS
+
+#AL hbt {
+$tar = ""
+#IF (@Tar) {$tar = %lower(@Tar)}
+#IF (%0) {$tar = %lower(%0)}
+$action="headbutt"
+$exe=%concat("trigger ",%proper($tar)," todo ",$action," ",%lower($tar))
+#EXE {$exe}
+} $CLASS
+
+#CLASS 0
