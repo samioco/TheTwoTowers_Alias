@@ -1,0 +1,15 @@
+$list = "thranahb|saphhb|saphahb|rivsp2|rivsp1|osg5|morcliff|mm1|loth1|gal1|edodrain|edoahb|car1|hollinhb|osg1|osg2|osg3|osg4|lothahb2|lothahb|mmtrig|car2|bel1|bdbreak|wosg1|wosg2|wosg3|wosg4|morg1|morg2|kad1|pel2|nhar1|nhar2|shar1|len1|len2|mmsacout|riv2|edo1|dra1|moriahb|valahb|hbvala|hbmoria|hbkad|hblen1|hblen2|hbmorg1|hbmorg2|hbpel2|hbnhar|hbwosg1|hbwosg2|hbwosg4|hbwosg3|hbshar|hbedo1|hbdra|bdhb|hbbd|nar1|hbnar|cuhb|hbcu|hbcor|hbedo|hbloth|hbmorg|hbith|hbriv|hbbd1|vala1|cou1|lo1|fram2|rhos1|bota1|isen2|cor2|cor1|lin1|cu1|bddrop|kad2|cou|mor2|moria1|riv1|moria2|thran1|thran3|thran2|rhos3|rhos2|frams2|frams1|bree1|bree2|bree3|hob1|hob2|bel2|edo2|edo3|mt1|esg1|loth2|edo4|fram1|fram3|als1|mt3hb|isen1|mor1|dale1|els1|dg1|harrow1|pel3|pel1|wt1|grey1|pelbell|rhun1|morgclimb|mmintrig|maiden|lothladder|lothchain|lintree|linmud|kadwater|framlady|framclimb|ferns|fades|emblem|edowater|edoshrub|edomaiden|edocliff|checkpoint|carwell|bytree|bycheckin|Bybush|bybrick|breewagon|breetree|breejump|breebed|adowindow|adocloset|bd2|mtbreaks"
+$folder="Alias_HuntBreaks"
+
+$file = %concat("//RESET_",%upper($folder),%cr,"#CLASS 0",%cr,%cr)
+$location_class = %concat("TOOLS|Alias|",$folder)
+$alias=""
+
+#FORALL $list {
+  $alias = %alias(%i)
+  $alias = %concat("#AL ",%i," {",%cr,$alias,%cr,"} ",$location_class)
+  $alias = %concat($alias,%cr,%cr)
+  $file = %concat($file,$alias)
+}
+$file = %concat($file,%cr,%cr,%cr,"#CLASS 0")
+#AL RESET_Alias_HuntBreaks {$file} _SYSTEM_INIT|RESET_TOOLS|TOOLS_Alias
