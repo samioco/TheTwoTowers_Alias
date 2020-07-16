@@ -1,0 +1,85 @@
+#CLASS 0
+$CLASS = "Tools|Alias|Prof_Casters"
+
+#AL sf {
+store staff
+} $CLASS
+
+#AL fs {
+hold staff
+} $CLASS
+
+
+#AL ds {
+do draw staff,wield staff
+} $CLASS
+
+#AL wf {
+wield staff
+} $CLASS
+
+#AL rf {
+remove staff
+} $CLASS
+
+#AL needstaff {
+trigger staff todo get staff
+} $CLASS
+
+#AL zap {
+$exe=""
+#IF (@MyFaction=ER) {$EXE = "conjure hurricane"} {$EXE = "cast lightning"}
+#IF (%0) {$EXE = %concat($exe," ",%0)}
+#EXE {$exe}
+} $CLASS
+
+#AL dark {
+#SW (@MyProf="necromancer") {conjure cloak} (@MyProf="wizard") {cast dark}
+} $CLASS
+
+#AL cdark {
+#SW (@MyProf="necromancer") {cease cloak} (@MyProf="wizard") {cease dark}
+} $CLASS
+
+#AL lite {
+#SW (@MyProf="necromancer") {conjure flames} (@MyProf="wizard") {cast light}
+} $CLASS
+
+#AL clite {
+#SW (@MyProf="necromancer") {cease flames} (@MyProf="wizard") {cease light}
+} $CLASS
+
+
+#AL findtar {
+find %lower(@Tar)
+} $CLASS
+
+#AL findtar2 {
+find %lower(@Tar2)
+} $CLASS
+
+#AL findtar3 {
+find %lower(@Tar3)
+} $CLASS
+
+#AL findt {
+find %lower(@Tar)
+} $CLASS
+
+#AL findt2 {
+find %lower(@Tar2)
+} $CLASS
+
+#AL ft {
+find %lower(@Tar)
+} $CLASS
+
+#AL ft2 {
+find  %lower(@Tar2)
+} $CLASS
+
+#AL findt3 {
+find  @Tar3
+} $CLASS
+
+#CLASS 0
