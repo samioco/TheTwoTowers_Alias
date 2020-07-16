@@ -1,0 +1,78 @@
+#CLASS 0
+$CLASS = "Tools|Alias|Prof_Ranger"
+
+#AL healmyhp {
+do get elanor star from satchel,heal me,put flower in satchel
+} $CLASS
+
+#AL healmyep {
+do get niphredil petal from satchel,heal me,put flower in satchel
+} $CLASS
+
+#AL trapdd {
+do trap disarm,trap destroy
+} $CLASS
+
+#AL hep {
+do get niphredil petal from satchel,get niphredil petal from wagon,get niphredil petal from pack,heal ,put all flower in satchel,put all flower in wagon,put all flower in pack
+} $CLASS
+
+#AL hhp {
+do get elanor star from satchel,get elanor star from wagon,get elanor star from pack,heal ,put all flower in satchel,put all flower in wagon,put all flower in pack
+} $CLASS
+
+#AL cure {
+rangringon;do get simbelmyne flower from satchel,get simbelmyne flower from pack,heal ,put all flower in satchel,put all flower in pack
+} $CLASS
+
+#AL satin {
+do get all flower into satchel,get all flower into pack,put all herb in satchel,put all flower in pack
+} $CLASS
+
+#AL sat2p {
+get all flower from satchel into pack
+} $CLASS
+
+#AL p2sat {
+get all flower from pack into satchel
+} $CLASS
+
+#AL sat2w {
+get all flower from satchel into wagon
+} $CLASS
+
+#AL w2sat {
+get all flower from wagon into satchel
+} $CLASS
+
+#AL flin {
+do get all niphredil petal into satchel,get all elanor star into satchel,get all niphredil petal into wagon,get all elanor star into wagon,get all niphredil petal into pack,get all elanor star into pack
+} $CLASS
+
+#AL rangringon {
+do wear small greenish ring from cloak,wear small greenish ring from pack
+} $CLASS
+
+#AL rangringoff {
+do put small greenish ring in cloak,put small greenish ring in pack
+} $CLASS
+
+#AL flowerin {
+do get all flower into satchel,get all flower into satchel 2,get all flower into pouch,get all flower into pack
+} $CLASS
+
+#AL rangon {
+rw;do 2wear small greenish ring from cloak,2wear small greenish ring from pack;ww
+} $CLASS
+
+#AL rangoff {
+do 2put small greenish ring in cloak,2put small greenish ring in pack
+} $CLASS
+
+#AL tft {
+$action="feint"
+$exe=%concat("trigger ",%proper(@Tar)," todo ",$action," ",%lower(@Tar))
+#EXE {$exe}
+} $CLASS
+
+#CLASS 0
