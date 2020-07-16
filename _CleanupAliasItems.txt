@@ -1,0 +1,15 @@
+$list = "ww|wtop|ws|wagspace|wagout|wagin|wagfeettopan|wag|wac|wab|wa|va|party_trigga|packtrash|tacpot|ssw|ss|rw|pieout|piein|pelt|panwepsell|pantowag|panout|panin|panfeet|pacoff|packwine|packwepsell|packtowag|packtopan|packtobox|packstew|packpie|packout|packjerky|packin|packfeet|packduck|packcandle|onyxon|onyxoff|needstaff|lt|lighton|lightoff|lc|iall|glowon|glowoff|getpie|et|ee|ec|dw|duckout|duckin|droppie|drinkwine|drinkpot|dringon|dringoff|dpot|dneckon|dneckoff|depo|depall|dc|dbota|cmlite|cloakout|cloakin|cartowag|cartow|cartop|cartob|btop|mush|pantopack|dark1|dark2|darkon|darkoff|wap|drinkes|theftpot|radianton|vap|radon|radoff|cron|croff|drh|scoredon|scoredoff|ringon|ringoff|paleon|thefton|theftoff|wach|chall|ga|waw|cloakpie|h2q2|vaw|q21|poson|posoff|mixtheft|mixtactics|mixpos|mixarch|q2in|handout|mixtac|vor|dn1|dn2|db|db1|db2|dn|dmixie|cv|rv|pathorn|paimhorn|sf|fs|dropeatpie|patt|paim|flask|warhorn|pasha|dtac|rp|cp|sap|wineout|cmp|rmp|cloakwine|hw|satin|sat2p|p2sat|sat2w|w2sat|gpcp|pietow|piewtop|mallin|pietop|drinkd|flin|depie|winein|iah|jerky|dej|jj|jout|jin|dvial|goldon|goldoff|ltw|pasty|sss|keyin|wagpie|rm|wp|iq|irioff|irion|mixie|thiefstart|ta|pep|tac|wf|rf|dh|tdpack|dishout|moss|tab|tacs|ggon|peltin|w21|w12|tc|mout|min|peltall|dvor|jtop|rangringon|rangringoff|flowerin|mixaimatt|jtow|ip|ic|ib|taip|ik|iw|taic|partysell|pipe|ptow|ptob|gall|candlein|btoc|bootson|bootsoff|bagout|al|aimpot|aimon|aimoff|ptop|boxall|arrowin|arrowout|ball|blowtac|bota|btac|pwep|broadin|candleout|amber|amoff|amon|setmybox|gall_nohands|taiw|idleloot|w13|w23|w31|w32|trigidle|detneck|repneck|iaw|icg|ipg|sg_depo_buypie|epie|ep|eatstew|eatpie|eatmeat|eatfeet|eatduck|dj|dm|dp|wcg|wpg|q12|q31|q13|q32|rangon|rangoff|ibg|is|cobon|coboff|taib|pts|icar|ibox|aimring_check|ips|vas|itb|crystal_on|crystal_off"
+$folder="Alias_Items"
+
+$file = %concat("//RESET_",%upper($folder),%cr,"#CLASS 0",%cr,%cr)
+$location_class = %concat("TOOLS|Alias|",$folder)
+$alias=""
+
+#FORALL $list {
+  $alias = %alias(%i)
+  $alias = %concat("#AL ",%i," {",%cr,$alias,%cr,"} ",$location_class)
+  $alias = %concat($alias,%cr,%cr)
+  $file = %concat($file,$alias)
+}
+$file = %concat($file,%cr,%cr,%cr,"#CLASS 0")
+#AL RESET_Alias_Items {$file} _SYSTEM_INIT|RESET_TOOLS|TOOLS_Alias
