@@ -1,0 +1,139 @@
+#CLASS 0
+$CLASS = "Tools|Alias|Weapons"
+#AL WEP {
+#VAR Wep {%lower(%0)} {} VAR
+#VAR MyWep {%lower(%0)} {} VAR
+#VAR MyWep_Type {%lower(%0)} {} VAR
+INFO WEAPON SET TO: %upper(@wep)
+} $CLASS
+
+#AL DAG {
+#VAR Dag {%lower(%0)} {} VAR
+#AL MyDag {%lower(%0)} {} VAR
+INFO DAGGER SET TO: %upper(@dag)
+} $CLASS
+
+#AL WS {
+#VAR EXE {} {} VAR
+$wep=%lower(@MyWep_Type)
+#IF ((!%ismember(@MyWep_Type,"bow|whip|prod|globe")) && ($wep)) {AddToEXE %concat("draw ",$wep)}
+
+#IF (%ismember($wep,"whip|prod|globe")) {
+  #IF (@Gear_Cloak) {AddToEXE %concat("wield ",$wep," from cloak")}
+  #IF (@Gear_Pack) {AddToEXE "wield ",$wep," from pack"}
+}
+#IF ($wep) {
+  AddToEXE %concat("wield ",$wep)
+}
+#SW ($wep="bow") {
+  AddToEXE %concat("nock arrow,draw bow")
+} (@MyWep_ID="training staff") {
+  AddToEXE "press button"
+}
+
+#IF (%ismember(@MyWep_ID,@Gear_Weapons_DoubleWieldable)) {
+  AddToEXE "double wield"
+}
+ExecuteEXE
+} Tools|Alias|Weapons
+
+#AL SS {
+#VAR EXE {} {} VAR
+$wep=%lower(@MyWep_Type)
+#SW (%ismember($wep,"whip|prod|globe")) {
+  #IF (@Gear_Cloak) {AddToEXE %concat("put ",$wep," in cloak")}
+  #IF (@Gear_Pack) {AddToEXE %concat("put ",$wep," in pack")}
+} ($wep="bow") {
+  AddToEXE "unnock,put all arrow in quiver,put all arrow in quiver 2,sling bow,drop all arrow,sheath black dagger"
+} (@MyWep_ID="training staff") {
+  AddToEXE "return blades"
+} (@MyWep_ID="miluiant") {
+  AddToEXE "single wield"
+}
+
+#SW (%ismember(@MyWep_ID,@Gear_Weapons_SelfSheathable)) {
+  AddToEXE %concat("sheath ",$wep)
+} ((!%ismember($wep,"bow|whip|prod|globe")) && ($wep)) {
+  AddToEXE %concat("store ",$wep)
+}
+$NoEXE=""
+#IF (%pos(%lower("NoEXE"),%lower(%0))) {$NoEXE="NoEXE"}
+#IF ($NoEXE) {ShowEXE} {ExecuteEXE}
+} Tools|Alias|Weapons
+
+#AL SSS {
+SS "NoEXE"
+$wep=%lower(@MyWep_Type)
+#IF ((%ismember(@MyProf,@Casters)) AND ($wep!="staff")) {
+  AddToEXE "store staff"
+}
+#IF (@Gear_EPDag) {
+  AddToEXE "unhand black-bladed dagger"
+}
+#IF (@Gear_EPKnife) {
+  AddToEXE "unhand curved knife"
+}
+#IF (@Dag) {
+  AddToEXE %concat("unhand ",@Dag)
+}
+AddToEXE "unhand knife"
+ExecuteEXE
+} Tools|Alias|Weapons
+
+
+#AL rw {
+#IF (@MyWep_type) {
+  #SW (%ismember(@MyWep_type,"pike|bow")) {ss} {remove @MyWep_type}
+}
+} Tools|Alias|Weapons
+
+#AL hw {
+hold @MyWep_id
+} Tools|Alias|Weapons
+
+#AL dw {
+double wield
+} Tools|Alias|Weapons
+
+#AL ww {
+$exe=""
+#IF (@MyWep_type) {
+  $exe="wield @MyWep_id"
+  #IF (%ismember(@MyWep_id,@Gear_Weapons_DoubleWieldable)) {
+    $EXE = %concat("do ",$exe,",double wield")
+  }
+}
+#EXE {$exe}
+} Tools|Alias|Weapons
+
+#AL ssw {
+single wield
+} Tools|Alias|Weapons
+
+#AL DRH {
+$EXE = ""
+#IF (@wielding) {
+#SW (@MyWep_type="pike") {
+  $exe="store pike"
+} (@MyWep_type="bow") {
+  $EXE = "unnock,put all arrow in quiver,put all arrow in quiver 2,sling bow"
+} {$EXE = "remove @MyWep_type"}
+}
+#SW ((@Gear_EPDag) AND (@MyTrueLevel>=13)) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $EXE = %concat($exe,"wield black-bladed dagger,unhand black-bladed dagger")
+} (@Gear_EPKnife) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $EXE = %concat($exe,"wield curved knife,sheath curved knife")
+}
+#IF ((@MyWep_type) && (@wielding)) {
+  #IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+  $EXE = %concat($exe,"wield @MyWep_type")
+}
+#IF ((%len($exe)) && (%rightback($exe,1)!=",")) {$exe=%concat($exe,",")}
+$EXE = %concat($exe,"request healing")
+#IF (%pos(",",$exe)) {$EXE = %concat("do ",$exe)}
+#EXE {$exe}
+} Tools|Alias|Weapons
+
+#CLASS 0
