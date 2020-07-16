@@ -1,0 +1,16 @@
+$list="pl|php|pd|pf|pi|pibau|pibra|picar|picoc|pidol|pidon|pijy|pikum|pimanko|piphd|piphi|piryk|pisca|pisea|pisek|pispr|pitit|pj|plbra|plcar|plcoc|pldon|plhaek|plill|plkum|plphi|plryk|plsca|plsea|plsek|pltit|pp|pimhak|plmhak|pimam|piall|pibrook|plmam|pizi|piater|piio|pichr|plchr|pstat|pst|ps|ppl|pu|pem|pm|pitung|ap|pikh|plkh|pishaka|pimebu|plmebu|pimiz|pioge|pivra"
+
+$folder="Party"
+
+$file = %concat("//RESET_",%upper($folder),%cr,"#CLASS 0",%cr,%cr)
+$location_class = %concat("TOOLS|Alias|",$folder)
+$alias=""
+
+#FORALL $list {
+  $alias = %alias(%i)
+  $alias = %concat("#AL ",%i," {",%cr,$alias,%cr,"} ",$location_class)
+  $alias = %concat($alias,%cr,%cr)
+  $file = %concat($file,$alias)
+}
+$file = %concat($file,%cr,%cr,%cr,"#CLASS 0")
+#AL RESET_Alias_Party {$file} _SYSTEM_INIT|RESET_TOOLS|TOOLS_Alias
